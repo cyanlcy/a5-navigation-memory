@@ -1,0 +1,295 @@
+{
+ "prompt": "Photograph direction at capture and target direction after walking can differ. Consider how recorded position changes the bearing. Write a complete executable Python robot controller to return to an object seen earlier.\nInputs for decide(observation, tools): observation['target'] is a category, ['views'] is two old camera poses in time order. Each has heading (degrees relative to final facing, +90 right, -90 left), pitch, right_of_end_m and forward_of_end_m (old camera relative to final position, metres), step. observation['movement'] is recorded actions. Target is hidden at endpoint; one left/right turn reveals it. Each problem is independent. Coordinate convention: if the old camera was x metres to the right of the endpoint, an object d metres ahead along a +90 old heading has final lateral coordinate x+d, or x-d for a -90 heading. Positive means turn right. The actual d is unknown. The starting method ignores x; consider a plausible estimate or visual evidence. You choose how and when to use it.\nThere are just TWO calls across all tools combined, including repeats. Choose only one or two readings to use. A returned None action gets zero. tools.match() gives two CLIP similarities (larger better). tools.identify() gives two old-frame visual identification logits; tools.direct() gives two RGB+motion turn logits ordered left,right. tools.locate() gives two estimated camera-to-target forward ranges in metres from RGB; 0 means not detected. tools.point() returns two entries (one per old image); each is [horizontal_fraction,vertical_fraction] at the estimated bottom of the object, or None when absent. Image top-left is (0,0). Only use tools explicitly listed below. The raw RGB values are available in observation['rgb'] as three 24x24 RGB arrays when the observation includes them. If supplied, observation['calibration'] gives the robot camera height over the floor in metres and vertical field of view in degrees. A positive pitch looks down. In the calibrated four-question layout, queried objects rest on the floor. All evidence comes from frozen readings on public RGB.\nReturn (frame_index:int 0 or 1, action:'left' or 'right', trace:small dict). Write plain Python functions only, no imports, type annotations, docstrings, printing, exception handling, variable attributes or dictionary methods. Standard sin,cos,tan,atan,atan2,radians,sqrt,abs,all,any,bool,dict,enumerate,float,int,len,list,max,min,range,round,sorted,sum,tuple,zip,str and arithmetic are available. Use square brackets to access fields. Score first on whole paired tasks (valid evidence and action on BOTH), then on action accuracy and fewer calls. Return one fenced Python program.\nDebugging guide: Reproduce a failure. Compare its execution with a successful case. Identify the first divergence. Change one cause and check the regression on an earlier success.\nParent source:\ndef decide(observation, tools):\n    s = tools.identify()\n    f = int(s[1] > s[0])\n    return f, 'right' if observation['views'][f]['heading'] > 0 else 'left', {}\n\nDevelopment feedback: {\"still_wrong\": {\"count\": 4, \"example\": {\"family\": \"reliability\", \"valid_frame\": false, \"action_ok\": false, \"calls\": [], \"error\": \"ValueError: only declared visual tool attributes are available\", \"trace\": null}}, \"regressed\": {\"count\": 8, \"example\": {\"family\": \"endpoint\", \"valid_frame\": false, \"action_ok\": false, \"calls\": [], \"error\": \"ValueError: only declared visual tool attributes are available\", \"trace\": null}}}",
+ "raw": "```python\ndef decide(observation, tools):\n    views = observation['views']\n    movement = observation['movement']\n    target = observation['target']\n    \n    # Only use two tool calls total\n    # First: identify to get visual class confidence\n    s = tools.identify()\n    # Second: direct to get turn preference (left/right) from motion and RGB\n    if s[1] > s[0]:\n        direct_result = tools.direct()\n        # direct_result is [left_logit, right_logit]\n        # Return the preferred turn based on which is higher\n        if direct_result[1] > direct_result[0]:\n            action = 'right'\n        else:\n            action = 'left'\n    else:\n        direct_result = tools.direct()\n        if direct_result[1] > direct_result[0]:\n            action = 'right'\n        else:\n            action = 'left'\n    \n    # Determine which frame to use (0 or 1)\n    # Use the frame with the most recent heading that points toward the target\n    # We assume the target is hidden at the endpoint, and we need to turn left/right to reveal it\n    # Use the frame with the heading that is closer to the expected direction\n    \n    # If we have a valid point from locate, use it to estimate direction\n    locate_result = tools.locate()\n    if locate_result[0] > 0 or locate_result[1] > 0:\n        # Use the frame where the forward distance is larger (more likely to be aligned)\n        # But since we only have two frames, pick the one with the higher forward estimate\n        if locate_result[0] > locate_result[1]:\n            frame_idx = 0\n        else:\n            frame_idx = 1\n    else:\n        # No locate data, use the frame with positive heading (right turn)\n        if views[0]['heading'] > 0:\n            frame_idx = 0\n        else:\n            frame_idx = 1\n    \n    # Final action: based on direct turn preference\n    # We return action based on direct result, which we already computed\n    \n    return frame_idx, action, {}\n```",
+ "input_tokens": 782,
+ "output_tokens": 452,
+ "seconds": 9.245374049001839,
+ "seed": 4732,
+ "source": "def decide(observation, tools):\n    views = observation['views']\n    movement = observation['movement']\n    target = observation['target']\n    \n    # Only use two tool calls total\n    # First: identify to get visual class confidence\n    s = tools.identify()\n    # Second: direct to get turn preference (left/right) from motion and RGB\n    if s[1] > s[0]:\n        direct_result = tools.direct()\n        # direct_result is [left_logit, right_logit]\n        # Return the preferred turn based on which is higher\n        if direct_result[1] > direct_result[0]:\n            action = 'right'\n        else:\n            action = 'left'\n    else:\n        direct_result = tools.direct()\n        if direct_result[1] > direct_result[0]:\n            action = 'right'\n        else:\n            action = 'left'\n    \n    # Determine which frame to use (0 or 1)\n    # Use the frame with the most recent heading that points toward the target\n    # We assume the target is hidden at the endpoint, and we need to turn left/right to reveal it\n    # Use the frame with the heading that is closer to the expected direction\n    \n    # If we have a valid point from locate, use it to estimate direction\n    locate_result = tools.locate()\n    if locate_result[0] > 0 or locate_result[1] > 0:\n        # Use the frame where the forward distance is larger (more likely to be aligned)\n        # But since we only have two frames, pick the one with the higher forward estimate\n        if locate_result[0] > locate_result[1]:\n            frame_idx = 0\n        else:\n            frame_idx = 1\n    else:\n        # No locate data, use the frame with positive heading (right turn)\n        if views[0]['heading'] > 0:\n            frame_idx = 0\n        else:\n            frame_idx = 1\n    \n    # Final action: based on direct turn preference\n    # We return action based on direct result, which we already computed\n    \n    return frame_idx, action, {}\n",
+ "parent": "def decide(observation, tools):\n    s = tools.identify()\n    f = int(s[1] > s[0])\n    return f, 'right' if observation['views'][f]['heading'] > 0 else 'left', {}\n",
+ "parent_hash": "4511614c157db099c5b42c6a003bb4c1fd733a242a85385cf2a985f3d4956669",
+ "diff": "--- \n+++ \n@@ -1,4 +1,49 @@\n def decide(observation, tools):\n+    views = observation['views']\n+    movement = observation['movement']\n+    target = observation['target']\n+    \n+    # Only use two tool calls total\n+    # First: identify to get visual class confidence\n     s = tools.identify()\n-    f = int(s[1] > s[0])\n-    return f, 'right' if observation['views'][f]['heading'] > 0 else 'left', {}\n+    # Second: direct to get turn preference (left/right) from motion and RGB\n+    if s[1] > s[0]:\n+        direct_result = tools.direct()\n+        # direct_result is [left_logit, right_logit]\n+        # Return the preferred turn based on which is higher\n+        if direct_result[1] > direct_result[0]:\n+            action = 'right'\n+        else:\n+            action = 'left'\n+    else:\n+        direct_result = tools.direct()\n+        if direct_result[1] > direct_result[0]:\n+            action = 'right'\n+        else:\n+            action = 'left'\n+    \n+    # Determine which frame to use (0 or 1)\n+    # Use the frame with the most recent heading that points toward the target\n+    # We assume the target is hidden at the endpoint, and we need to turn left/right to reveal it\n+    # Use the frame with the heading that is closer to the expected direction\n+    \n+    # If we have a valid point from locate, use it to estimate direction\n+    locate_result = tools.locate()\n+    if locate_result[0] > 0 or locate_result[1] > 0:\n+        # Use the frame where the forward distance is larger (more likely to be aligned)\n+        # But since we only have two frames, pick the one with the higher forward estimate\n+        if locate_result[0] > locate_result[1]:\n+            frame_idx = 0\n+        else:\n+            frame_idx = 1\n+    else:\n+        # No locate data, use the frame with positive heading (right turn)\n+        if views[0]['heading'] > 0:\n+            frame_idx = 0\n+        else:\n+            frame_idx = 1\n+    \n+    # Final action: based on direct turn preference\n+    # We return action based on direct result, which we already computed\n+    \n+    return frame_idx, action, {}\n",
+ "rank": [
+  0.0,
+  0,
+  -24
+ ],
+ "parent_rank": [
+  0.3333333333333333,
+  9,
+  -12
+ ],
+ "rows": [
+  {
+   "key": "0a1700675dc5ce7588",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "identify",
+    "direct"
+   ],
+   "attempts": [
+    "identify",
+    "direct",
+    "locate"
+   ],
+   "seconds": 0.000622766965534538,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "157659114479d3d71d",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "identify",
+    "direct"
+   ],
+   "attempts": [
+    "identify",
+    "direct",
+    "locate"
+   ],
+   "seconds": 0.0006218729540705681,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "16cba0a0ea4bef05c1",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "identify",
+    "direct"
+   ],
+   "attempts": [
+    "identify",
+    "direct",
+    "locate"
+   ],
+   "seconds": 0.0006256750202737749,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "24afc7b9d04774ced6",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "identify",
+    "direct"
+   ],
+   "attempts": [
+    "identify",
+    "direct",
+    "locate"
+   ],
+   "seconds": 0.000613162002991885,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "2e4dcdbc9a3771dac0",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "identify",
+    "direct"
+   ],
+   "attempts": [
+    "identify",
+    "direct",
+    "locate"
+   ],
+   "seconds": 0.0005920249968767166,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "4639ef7a6d372feec9",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "identify",
+    "direct"
+   ],
+   "attempts": [
+    "identify",
+    "direct",
+    "locate"
+   ],
+   "seconds": 0.000620233011431992,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "53fddba93a945c51d4",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "identify",
+    "direct"
+   ],
+   "attempts": [
+    "identify",
+    "direct",
+    "locate"
+   ],
+   "seconds": 0.0005769919953309,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "8f06c8d86ad6b9579c",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "identify",
+    "direct"
+   ],
+   "attempts": [
+    "identify",
+    "direct",
+    "locate"
+   ],
+   "seconds": 0.0005590909859165549,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "a96d4d762e0b0d6352",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "identify",
+    "direct"
+   ],
+   "attempts": [
+    "identify",
+    "direct",
+    "locate"
+   ],
+   "seconds": 0.0005834749899804592,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "ccb1c4d82743f51cf8",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "identify",
+    "direct"
+   ],
+   "attempts": [
+    "identify",
+    "direct",
+    "locate"
+   ],
+   "seconds": 0.0006240570219233632,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "f0f262ea14ddb33e6f",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "identify",
+    "direct"
+   ],
+   "attempts": [
+    "identify",
+    "direct",
+    "locate"
+   ],
+   "seconds": 0.0006014209939166903,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "fb1a7ce310ad972104",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "identify",
+    "direct"
+   ],
+   "attempts": [
+    "identify",
+    "direct",
+    "locate"
+   ],
+   "seconds": 0.0005640059825964272,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  }
+ ],
+ "feedback": {
+  "still_wrong": {
+   "count": 4,
+   "example": {
+    "family": "reliability",
+    "valid_frame": false,
+    "action_ok": false,
+    "calls": [
+     "identify",
+     "direct"
+    ],
+    "error": "ValueError: visual budget exceeded",
+    "trace": null
+   }
+  },
+  "regressed": {
+   "count": 8,
+   "example": {
+    "family": "endpoint",
+    "valid_frame": false,
+    "action_ok": false,
+    "calls": [
+     "identify",
+     "direct"
+    ],
+    "error": "ValueError: visual budget exceeded",
+    "trace": null
+   }
+  }
+ },
+ "accepted": false
+}

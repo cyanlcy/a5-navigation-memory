@@ -1,0 +1,10 @@
+{
+ "curve": [
+  "def decide(observation, tools):\n    s = tools.identify()\n    f = int(s[1] > s[0])\n    return f, 'right' if observation['views'][f]['heading'] > 0 else 'left', {}\n",
+  "def decide(observation, tools):\n    s = tools.identify()\n    f = int(s[1] > s[0])\n    return f, 'right' if observation['views'][f]['heading'] > 0 else 'left', {}\n",
+  "def decide(observation, tools):\n    s = tools.identify()\n    f = int(s[1] > s[0])\n    return f, 'right' if observation['views'][f]['heading'] > 0 else 'left', {}\n",
+  "def decide(observation, tools):\n    s = tools.identify()\n    f = int(s[1] > s[0])\n    return f, 'right' if observation['views'][f]['heading'] > 0 else 'left', {}\n",
+  "def decide(observation, tools):\n    s = tools.identify()\n    f = int(s[1] > s[0])\n    return f, 'right' if observation['views'][f]['heading'] > 0 else 'left', {}\n"
+ ],
+ "guide_hash": "f96fecb1843fded613162b63899cd11638ad1193e52c548d4c47ce1c1c52c6e2"
+}

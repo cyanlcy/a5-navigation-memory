@@ -1,0 +1,10 @@
+{
+ "prompt": "Improve exactly one procedural step in this debugging guide based on the two actual repair traces. Output only the full short revised guide in plain English, within 90 words. General procedures only. No code, formulas, identifiers, coordinates, object names or example answers. Guide: Reproduce a failure. Compare its execution with a successful case. Identify the first divergence. Change one cause and check the regression on an earlier success.\nFeedback: [{\"still_wrong\": {\"count\": 8, \"example\": {\"family\": \"endpoint\", \"valid_frame\": false, \"action_ok\": false, \"calls\": [\"match\", \"locate\"], \"error\": \"ValueError: visual budget exceeded\", \"trace\": null}}, \"regressed\": {\"count\": 4, \"example\": {\"family\": \"target\", \"valid_frame\": false, \"action_ok\": false, \"calls\": [\"match\", \"locate\"], \"error\": \"ValueError: visual budget exceeded\", \"trace\": null}}}, {\"still_wrong\": {\"count\": 8, \"example\": {\"family\": \"endpoint\", \"valid_frame\": false, \"action_ok\": false, \"calls\": [], \"error\": \"ValueError: invalid function name\", \"trace\": null}}, \"regressed\": {\"count\": 4, \"example\": {\"family\": \"target\", \"valid_frame\": false, \"action_ok\": false, \"calls\": [], \"error\": \"ValueError: invalid function name\", \"trace\": null}}}]",
+ "raw": "Reproduce the failure. Compare with a successful run. Identify the first difference. Change only the action that caused the error in the failing case. Test the fix in the same environment. If the error returns, adjust the action parameters slightly and retest. Repeat until the failure stops occurring without regressing earlier success.",
+ "input_tokens": 312,
+ "output_tokens": 64,
+ "seconds": 1.211987483955454,
+ "seed": 4711,
+ "guide": "Reproduce the failure. Compare with a successful run. Identify the first difference. Change only the action that caused the error in the failing case. Test the fix in the same environment. If the error returns, adjust the action parameters slightly and retest. Repeat until the failure stops occurring without regressing earlier success.",
+ "valid": true
+}

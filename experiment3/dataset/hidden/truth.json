@@ -1,0 +1,1922 @@
+{
+ "f032b75547f5242b2e": {
+  "pair": "ad51222946b31fda0c",
+  "block": "ea072b419c52bdd868",
+  "kind": "target",
+  "room": "FloorPlan213",
+  "correct": "left",
+  "evidence": 1,
+  "oid": "GarbageCan|+07.79|-00.03|-01.15",
+  "route": "ad51222946b31fda0c",
+  "relation": "cross",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "dd5e7fbcc3cbabdbf2": {
+  "pair": "ad51222946b31fda0c",
+  "block": "ea072b419c52bdd868",
+  "kind": "target",
+  "room": "FloorPlan213",
+  "correct": "right",
+  "evidence": 1,
+  "oid": "HousePlant|+11.37|+00.47|-01.14",
+  "route": "ad51222946b31fda0c",
+  "relation": "same",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "2c58cd277baf94ed0a": {
+  "pair": "cdc3ba56325ebdbf49",
+  "block": "ea072b419c52bdd868",
+  "kind": "target",
+  "room": "FloorPlan213",
+  "correct": "left",
+  "evidence": 1,
+  "oid": "HousePlant|+11.37|+00.47|-01.14",
+  "route": "cdc3ba56325ebdbf49",
+  "relation": "cross",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "5587df9dd31dc06e10": {
+  "pair": "cdc3ba56325ebdbf49",
+  "block": "ea072b419c52bdd868",
+  "kind": "target",
+  "room": "FloorPlan213",
+  "correct": "right",
+  "evidence": 1,
+  "oid": "Box|+10.35|+00.83|+01.02",
+  "route": "cdc3ba56325ebdbf49",
+  "relation": "same",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "e06e5518f7f5939145": {
+  "pair": "67f3f0d033ce0083ab",
+  "block": "c0c419b9a62d36d0ce",
+  "kind": "target",
+  "room": "FloorPlan328",
+  "correct": "right",
+  "evidence": 0,
+  "oid": "TeddyBear|-00.07|+00.57|-00.28",
+  "route": "67f3f0d033ce0083ab",
+  "relation": "cross",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "c43d9ab5139fbfd9fa": {
+  "pair": "67f3f0d033ce0083ab",
+  "block": "c0c419b9a62d36d0ce",
+  "kind": "target",
+  "room": "FloorPlan328",
+  "correct": "left",
+  "evidence": 0,
+  "oid": "SideTable|+01.24|+00.00|-01.55",
+  "route": "67f3f0d033ce0083ab",
+  "relation": "same",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "824cbb31751c60d819": {
+  "pair": "a174884ac80f1cd40c",
+  "block": "c0c419b9a62d36d0ce",
+  "kind": "target",
+  "room": "FloorPlan328",
+  "correct": "right",
+  "evidence": 0,
+  "oid": "SideTable|+01.24|+00.00|-01.55",
+  "route": "a174884ac80f1cd40c",
+  "relation": "cross",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "78fd58894d77d4da20": {
+  "pair": "a174884ac80f1cd40c",
+  "block": "c0c419b9a62d36d0ce",
+  "kind": "target",
+  "room": "FloorPlan328",
+  "correct": "left",
+  "evidence": 0,
+  "oid": "DeskLamp|+03.16|+00.79|-01.66",
+  "route": "a174884ac80f1cd40c",
+  "relation": "same",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "036e468824738891e9": {
+  "pair": "e156cdcea2b23ded6f",
+  "block": "b0f31e9e7f5f1add5f",
+  "kind": "target",
+  "room": "FloorPlan11",
+  "correct": "left",
+  "evidence": 1,
+  "oid": "Microwave|-01.04|+00.90|-01.72",
+  "route": "e156cdcea2b23ded6f",
+  "relation": "cross",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "df59b09b3025af954b": {
+  "pair": "e156cdcea2b23ded6f",
+  "block": "b0f31e9e7f5f1add5f",
+  "kind": "target",
+  "room": "FloorPlan11",
+  "correct": "right",
+  "evidence": 1,
+  "oid": "Toaster|+00.31|+00.90|+00.55",
+  "route": "e156cdcea2b23ded6f",
+  "relation": "same",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "e7f582006363a8d77a": {
+  "pair": "7ddc93b10faa5a8eb5",
+  "block": "b0f31e9e7f5f1add5f",
+  "kind": "target",
+  "room": "FloorPlan11",
+  "correct": "left",
+  "evidence": 1,
+  "oid": "Toaster|+00.31|+00.90|+00.55",
+  "route": "7ddc93b10faa5a8eb5",
+  "relation": "cross",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "a137dd930c6ac4674e": {
+  "pair": "7ddc93b10faa5a8eb5",
+  "block": "b0f31e9e7f5f1add5f",
+  "kind": "target",
+  "room": "FloorPlan11",
+  "correct": "right",
+  "evidence": 1,
+  "oid": "CoffeeMachine|+00.62|+00.90|+00.60",
+  "route": "7ddc93b10faa5a8eb5",
+  "relation": "same",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "ff57fb83dad09376a8": {
+  "pair": "9cef32631187466764",
+  "block": "30c0dad122e02fbdb7",
+  "kind": "target",
+  "room": "FloorPlan303",
+  "correct": "right",
+  "evidence": 0,
+  "oid": "Laptop|-01.76|+00.59|-00.11",
+  "route": "9cef32631187466764",
+  "relation": "cross",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "633846141992795ebd": {
+  "pair": "9cef32631187466764",
+  "block": "30c0dad122e02fbdb7",
+  "kind": "target",
+  "room": "FloorPlan303",
+  "correct": "left",
+  "evidence": 0,
+  "oid": "Chair|-01.45|+00.01|-00.31",
+  "route": "9cef32631187466764",
+  "relation": "same",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "a9117e382cc4e3f4ee": {
+  "pair": "bebe4c94fad2bbea18",
+  "block": "30c0dad122e02fbdb7",
+  "kind": "target",
+  "room": "FloorPlan303",
+  "correct": "right",
+  "evidence": 0,
+  "oid": "Chair|-01.45|+00.01|-00.31",
+  "route": "bebe4c94fad2bbea18",
+  "relation": "cross",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "e87a45786bf18da54b": {
+  "pair": "bebe4c94fad2bbea18",
+  "block": "30c0dad122e02fbdb7",
+  "kind": "target",
+  "room": "FloorPlan303",
+  "correct": "left",
+  "evidence": 0,
+  "oid": "SideTable|-01.82|+00.00|-01.14",
+  "route": "bebe4c94fad2bbea18",
+  "relation": "same",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "14d69735f45ec5ec1a": {
+  "pair": "fbff2f6fda3024d0d0",
+  "block": "f9779454d90102458e",
+  "kind": "target",
+  "room": "FloorPlan3",
+  "correct": "left",
+  "evidence": 1,
+  "oid": "CoffeeMachine|+01.13|+01.31|-01.43",
+  "route": "fbff2f6fda3024d0d0",
+  "relation": "cross",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "3113468d9d6ac11f21": {
+  "pair": "fbff2f6fda3024d0d0",
+  "block": "f9779454d90102458e",
+  "kind": "target",
+  "room": "FloorPlan3",
+  "correct": "right",
+  "evidence": 1,
+  "oid": "Stool|+00.61|+00.22|-01.08",
+  "route": "fbff2f6fda3024d0d0",
+  "relation": "same",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "15ef7e6382d0be9024": {
+  "pair": "1f2c2f55e3797b5110",
+  "block": "f9779454d90102458e",
+  "kind": "target",
+  "room": "FloorPlan3",
+  "correct": "left",
+  "evidence": 1,
+  "oid": "Stool|+00.61|+00.22|-01.08",
+  "route": "1f2c2f55e3797b5110",
+  "relation": "cross",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "20c24d5f739fc2bdfe": {
+  "pair": "1f2c2f55e3797b5110",
+  "block": "f9779454d90102458e",
+  "kind": "target",
+  "room": "FloorPlan3",
+  "correct": "right",
+  "evidence": 1,
+  "oid": "Microwave|+00.99|+01.31|-02.16",
+  "route": "1f2c2f55e3797b5110",
+  "relation": "same",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "a60aa4249c05413861": {
+  "pair": "4361e41e00df62370c",
+  "block": "232d4849d12119fdd6",
+  "kind": "target",
+  "room": "FloorPlan214",
+  "correct": "right",
+  "evidence": 0,
+  "oid": "DeskLamp|-00.48|+00.61|+00.69",
+  "route": "4361e41e00df62370c",
+  "relation": "cross",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "530320d1effe727564": {
+  "pair": "4361e41e00df62370c",
+  "block": "232d4849d12119fdd6",
+  "kind": "target",
+  "room": "FloorPlan214",
+  "correct": "left",
+  "evidence": 0,
+  "oid": "HousePlant|-02.66|+00.47|+04.17",
+  "route": "4361e41e00df62370c",
+  "relation": "same",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "42729bcfd5e2f391a3": {
+  "pair": "a7c91e6e43f2b02f45",
+  "block": "232d4849d12119fdd6",
+  "kind": "target",
+  "room": "FloorPlan214",
+  "correct": "right",
+  "evidence": 0,
+  "oid": "HousePlant|-02.66|+00.47|+04.17",
+  "route": "a7c91e6e43f2b02f45",
+  "relation": "cross",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "ed4e22f3c4e9ef38e2": {
+  "pair": "a7c91e6e43f2b02f45",
+  "block": "232d4849d12119fdd6",
+  "kind": "target",
+  "room": "FloorPlan214",
+  "correct": "left",
+  "evidence": 0,
+  "oid": "Laptop|-04.31|+00.53|+02.23",
+  "route": "a7c91e6e43f2b02f45",
+  "relation": "same",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "07825046fdeee7564d": {
+  "pair": "08a9b15dc2d76f9bff",
+  "block": "ae18d9f13256767cdd",
+  "kind": "target",
+  "room": "FloorPlan21",
+  "correct": "left",
+  "evidence": 0,
+  "oid": "CoffeeMachine|+00.87|+00.87|-01.26",
+  "route": "08a9b15dc2d76f9bff",
+  "relation": "cross",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "020877fd1893eaa011": {
+  "pair": "08a9b15dc2d76f9bff",
+  "block": "ae18d9f13256767cdd",
+  "kind": "target",
+  "room": "FloorPlan21",
+  "correct": "right",
+  "evidence": 0,
+  "oid": "GarbageCan|-01.26|-00.03|-03.61",
+  "route": "08a9b15dc2d76f9bff",
+  "relation": "same",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "af86081d45ec01b369": {
+  "pair": "d485dfa4e1b7dc5463",
+  "block": "ae18d9f13256767cdd",
+  "kind": "target",
+  "room": "FloorPlan21",
+  "correct": "left",
+  "evidence": 0,
+  "oid": "GarbageCan|-01.26|-00.03|-03.61",
+  "route": "d485dfa4e1b7dc5463",
+  "relation": "cross",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "2ca4473ef519516d80": {
+  "pair": "d485dfa4e1b7dc5463",
+  "block": "ae18d9f13256767cdd",
+  "kind": "target",
+  "room": "FloorPlan21",
+  "correct": "right",
+  "evidence": 0,
+  "oid": "GarbageBag|-00.77|-00.03|-03.54",
+  "route": "d485dfa4e1b7dc5463",
+  "relation": "same",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "1297f1e7d44561ffde": {
+  "pair": "4c1896b0deccad3ede",
+  "block": "c5e1da5a61a52d9f37",
+  "kind": "target",
+  "room": "FloorPlan28",
+  "correct": "right",
+  "evidence": 1,
+  "oid": "SideTable|-04.03|+00.00|-00.30",
+  "route": "4c1896b0deccad3ede",
+  "relation": "cross",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "ebb50d93da76cd3936": {
+  "pair": "4c1896b0deccad3ede",
+  "block": "c5e1da5a61a52d9f37",
+  "kind": "target",
+  "room": "FloorPlan28",
+  "correct": "left",
+  "evidence": 1,
+  "oid": "GarbageCan|-02.42|-00.03|-03.54",
+  "route": "4c1896b0deccad3ede",
+  "relation": "same",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "8c929545a04c9b2ed9": {
+  "pair": "96eef305179bf246e5",
+  "block": "c5e1da5a61a52d9f37",
+  "kind": "target",
+  "room": "FloorPlan28",
+  "correct": "right",
+  "evidence": 1,
+  "oid": "GarbageCan|-02.42|-00.03|-03.54",
+  "route": "96eef305179bf246e5",
+  "relation": "cross",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "b2646ed544e0e60a16": {
+  "pair": "96eef305179bf246e5",
+  "block": "c5e1da5a61a52d9f37",
+  "kind": "target",
+  "room": "FloorPlan28",
+  "correct": "left",
+  "evidence": 1,
+  "oid": "Toaster|-01.97|+00.93|-03.76",
+  "route": "96eef305179bf246e5",
+  "relation": "same",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "586d77ed634cbbeb90": {
+  "pair": "7cfd2bc9f1e3756510",
+  "block": "fa828269915b33a086",
+  "kind": "target",
+  "room": "FloorPlan224",
+  "correct": "left",
+  "evidence": 1,
+  "oid": "HousePlant|+00.49|+00.87|-01.58",
+  "route": "7cfd2bc9f1e3756510",
+  "relation": "cross",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "9b96dc87e9f0fb46f9": {
+  "pair": "7cfd2bc9f1e3756510",
+  "block": "fa828269915b33a086",
+  "kind": "target",
+  "room": "FloorPlan224",
+  "correct": "right",
+  "evidence": 1,
+  "oid": "Box|+03.17|+00.21|-00.05",
+  "route": "7cfd2bc9f1e3756510",
+  "relation": "same",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "1e7864f8ef049ff216": {
+  "pair": "de4c756843f092f426",
+  "block": "fa828269915b33a086",
+  "kind": "target",
+  "room": "FloorPlan224",
+  "correct": "left",
+  "evidence": 1,
+  "oid": "Box|+03.17|+00.21|-00.05",
+  "route": "de4c756843f092f426",
+  "relation": "cross",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "fe0df59cbf0057eea1": {
+  "pair": "de4c756843f092f426",
+  "block": "fa828269915b33a086",
+  "kind": "target",
+  "room": "FloorPlan224",
+  "correct": "right",
+  "evidence": 1,
+  "oid": "Chair|+01.63|+00.03|+02.21",
+  "route": "de4c756843f092f426",
+  "relation": "same",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "362d851f1ad7cf5a31": {
+  "pair": "187a4008ae3f45b9d3",
+  "block": "5457ec2b5aa6df561f",
+  "kind": "target",
+  "room": "FloorPlan217",
+  "correct": "right",
+  "evidence": 0,
+  "oid": "Laptop|-04.87|+00.98|+03.44",
+  "route": "187a4008ae3f45b9d3",
+  "relation": "cross",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "85bf57bb2090014483": {
+  "pair": "187a4008ae3f45b9d3",
+  "block": "5457ec2b5aa6df561f",
+  "kind": "target",
+  "room": "FloorPlan217",
+  "correct": "left",
+  "evidence": 0,
+  "oid": "Box|-02.18|+00.67|+02.43",
+  "route": "187a4008ae3f45b9d3",
+  "relation": "same",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "b07c5ac10f3ee79a04": {
+  "pair": "06d985a817ab0720d3",
+  "block": "5457ec2b5aa6df561f",
+  "kind": "target",
+  "room": "FloorPlan217",
+  "correct": "right",
+  "evidence": 0,
+  "oid": "Box|-02.18|+00.67|+02.43",
+  "route": "06d985a817ab0720d3",
+  "relation": "cross",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "21fd76e3feeeec06df": {
+  "pair": "06d985a817ab0720d3",
+  "block": "5457ec2b5aa6df561f",
+  "kind": "target",
+  "room": "FloorPlan217",
+  "correct": "left",
+  "evidence": 0,
+  "oid": "SideTable|-00.04|+00.00|+04.62",
+  "route": "06d985a817ab0720d3",
+  "relation": "same",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "7e95d27c669b98e9e1": {
+  "pair": "3e8dbbdebc7bec6158",
+  "block": "943a633f38e1668974",
+  "kind": "target",
+  "room": "FloorPlan13",
+  "correct": "left",
+  "evidence": 1,
+  "oid": "Pot|-00.40|+00.91|+05.93",
+  "route": "3e8dbbdebc7bec6158",
+  "relation": "cross",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "ea7b708ec037bec3f1": {
+  "pair": "3e8dbbdebc7bec6158",
+  "block": "943a633f38e1668974",
+  "kind": "target",
+  "room": "FloorPlan13",
+  "correct": "right",
+  "evidence": 1,
+  "oid": "CoffeeMachine|-00.28|+00.91|+06.56",
+  "route": "3e8dbbdebc7bec6158",
+  "relation": "same",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "11d47a5115cbc139dc": {
+  "pair": "8c43f792808769fe52",
+  "block": "943a633f38e1668974",
+  "kind": "target",
+  "room": "FloorPlan13",
+  "correct": "left",
+  "evidence": 1,
+  "oid": "CoffeeMachine|-00.28|+00.91|+06.56",
+  "route": "8c43f792808769fe52",
+  "relation": "cross",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "518dfb879ab8aa7896": {
+  "pair": "8c43f792808769fe52",
+  "block": "943a633f38e1668974",
+  "kind": "target",
+  "room": "FloorPlan13",
+  "correct": "right",
+  "evidence": 1,
+  "oid": "Toaster|-03.58|+00.91|+01.76",
+  "route": "8c43f792808769fe52",
+  "relation": "same",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "0ae6c87fa46043d894": {
+  "pair": "9fc4167b176659c48b",
+  "block": "24f63c4a8c75e42336",
+  "kind": "target",
+  "room": "FloorPlan22",
+  "correct": "right",
+  "evidence": 0,
+  "oid": "Stool|+01.54|+00.01|+01.33",
+  "route": "9fc4167b176659c48b",
+  "relation": "cross",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "d9ed25f768a829e002": {
+  "pair": "9fc4167b176659c48b",
+  "block": "24f63c4a8c75e42336",
+  "kind": "target",
+  "room": "FloorPlan22",
+  "correct": "left",
+  "evidence": 0,
+  "oid": "GarbageCan|-02.76|+00.00|+01.47",
+  "route": "9fc4167b176659c48b",
+  "relation": "same",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "8877fb30e16a9075ac": {
+  "pair": "897da894777e041f6f",
+  "block": "24f63c4a8c75e42336",
+  "kind": "target",
+  "room": "FloorPlan22",
+  "correct": "right",
+  "evidence": 0,
+  "oid": "GarbageCan|-02.76|+00.00|+01.47",
+  "route": "897da894777e041f6f",
+  "relation": "cross",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "368a21a5e9da04c409": {
+  "pair": "897da894777e041f6f",
+  "block": "24f63c4a8c75e42336",
+  "kind": "target",
+  "room": "FloorPlan22",
+  "correct": "left",
+  "evidence": 0,
+  "oid": "Microwave|+00.28|+00.90|-01.33",
+  "route": "897da894777e041f6f",
+  "relation": "same",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "5e85f688fe31ca666d": {
+  "pair": "099b32da65aef53d60",
+  "block": "298a6c723e4789f78d",
+  "kind": "target",
+  "room": "FloorPlan205",
+  "correct": "right",
+  "evidence": 1,
+  "oid": "SideTable|-02.07|+00.00|+06.70",
+  "route": "099b32da65aef53d60",
+  "relation": "cross",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "cc9536eeb919a94327": {
+  "pair": "099b32da65aef53d60",
+  "block": "298a6c723e4789f78d",
+  "kind": "target",
+  "room": "FloorPlan205",
+  "correct": "left",
+  "evidence": 1,
+  "oid": "DeskLamp|-00.26|+00.61|+03.31",
+  "route": "099b32da65aef53d60",
+  "relation": "same",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "da377132fe32830453": {
+  "pair": "cf9e4d136d3a8dfd6d",
+  "block": "298a6c723e4789f78d",
+  "kind": "target",
+  "room": "FloorPlan205",
+  "correct": "right",
+  "evidence": 1,
+  "oid": "DeskLamp|-00.26|+00.61|+03.31",
+  "route": "cf9e4d136d3a8dfd6d",
+  "relation": "cross",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "a06f6e0ecb1475631a": {
+  "pair": "cf9e4d136d3a8dfd6d",
+  "block": "298a6c723e4789f78d",
+  "kind": "target",
+  "room": "FloorPlan205",
+  "correct": "left",
+  "evidence": 1,
+  "oid": "HousePlant|-00.17|+00.61|+03.99",
+  "route": "cf9e4d136d3a8dfd6d",
+  "relation": "same",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "7317d0fd579b02452e": {
+  "pair": "3fe2ef54903959a82b",
+  "block": "94e9c171c7f1c59b41",
+  "kind": "target",
+  "room": "FloorPlan312",
+  "correct": "left",
+  "evidence": 0,
+  "oid": "SideTable|+00.19|00.00|-01.64",
+  "route": "3fe2ef54903959a82b",
+  "relation": "cross",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "d8ea8a6ee242f2ba88": {
+  "pair": "3fe2ef54903959a82b",
+  "block": "94e9c171c7f1c59b41",
+  "kind": "target",
+  "room": "FloorPlan312",
+  "correct": "right",
+  "evidence": 0,
+  "oid": "GarbageCan|+02.66|-00.02|+01.28",
+  "route": "3fe2ef54903959a82b",
+  "relation": "same",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "705670c70ce2a1595a": {
+  "pair": "8e5a038806e9de6eda",
+  "block": "94e9c171c7f1c59b41",
+  "kind": "target",
+  "room": "FloorPlan312",
+  "correct": "left",
+  "evidence": 0,
+  "oid": "GarbageCan|+02.66|-00.02|+01.28",
+  "route": "8e5a038806e9de6eda",
+  "relation": "cross",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "d7e8d2f25163732ec3": {
+  "pair": "8e5a038806e9de6eda",
+  "block": "94e9c171c7f1c59b41",
+  "kind": "target",
+  "room": "FloorPlan312",
+  "correct": "right",
+  "evidence": 0,
+  "oid": "GarbageBag|+00.81|00.00|+01.14",
+  "route": "8e5a038806e9de6eda",
+  "relation": "same",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "c9cf2a0403d742c826": {
+  "pair": "d77b272e2da45a2ff7",
+  "block": "f5c953aa334e318a98",
+  "kind": "target",
+  "room": "FloorPlan217",
+  "correct": "left",
+  "evidence": 1,
+  "oid": "Laptop|-04.87|+00.98|+03.44",
+  "route": "d77b272e2da45a2ff7",
+  "relation": "cross",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "01ca2b51ad494cdf0c": {
+  "pair": "d77b272e2da45a2ff7",
+  "block": "f5c953aa334e318a98",
+  "kind": "target",
+  "room": "FloorPlan217",
+  "correct": "right",
+  "evidence": 1,
+  "oid": "DeskLamp|+00.02|+00.70|+04.68",
+  "route": "d77b272e2da45a2ff7",
+  "relation": "same",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "92a8bea7e0f2b9d9d3": {
+  "pair": "02d0c75c3ded4382b1",
+  "block": "f5c953aa334e318a98",
+  "kind": "target",
+  "room": "FloorPlan217",
+  "correct": "left",
+  "evidence": 1,
+  "oid": "DeskLamp|+00.02|+00.70|+04.68",
+  "route": "02d0c75c3ded4382b1",
+  "relation": "cross",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "521040b90f75ba404f": {
+  "pair": "02d0c75c3ded4382b1",
+  "block": "f5c953aa334e318a98",
+  "kind": "target",
+  "room": "FloorPlan217",
+  "correct": "right",
+  "evidence": 1,
+  "oid": "HousePlant|-04.82|+00.98|+01.57",
+  "route": "02d0c75c3ded4382b1",
+  "relation": "same",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "f0253000b5a3f43199": {
+  "pair": "b73560e3c7536bfd9d",
+  "block": "cd695005ae104e6c15",
+  "kind": "target",
+  "room": "FloorPlan11",
+  "correct": "right",
+  "evidence": 0,
+  "oid": "Microwave|-01.04|+00.90|-01.72",
+  "route": "b73560e3c7536bfd9d",
+  "relation": "cross",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "ae50454d0cfae8817c": {
+  "pair": "b73560e3c7536bfd9d",
+  "block": "cd695005ae104e6c15",
+  "kind": "target",
+  "room": "FloorPlan11",
+  "correct": "left",
+  "evidence": 0,
+  "oid": "Toaster|+00.31|+00.90|+00.55",
+  "route": "b73560e3c7536bfd9d",
+  "relation": "same",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "1faa344dc7c9fa86ad": {
+  "pair": "f0ec21044ac7c651ec",
+  "block": "cd695005ae104e6c15",
+  "kind": "target",
+  "room": "FloorPlan11",
+  "correct": "right",
+  "evidence": 0,
+  "oid": "Toaster|+00.31|+00.90|+00.55",
+  "route": "f0ec21044ac7c651ec",
+  "relation": "cross",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "ee909e90878cd7501d": {
+  "pair": "f0ec21044ac7c651ec",
+  "block": "cd695005ae104e6c15",
+  "kind": "target",
+  "room": "FloorPlan11",
+  "correct": "left",
+  "evidence": 0,
+  "oid": "CoffeeMachine|+00.62|+00.90|+00.60",
+  "route": "f0ec21044ac7c651ec",
+  "relation": "same",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "3338c15671be10714c": {
+  "pair": "dd865a4b5795f27418",
+  "block": "608081a10405095ce6",
+  "kind": "target",
+  "room": "FloorPlan13",
+  "correct": "left",
+  "evidence": 0,
+  "oid": "Microwave|-02.69|+01.43|+01.69",
+  "route": "dd865a4b5795f27418",
+  "relation": "cross",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "43aba80edf7f05403a": {
+  "pair": "dd865a4b5795f27418",
+  "block": "608081a10405095ce6",
+  "kind": "target",
+  "room": "FloorPlan13",
+  "correct": "right",
+  "evidence": 0,
+  "oid": "CoffeeMachine|-00.28|+00.91|+06.56",
+  "route": "dd865a4b5795f27418",
+  "relation": "same",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "6ae0cbfb588297c8f7": {
+  "pair": "375492f75026cb5140",
+  "block": "608081a10405095ce6",
+  "kind": "target",
+  "room": "FloorPlan13",
+  "correct": "left",
+  "evidence": 0,
+  "oid": "CoffeeMachine|-00.28|+00.91|+06.56",
+  "route": "375492f75026cb5140",
+  "relation": "cross",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "497b9b437706550b2b": {
+  "pair": "375492f75026cb5140",
+  "block": "608081a10405095ce6",
+  "kind": "target",
+  "room": "FloorPlan13",
+  "correct": "right",
+  "evidence": 0,
+  "oid": "Pot|-00.40|+00.91|+05.93",
+  "route": "375492f75026cb5140",
+  "relation": "same",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "6f82345898d911a37d": {
+  "pair": "236d1dc34773167baf",
+  "block": "75aed14d8ef8a013d2",
+  "kind": "target",
+  "room": "FloorPlan213",
+  "correct": "right",
+  "evidence": 1,
+  "oid": "GarbageCan|+07.79|-00.03|-01.15",
+  "route": "236d1dc34773167baf",
+  "relation": "cross",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "2ff29765270485954f": {
+  "pair": "236d1dc34773167baf",
+  "block": "75aed14d8ef8a013d2",
+  "kind": "target",
+  "room": "FloorPlan213",
+  "correct": "left",
+  "evidence": 1,
+  "oid": "Box|+10.35|+00.83|+01.02",
+  "route": "236d1dc34773167baf",
+  "relation": "same",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "bbe44f5eb422558162": {
+  "pair": "1d3a91005013807c07",
+  "block": "75aed14d8ef8a013d2",
+  "kind": "target",
+  "room": "FloorPlan213",
+  "correct": "right",
+  "evidence": 1,
+  "oid": "Box|+10.35|+00.83|+01.02",
+  "route": "1d3a91005013807c07",
+  "relation": "cross",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "23f2356bdac4a48a77": {
+  "pair": "1d3a91005013807c07",
+  "block": "75aed14d8ef8a013d2",
+  "kind": "target",
+  "room": "FloorPlan213",
+  "correct": "left",
+  "evidence": 1,
+  "oid": "Laptop|+14.24|+00.73|+02.07",
+  "route": "1d3a91005013807c07",
+  "relation": "same",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "b8dda7a5ee83fedcb3": {
+  "pair": "6f0f1be428c473000a",
+  "block": "9f9fd6e908b4c0d0c4",
+  "kind": "target",
+  "room": "FloorPlan303",
+  "correct": "right",
+  "evidence": 0,
+  "oid": "Chair|-01.45|+00.01|-00.31",
+  "route": "6f0f1be428c473000a",
+  "relation": "cross",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "46aa325aaf600fcdca": {
+  "pair": "6f0f1be428c473000a",
+  "block": "9f9fd6e908b4c0d0c4",
+  "kind": "target",
+  "room": "FloorPlan303",
+  "correct": "left",
+  "evidence": 0,
+  "oid": "SideTable|-01.82|+00.00|-01.14",
+  "route": "6f0f1be428c473000a",
+  "relation": "same",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "33ced0ec6247809814": {
+  "pair": "447943874571c0b07d",
+  "block": "9f9fd6e908b4c0d0c4",
+  "kind": "target",
+  "room": "FloorPlan303",
+  "correct": "right",
+  "evidence": 0,
+  "oid": "SideTable|-01.82|+00.00|-01.14",
+  "route": "447943874571c0b07d",
+  "relation": "cross",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "754b2902892b04c44a": {
+  "pair": "447943874571c0b07d",
+  "block": "9f9fd6e908b4c0d0c4",
+  "kind": "target",
+  "room": "FloorPlan303",
+  "correct": "left",
+  "evidence": 0,
+  "oid": "GarbageBag|+01.74|00.00|+00.23",
+  "route": "447943874571c0b07d",
+  "relation": "same",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "5a9cb413b6f2ef8e5b": {
+  "pair": "5bcdb4173578b44419",
+  "block": "3cf3ce1efa9d46d3cb",
+  "kind": "target",
+  "room": "FloorPlan22",
+  "correct": "left",
+  "evidence": 1,
+  "oid": "Microwave|+00.28|+00.90|-01.33",
+  "route": "5bcdb4173578b44419",
+  "relation": "cross",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "02eb8c85e7c8986e90": {
+  "pair": "5bcdb4173578b44419",
+  "block": "3cf3ce1efa9d46d3cb",
+  "kind": "target",
+  "room": "FloorPlan22",
+  "correct": "right",
+  "evidence": 1,
+  "oid": "Toaster|-02.82|+00.90|+00.25",
+  "route": "5bcdb4173578b44419",
+  "relation": "same",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "5a4a2fb4927c9d9c37": {
+  "pair": "cab175166c2819d033",
+  "block": "3cf3ce1efa9d46d3cb",
+  "kind": "target",
+  "room": "FloorPlan22",
+  "correct": "left",
+  "evidence": 1,
+  "oid": "Toaster|-02.82|+00.90|+00.25",
+  "route": "cab175166c2819d033",
+  "relation": "cross",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "66386674b96ee6e84e": {
+  "pair": "cab175166c2819d033",
+  "block": "3cf3ce1efa9d46d3cb",
+  "kind": "target",
+  "room": "FloorPlan22",
+  "correct": "right",
+  "evidence": 1,
+  "oid": "CoffeeMachine|+01.12|+01.10|+00.31",
+  "route": "cab175166c2819d033",
+  "relation": "same",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "54ae2570856a640eaa": {
+  "pair": "aab5640a87b3f87181",
+  "block": "d414f597dae8632e0e",
+  "kind": "target",
+  "room": "FloorPlan328",
+  "correct": "left",
+  "evidence": 0,
+  "oid": "HousePlant|-00.83|+00.00|+00.84",
+  "route": "aab5640a87b3f87181",
+  "relation": "cross",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "ad7b478518af9f12e4": {
+  "pair": "aab5640a87b3f87181",
+  "block": "d414f597dae8632e0e",
+  "kind": "target",
+  "room": "FloorPlan328",
+  "correct": "right",
+  "evidence": 0,
+  "oid": "DeskLamp|+03.16|+00.79|-01.66",
+  "route": "aab5640a87b3f87181",
+  "relation": "same",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "627e92abcb9982bdc4": {
+  "pair": "0ab8f31e1433cd53e1",
+  "block": "d414f597dae8632e0e",
+  "kind": "target",
+  "room": "FloorPlan328",
+  "correct": "left",
+  "evidence": 0,
+  "oid": "DeskLamp|+03.16|+00.79|-01.66",
+  "route": "0ab8f31e1433cd53e1",
+  "relation": "cross",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "713f958b34f8a3b09e": {
+  "pair": "0ab8f31e1433cd53e1",
+  "block": "d414f597dae8632e0e",
+  "kind": "target",
+  "room": "FloorPlan328",
+  "correct": "right",
+  "evidence": 0,
+  "oid": "TeddyBear|-00.07|+00.57|-00.28",
+  "route": "0ab8f31e1433cd53e1",
+  "relation": "same",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "d8308ebe593652b3e9": {
+  "pair": "3b42155a7c95e60fb8",
+  "block": "3cc30a10fa312d407d",
+  "kind": "target",
+  "room": "FloorPlan214",
+  "correct": "right",
+  "evidence": 1,
+  "oid": "GarbageCan|-00.53|-00.01|+02.82",
+  "route": "3b42155a7c95e60fb8",
+  "relation": "cross",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "1dacf4254f5ff04e96": {
+  "pair": "3b42155a7c95e60fb8",
+  "block": "3cc30a10fa312d407d",
+  "kind": "target",
+  "room": "FloorPlan214",
+  "correct": "left",
+  "evidence": 1,
+  "oid": "HousePlant|-02.66|+00.47|+04.17",
+  "route": "3b42155a7c95e60fb8",
+  "relation": "same",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "47f9fb100ecc5ac1ec": {
+  "pair": "e61b9c5ad399bec8aa",
+  "block": "3cc30a10fa312d407d",
+  "kind": "target",
+  "room": "FloorPlan214",
+  "correct": "right",
+  "evidence": 1,
+  "oid": "HousePlant|-02.66|+00.47|+04.17",
+  "route": "e61b9c5ad399bec8aa",
+  "relation": "cross",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "885d93b58f664c453c": {
+  "pair": "e61b9c5ad399bec8aa",
+  "block": "3cc30a10fa312d407d",
+  "kind": "target",
+  "room": "FloorPlan214",
+  "correct": "left",
+  "evidence": 1,
+  "oid": "Statue|-00.46|+00.27|+05.70",
+  "route": "e61b9c5ad399bec8aa",
+  "relation": "same",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "452c0f4d21e95928e0": {
+  "pair": "0af118a168683eaef8",
+  "block": "63fcffa3e0fdd14be6",
+  "kind": "target",
+  "room": "FloorPlan3",
+  "correct": "right",
+  "evidence": 1,
+  "oid": "Stool|+00.61|+00.22|-01.08",
+  "route": "0af118a168683eaef8",
+  "relation": "cross",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "59219176eb52671581": {
+  "pair": "0af118a168683eaef8",
+  "block": "63fcffa3e0fdd14be6",
+  "kind": "target",
+  "room": "FloorPlan3",
+  "correct": "left",
+  "evidence": 1,
+  "oid": "Microwave|+00.99|+01.31|-02.16",
+  "route": "0af118a168683eaef8",
+  "relation": "same",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "3b6efc299206f97a1b": {
+  "pair": "2a49aa89b2849e17ae",
+  "block": "63fcffa3e0fdd14be6",
+  "kind": "target",
+  "room": "FloorPlan3",
+  "correct": "right",
+  "evidence": 1,
+  "oid": "Microwave|+00.99|+01.31|-02.16",
+  "route": "2a49aa89b2849e17ae",
+  "relation": "cross",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "e01d268332a4679a66": {
+  "pair": "2a49aa89b2849e17ae",
+  "block": "63fcffa3e0fdd14be6",
+  "kind": "target",
+  "room": "FloorPlan3",
+  "correct": "left",
+  "evidence": 1,
+  "oid": "GarbageCan|-01.63|+00.21|+02.19",
+  "route": "2a49aa89b2849e17ae",
+  "relation": "same",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "55a1d196ba050b4534": {
+  "pair": "28736da39e7fcb807d",
+  "block": "4d1e24e361f1d60e02",
+  "kind": "target",
+  "room": "FloorPlan28",
+  "correct": "left",
+  "evidence": 1,
+  "oid": "GarbageCan|-02.42|-00.03|-03.54",
+  "route": "28736da39e7fcb807d",
+  "relation": "cross",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "4fb6e8c531b7015420": {
+  "pair": "28736da39e7fcb807d",
+  "block": "4d1e24e361f1d60e02",
+  "kind": "target",
+  "room": "FloorPlan28",
+  "correct": "right",
+  "evidence": 1,
+  "oid": "SideTable|-04.03|+00.00|-00.30",
+  "route": "28736da39e7fcb807d",
+  "relation": "same",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "cc4329e635053976d4": {
+  "pair": "d9f930310c94c2a7f4",
+  "block": "4d1e24e361f1d60e02",
+  "kind": "target",
+  "room": "FloorPlan28",
+  "correct": "left",
+  "evidence": 1,
+  "oid": "SideTable|-04.03|+00.00|-00.30",
+  "route": "d9f930310c94c2a7f4",
+  "relation": "cross",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "d9b8d2fd96c9b7e227": {
+  "pair": "d9f930310c94c2a7f4",
+  "block": "4d1e24e361f1d60e02",
+  "kind": "target",
+  "room": "FloorPlan28",
+  "correct": "right",
+  "evidence": 1,
+  "oid": "Microwave|-00.22|+01.47|-02.06",
+  "route": "d9f930310c94c2a7f4",
+  "relation": "same",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "46a29358ca8b86d67e": {
+  "pair": "4d2f1eca69e10173e0",
+  "block": "7a1fbdb77fb7361c7e",
+  "kind": "target",
+  "room": "FloorPlan21",
+  "correct": "right",
+  "evidence": 1,
+  "oid": "SideTable|+00.77|-00.03|+00.44",
+  "route": "4d2f1eca69e10173e0",
+  "relation": "cross",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "771bee54f34da36587": {
+  "pair": "4d2f1eca69e10173e0",
+  "block": "7a1fbdb77fb7361c7e",
+  "kind": "target",
+  "room": "FloorPlan21",
+  "correct": "left",
+  "evidence": 1,
+  "oid": "GarbageCan|-01.26|-00.03|-03.61",
+  "route": "4d2f1eca69e10173e0",
+  "relation": "same",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "57d273fd9929d76c97": {
+  "pair": "04f4215686cf4a6c37",
+  "block": "7a1fbdb77fb7361c7e",
+  "kind": "target",
+  "room": "FloorPlan21",
+  "correct": "right",
+  "evidence": 1,
+  "oid": "GarbageCan|-01.26|-00.03|-03.61",
+  "route": "04f4215686cf4a6c37",
+  "relation": "cross",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "8594d7a72fcd0f5541": {
+  "pair": "04f4215686cf4a6c37",
+  "block": "7a1fbdb77fb7361c7e",
+  "kind": "target",
+  "room": "FloorPlan21",
+  "correct": "left",
+  "evidence": 1,
+  "oid": "GarbageBag|-00.77|-00.03|-03.54",
+  "route": "04f4215686cf4a6c37",
+  "relation": "same",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "bd4ced3addf2d2a7f2": {
+  "pair": "7a7f88274df014171c",
+  "block": "cd3c5f6711e42b46a2",
+  "kind": "target",
+  "room": "FloorPlan214",
+  "correct": "left",
+  "evidence": 0,
+  "oid": "DeskLamp|-00.48|+00.61|+00.69",
+  "route": "7a7f88274df014171c",
+  "relation": "cross",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "68071e4d0d07eb8d56": {
+  "pair": "7a7f88274df014171c",
+  "block": "cd3c5f6711e42b46a2",
+  "kind": "target",
+  "room": "FloorPlan214",
+  "correct": "right",
+  "evidence": 0,
+  "oid": "Laptop|-04.31|+00.53|+02.23",
+  "route": "7a7f88274df014171c",
+  "relation": "same",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "16c1506e7dd9ca3aa6": {
+  "pair": "c348376914d8acb082",
+  "block": "cd3c5f6711e42b46a2",
+  "kind": "target",
+  "room": "FloorPlan214",
+  "correct": "left",
+  "evidence": 0,
+  "oid": "Laptop|-04.31|+00.53|+02.23",
+  "route": "c348376914d8acb082",
+  "relation": "cross",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "de89f5003ac83a7385": {
+  "pair": "c348376914d8acb082",
+  "block": "cd3c5f6711e42b46a2",
+  "kind": "target",
+  "room": "FloorPlan214",
+  "correct": "right",
+  "evidence": 0,
+  "oid": "GarbageCan|-00.53|-00.01|+02.82",
+  "route": "c348376914d8acb082",
+  "relation": "same",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "cdef0a5b9419415794": {
+  "pair": "28e988869be9a3a183",
+  "block": "4c31cf8acdfd650723",
+  "kind": "target",
+  "room": "FloorPlan217",
+  "correct": "left",
+  "evidence": 0,
+  "oid": "HousePlant|-04.82|+00.98|+01.57",
+  "route": "28e988869be9a3a183",
+  "relation": "cross",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "2bd566bb94cfb702dc": {
+  "pair": "28e988869be9a3a183",
+  "block": "4c31cf8acdfd650723",
+  "kind": "target",
+  "room": "FloorPlan217",
+  "correct": "right",
+  "evidence": 0,
+  "oid": "DeskLamp|+00.02|+00.70|+04.68",
+  "route": "28e988869be9a3a183",
+  "relation": "same",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "4a0c9bc14fa105c591": {
+  "pair": "4dd25b38fde844f326",
+  "block": "4c31cf8acdfd650723",
+  "kind": "target",
+  "room": "FloorPlan217",
+  "correct": "left",
+  "evidence": 0,
+  "oid": "DeskLamp|+00.02|+00.70|+04.68",
+  "route": "4dd25b38fde844f326",
+  "relation": "cross",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "5999dbdf4988530a00": {
+  "pair": "4dd25b38fde844f326",
+  "block": "4c31cf8acdfd650723",
+  "kind": "target",
+  "room": "FloorPlan217",
+  "correct": "right",
+  "evidence": 0,
+  "oid": "Box|-02.18|+00.67|+02.43",
+  "route": "4dd25b38fde844f326",
+  "relation": "same",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "e23f86e7a52c76cfef": {
+  "pair": "73152913bb3b33536d",
+  "block": "8b544e307924ea12fa",
+  "kind": "target",
+  "room": "FloorPlan11",
+  "correct": "left",
+  "evidence": 0,
+  "oid": "GarbageCan|-00.37|-00.03|+00.54",
+  "route": "73152913bb3b33536d",
+  "relation": "cross",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "1a048d387b36e76a8f": {
+  "pair": "73152913bb3b33536d",
+  "block": "8b544e307924ea12fa",
+  "kind": "target",
+  "room": "FloorPlan11",
+  "correct": "right",
+  "evidence": 0,
+  "oid": "Microwave|-01.04|+00.90|-01.72",
+  "route": "73152913bb3b33536d",
+  "relation": "same",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "5462183999a283d55f": {
+  "pair": "f520ad429ae330068a",
+  "block": "8b544e307924ea12fa",
+  "kind": "target",
+  "room": "FloorPlan11",
+  "correct": "left",
+  "evidence": 0,
+  "oid": "Microwave|-01.04|+00.90|-01.72",
+  "route": "f520ad429ae330068a",
+  "relation": "cross",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "7c2517bba39072c8e4": {
+  "pair": "f520ad429ae330068a",
+  "block": "8b544e307924ea12fa",
+  "kind": "target",
+  "room": "FloorPlan11",
+  "correct": "right",
+  "evidence": 0,
+  "oid": "Toaster|+00.31|+00.90|+00.55",
+  "route": "f520ad429ae330068a",
+  "relation": "same",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "dff67625068e9dada5": {
+  "pair": "4bcd51dcd3353e1d44",
+  "block": "54a7b4ed1bb2c4b2f1",
+  "kind": "target",
+  "room": "FloorPlan3",
+  "correct": "right",
+  "evidence": 1,
+  "oid": "CoffeeMachine|+01.13|+01.31|-01.43",
+  "route": "4bcd51dcd3353e1d44",
+  "relation": "cross",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "6548a6f6d8743cb5c4": {
+  "pair": "4bcd51dcd3353e1d44",
+  "block": "54a7b4ed1bb2c4b2f1",
+  "kind": "target",
+  "room": "FloorPlan3",
+  "correct": "left",
+  "evidence": 1,
+  "oid": "Microwave|+00.99|+01.31|-02.16",
+  "route": "4bcd51dcd3353e1d44",
+  "relation": "same",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "f8a7f050a39fec8e17": {
+  "pair": "8c51ef9fe6a73ec9e1",
+  "block": "54a7b4ed1bb2c4b2f1",
+  "kind": "target",
+  "room": "FloorPlan3",
+  "correct": "right",
+  "evidence": 1,
+  "oid": "Microwave|+00.99|+01.31|-02.16",
+  "route": "8c51ef9fe6a73ec9e1",
+  "relation": "cross",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "9d1f6162b8b9a2bae0": {
+  "pair": "8c51ef9fe6a73ec9e1",
+  "block": "54a7b4ed1bb2c4b2f1",
+  "kind": "target",
+  "room": "FloorPlan3",
+  "correct": "left",
+  "evidence": 1,
+  "oid": "Toaster|-01.89|+01.31|-02.51",
+  "route": "8c51ef9fe6a73ec9e1",
+  "relation": "same",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "576d6dbb2400ddabf4": {
+  "pair": "3d99c667390fad4004",
+  "block": "77a412f88763f00949",
+  "kind": "target",
+  "room": "FloorPlan213",
+  "correct": "left",
+  "evidence": 0,
+  "oid": "HousePlant|+11.37|+00.47|-01.14",
+  "route": "3d99c667390fad4004",
+  "relation": "cross",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "6eca67e60edd79342b": {
+  "pair": "3d99c667390fad4004",
+  "block": "77a412f88763f00949",
+  "kind": "target",
+  "room": "FloorPlan213",
+  "correct": "right",
+  "evidence": 0,
+  "oid": "Laptop|+14.24|+00.73|+02.07",
+  "route": "3d99c667390fad4004",
+  "relation": "same",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "3e46cd5bcf4b831e5d": {
+  "pair": "d5b3c5762a05ee7631",
+  "block": "77a412f88763f00949",
+  "kind": "target",
+  "room": "FloorPlan213",
+  "correct": "left",
+  "evidence": 0,
+  "oid": "Laptop|+14.24|+00.73|+02.07",
+  "route": "d5b3c5762a05ee7631",
+  "relation": "cross",
+  "has_same_side_companion": true,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ },
+ "9c4e6abf2a83025726": {
+  "pair": "d5b3c5762a05ee7631",
+  "block": "77a412f88763f00949",
+  "kind": "target",
+  "room": "FloorPlan213",
+  "correct": "right",
+  "evidence": 0,
+  "oid": "GarbageCan|+07.79|-00.03|-01.15",
+  "route": "d5b3c5762a05ee7631",
+  "relation": "same",
+  "has_same_side_companion": false,
+  "endpoint_sides": [
+   "left",
+   "right"
+  ]
+ }
+}

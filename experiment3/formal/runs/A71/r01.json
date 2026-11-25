@@ -1,0 +1,2213 @@
+{
+ "round": 1,
+ "arm": "A",
+ "seed": 7101,
+ "model": "models/coder",
+ "gpu": "1",
+ "prompt": "Photograph direction at capture and target direction after walking can differ. Consider how recorded position changes the bearing. Write a complete executable Python robot controller to return to an object seen earlier.\nInputs for decide(observation, tools): observation['target'] is a category, ['views'] is two old camera poses in time order. Each has heading (degrees relative to final facing, +90 right, -90 left), pitch, right_of_end_m and forward_of_end_m (old camera relative to final position, metres), step. observation['movement'] is recorded actions. Target is hidden at endpoint; one left/right turn reveals it. Each problem is independent. Coordinate convention: if the old camera was x metres to the right of the endpoint, an object d metres ahead along a +90 old heading has final lateral coordinate x+d, or x-d for a -90 heading. Positive means turn right. The actual d is unknown. The starting method ignores x; consider a plausible estimate or visual evidence. You choose how and when to use it.\nThere are just TWO calls across all tools combined, including repeats. Choose only one or two readings to use. A returned None action gets zero. tools.match() gives two CLIP similarities (larger better). tools.identify() gives two old-frame visual identification logits; tools.direct() gives two RGB+motion turn logits ordered left,right. tools.locate() gives two estimated camera-to-target forward ranges in metres from RGB; 0 means not detected. tools.point() returns two entries (one per old image); each is [horizontal_fraction,vertical_fraction] at the estimated bottom of the object, or None when absent. Image top-left is (0,0). Only use tools explicitly listed below. The raw RGB values are available in observation['rgb'] as three 24x24 RGB arrays when the observation includes them. If supplied, observation['calibration'] gives the robot camera height over the floor in metres and vertical field of view in degrees. A positive pitch looks down. In the calibrated four-question layout, queried objects rest on the floor. All evidence comes from frozen readings on public RGB.\nReturn (frame_index:int 0 or 1, action:'left' or 'right', trace:small dict). Write plain Python functions only, no imports, type annotations, docstrings, printing, exception handling, variable attributes or dictionary methods. Standard sin,cos,tan,atan,atan2,radians,sqrt,abs,all,any,bool,dict,enumerate,float,int,len,list,max,min,range,round,sorted,sum,tuple,zip,str and arithmetic are available. Use square brackets to access fields. Optimize development accuracy, both members of a pair correct, then fewer calls. Respond with a short failure hypothesis and potential regression then ONE fenced python code block containing the entire program. Do not copy labels from examples into rules.\nAvailable tools: direct, identify, locate, match, point\nCommon example: [{\"observation\": {\"target\": \"garbage can\", \"views\": [{\"step\": 2, \"heading\": 90, \"pitch\": 30, \"right_of_end_m\": 2.75, \"forward_of_end_m\": 0.0}, {\"step\": 8, \"heading\": -90, \"pitch\": 45, \"right_of_end_m\": 2.25, \"forward_of_end_m\": 0.0}], \"endpoint_pitch\": 45, \"calibration\": {\"height_m\": 1.575, \"vertical_fov_deg\": 80}, \"movement\": [[\"start\", 1], [\"RotateRight\", 1], [\"LookDown\", 1], [\"LookUp\", 1], [\"RotateLeft\", 1], [\"MoveLeft\", 2], [\"RotateLeft\", 1], [\"LookDown\", 1], [\"LookUp\", 1], [\"RotateRight\", 1], [\"MoveLeft\", 5], [\"LookDown\", 1], [\"LookUp\", 1], [\"MoveLeft\", 4], [\"LookDown\", 1]]}, \"visual\": {\"match\": [0.19941438734531403, 0.2411607950925827], \"identify\": [17.875, 23.375], \"direct\": [19.625, 19.125], \"locate\": [0.0, 4.5], \"point\": [null, [0.35, 0.68]]}, \"answer\": \"right\"}, {\"observation\": {\"target\": \"pillow\", \"views\": [{\"step\": 2, \"heading\": 90, \"pitch\": 30, \"right_of_end_m\": 2.75, \"forward_of_end_m\": 0.0}, {\"step\": 8, \"heading\": -90, \"pitch\": 45, \"right_of_end_m\": 2.25, \"forward_of_end_m\": 0.0}], \"endpoint_pitch\": 45, \"calibration\": {\"height_m\": 1.575, \"vertical_fov_deg\": 80}, \"movement\": [[\"start\", 1], [\"RotateRight\", 1], [\"LookDown\", 1], [\"LookUp\", 1], [\"RotateLeft\", 1], [\"MoveLeft\", 2], [\"RotateLeft\", 1], [\"LookDown\", 1], [\"LookUp\", 1], [\"RotateRight\", 1], [\"MoveLeft\", 5], [\"LookDown\", 1], [\"LookUp\", 1], [\"MoveLeft\", 4], [\"LookDown\", 1]]}, \"visual\": {\"match\": [0.22206290066242218, 0.1982342004776001], \"identify\": [19.5, 22.5], \"direct\": [20.0, 19.375], \"locate\": [0.0, 2.5], \"point\": [null, [0.35, 0.48]]}, \"answer\": \"left\"}]\nStarting correct count: 55/120\nParent source:\ndef decide(observation, tools):\n    scores = tools.match()\n    frame = int(scores[1] > scores[0])\n    heading = observation[\"views\"][frame][\"heading\"]\n    return frame, \"right\" if heading > 0 else \"left\", {\"heading\": heading}\n",
+ "raw": "{ \"failure_hypothesis\": \"The model assumes the target is always visible in the final frame, but in some cases, the object is hidden and only revealed by a turn. Without using point or locate to infer lateral offset, the bearing may be misaligned.\", \"regression\": \"Using only match and direct without leveraging point or locate leads to incorrect turn decisions when the object is not directly visible in the final frame.\" }\n\n```python\ndef decide(observation, tools):\n    # Use the frame with higher match score to determine which view to analyze\n    match_scores = tools.match()\n    frame = 1 if match_scores[1] > match_scores[0] else 0\n    \n    # Get the heading from the selected frame\n    heading = observation[\"views\"][frame][\"heading\"]\n    \n    # Check if we have a point detection (indicating object is visible)\n    point_result = tools.point()\n    if point_result[1] is not None:\n        # If we have a point, use the heading to determine turn direction\n        # The object is visible in the second frame, so we infer direction based on heading\n        return frame, \"right\" if heading > 0 else \"left\", {}\n    \n    # If no point, fall back to direct turn logits\n    direct_logits = tools.direct()\n    turn_choice = \"right\" if direct_logits[0] > direct_logits[1] else \"left\"\n    \n    return frame, turn_choice, {}\n```",
+ "source": "def decide(observation, tools):\n    # Use the frame with higher match score to determine which view to analyze\n    match_scores = tools.match()\n    frame = 1 if match_scores[1] > match_scores[0] else 0\n    \n    # Get the heading from the selected frame\n    heading = observation[\"views\"][frame][\"heading\"]\n    \n    # Check if we have a point detection (indicating object is visible)\n    point_result = tools.point()\n    if point_result[1] is not None:\n        # If we have a point, use the heading to determine turn direction\n        # The object is visible in the second frame, so we infer direction based on heading\n        return frame, \"right\" if heading > 0 else \"left\", {}\n    \n    # If no point, fall back to direct turn logits\n    direct_logits = tools.direct()\n    turn_choice = \"right\" if direct_logits[0] > direct_logits[1] else \"left\"\n    \n    return frame, turn_choice, {}\n",
+ "hash": "6b9c60e998346c1851693f7e54e212343e64ed00c41d951ea66bdcba9f15ffbd",
+ "parent_hash": "5e8da065da852c6a8d20e3c952c777dded68248122817a5de17fb60e7518c700",
+ "parent_round": 0,
+ "diff": "--- \n+++ \n@@ -1,5 +1,20 @@\n def decide(observation, tools):\n-    scores = tools.match()\n-    frame = int(scores[1] > scores[0])\n+    # Use the frame with higher match score to determine which view to analyze\n+    match_scores = tools.match()\n+    frame = 1 if match_scores[1] > match_scores[0] else 0\n+    \n+    # Get the heading from the selected frame\n     heading = observation[\"views\"][frame][\"heading\"]\n-    return frame, \"right\" if heading > 0 else \"left\", {\"heading\": heading}\n+    \n+    # Check if we have a point detection (indicating object is visible)\n+    point_result = tools.point()\n+    if point_result[1] is not None:\n+        # If we have a point, use the heading to determine turn direction\n+        # The object is visible in the second frame, so we infer direction based on heading\n+        return frame, \"right\" if heading > 0 else \"left\", {}\n+    \n+    # If no point, fall back to direct turn logits\n+    direct_logits = tools.direct()\n+    turn_choice = \"right\" if direct_logits[0] > direct_logits[1] else \"left\"\n+    \n+    return frame, turn_choice, {}\n",
+ "rank": [
+  28,
+  6,
+  -240
+ ],
+ "input_tokens": 1407,
+ "output_tokens": 304,
+ "generation_seconds": 6.350803711044136,
+ "device_map": {
+  "": "0"
+ },
+ "rows": [
+  {
+   "key": "03c91ee1bcfb9e071d",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.00046848098281770945,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "062c67a182d9176417",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.00047487299889326096,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "074ce75998c718aff2",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0004613030469045043,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "0c68d534e6f95a0679",
+   "frame": 0,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.000473752967081964,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "10aaa99e19f38d37ea",
+   "frame": 0,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0006091080140322447,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "116c7e7e161d62790f",
+   "frame": 1,
+   "action": "right",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0004583869595080614,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "15c585fc79f3084c36",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0004221979761496186,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "1746c5f1bd38f86957",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.00044878601329401135,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "191752d9429519352a",
+   "frame": 1,
+   "action": "right",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.00043283699778839946,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "1f5d13c72a5958bcb9",
+   "frame": 0,
+   "action": "right",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0004542769747786224,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "24141606cab140935f",
+   "frame": 1,
+   "action": "right",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0004559180233627558,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "2c80498a5e62e125f9",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.00042982003651559353,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "2c9896007661b29b53",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0004556599888019264,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "2e397f712266eeb28f",
+   "frame": 0,
+   "action": "right",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.000439415976870805,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "2e3dcc8e61f6bb7630",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0004761519958265126,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "2e9363e9734ce44ec0",
+   "frame": 1,
+   "action": "right",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0004646730376407504,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "308454cd14fabfbac3",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0004585040151141584,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "330081892500e65fcd",
+   "frame": 0,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0004599990206770599,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "34c1378b601efa30d4",
+   "frame": 0,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.00048210396198555827,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "3c888e7b9da4f9598b",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0004792859544977546,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "3f6cad27a3b10fa98c",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0004292619996704161,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "436b91d25234c6b2c1",
+   "frame": 0,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0005139990244060755,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "45e0f01089be9fe665",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.00043871597154065967,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "46bff1770335c58602",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0004649240290746093,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "46dd4431529e1c4986",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0004214859800413251,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "49009701bd937c84b6",
+   "frame": 0,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.00044494797475636005,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "4ccfb27ae0aa10ae37",
+   "frame": 1,
+   "action": "right",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.00045481097185984254,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "4dc72c417397fb5a94",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.000455216970294714,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "4e591ea0f43f05f5f7",
+   "frame": 0,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0004449340049177408,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "501543ca64a83c630c",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.00043264299165457487,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "54898a5323c571b5b8",
+   "frame": 0,
+   "action": "right",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0004677179967984557,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "55eb52e5428fb003fc",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0004519529757089913,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "5cd0762095264a566a",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0004771829699166119,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "5f7ec8ac276247fd1f",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0004420060431584716,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "5fd7c722f2ebbd008b",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0004164389683865011,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "6074da525c23caf9d2",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.00047443999210372567,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "610001d1105e2d40b1",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0005051710177212954,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "66c3a7a896e31fc98f",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.00044212699867784977,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "6a767374dbd55f8569",
+   "frame": 0,
+   "action": "right",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0004669740446843207,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "6c5ce13da47198b9a7",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0004707789630629122,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "6dd85f06cd0eaf1a6f",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0004445129889063537,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "6e8ef18f4dde6ba36c",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.000451752042863518,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "7039b29864405ce7ee",
+   "frame": 1,
+   "action": "right",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.00046111695701256394,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "70f9f3778d9d00b2d5",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0004387810477055609,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "75627ffd2e32decc91",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.00044587801676243544,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "75863e91edae4f2357",
+   "frame": 0,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0005012669716961682,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "77c0734fab679ebef1",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0004581920220516622,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "7887dc30089536d491",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.00043825601460412145,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "7bb3ee2424b4a01b52",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.00043722701957449317,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "7cc07d2526899fd215",
+   "frame": 0,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0004447490209713578,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "818d604bc141d80b02",
+   "frame": 0,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0004741890006698668,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "8378933114a8f4528b",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0004434470320120454,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "85d7d341be40b740ba",
+   "frame": 1,
+   "action": "right",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.00045859895180910826,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "885ce641cab8138937",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.00043480098247528076,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "895653b9d17390fd5c",
+   "frame": 1,
+   "action": "right",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.00045464298455044627,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "8ab9e869556ba88dd7",
+   "frame": 0,
+   "action": "right",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.00048088899347931147,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "8c0b78f353bc1cce92",
+   "frame": 0,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0004313359968364239,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "8ec8716800fcc85c84",
+   "frame": 0,
+   "action": "right",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0005207370268180966,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "8ed369574d1181a0da",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0004407020169310272,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "904e2e43ac36ac24b6",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.00044999702367931604,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "91759234299aba7165",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.00043082499178126454,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "9314b16410a0f9ca82",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0004447329556569457,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "96086aa5057f869046",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0004400269826874137,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "982d9aef01d7d10713",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.00046645000111311674,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "9850df202aef645496",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.00045525800669565797,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "9911918f4b8b2648ae",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.00043848599307239056,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "9b2581e30a7f0dd148",
+   "frame": 0,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.00044678401900455356,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "9b2aaff0a5fcede7e0",
+   "frame": 1,
+   "action": "right",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.00044080603402107954,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "9cab80c8ef03a58e76",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0004423219943419099,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "9d79d54de24e157c93",
+   "frame": 1,
+   "action": "right",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.00044753897236660123,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "a104e3be7f82679ef2",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.00042772298911586404,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "a930df1f39591710f5",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.00043997704051434994,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "aa69b7a6ce6f7ac466",
+   "frame": 1,
+   "action": "right",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0004668859764933586,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "abe9f9c925aef25e13",
+   "frame": 0,
+   "action": "right",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0004812729894183576,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "ac669b871650df0225",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.00043033098336309195,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "b026c7454cb2ad9bec",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.00041367398807778955,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "b098ef9ddd277fe023",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0004424760118126869,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "b5aab8216f010707d1",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0004408879904076457,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "b7eb67269b22b76060",
+   "frame": 0,
+   "action": "right",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0004675170057453215,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "b7f5d9f780b5100b3c",
+   "frame": 1,
+   "action": "right",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0004522409872151911,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "bd6152806f29764f3a",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.00041345797944813967,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "bf3bc1a7c336437de6",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0004176729707978666,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "c039f8751bb2166805",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0004557269858196378,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "c0ca4798d234ac0620",
+   "frame": 1,
+   "action": "right",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.00042783195385709405,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "c32909fa23ccaf3795",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.00046186899999156594,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "c5445e2f357b7b1c16",
+   "frame": 0,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0004367140354588628,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "c5985dcd91d7aff5e1",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0004307690542191267,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "c5acd581cdc3cfbbf1",
+   "frame": 0,
+   "action": "right",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.00042611599201336503,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "c982c36a0de3d5b30f",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.00042864802526310086,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "cecc9fec89ae82d821",
+   "frame": 1,
+   "action": "right",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.00044502195669338107,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "d7817a45b3c4ed1f28",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.00047487602569162846,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "d78cc25b566a12bd2f",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0004968740395270288,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "d859057420b939ea29",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0005404389812611043,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "d882ecc6355beac3c1",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0004938470083288848,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "d97c16e6a6364f8111",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.00045892701018601656,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "d9959f4c06dc811431",
+   "frame": 1,
+   "action": "right",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0004313139943405986,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "db13966135c7684f73",
+   "frame": 0,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0005341729847714305,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "dc189a45e7082f5c74",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0004792999825440347,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "dde5a5b74070889185",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0004655059892684221,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "ded25d4fe7664e2160",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.00047918001655489206,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "dfd0829e7208453caa",
+   "frame": 0,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.00045017601223662496,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "e10b15c7b940fc0978",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0004250470083206892,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "e1f16928e5a81da0d7",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0004385329666547477,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "e3f8d26f9b4b16c93b",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0004416119772940874,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "e4b3beffa3ab6132c7",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.00043860700679942966,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "e74b81f87de1ffb9a4",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.00042770098662003875,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "e92122f9e347da9aba",
+   "frame": 1,
+   "action": "right",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.00043953803833574057,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "eb8909a31f3f9ae16e",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0004368940135464072,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "ee0979d30dd01bf824",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.00043459999142214656,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "efb3f7fc7b1c9d0b4a",
+   "frame": 0,
+   "action": "right",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.000444304954726249,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "f1657a831c87b6ff3c",
+   "frame": 1,
+   "action": "right",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0004276509862393141,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "f46ef1cf9750bb3939",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0004371589748188853,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "f4e639bb4749ca4af3",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.00044126302236691117,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "f5e144a71cbc679b94",
+   "frame": 0,
+   "action": "right",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0004435080336406827,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "f5ea785488d7381116",
+   "frame": 0,
+   "action": "right",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0004384900094009936,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "f73ddf5011893d7a42",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0004425449878908694,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "fb072b4c6bbeeec0df",
+   "frame": 0,
+   "action": "right",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.00044057000195607543,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "fb2675f02f73600b86",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point"
+   ],
+   "seconds": 0.0005259260069578886,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "fb570bef0a4972422e",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0004494410241022706,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "ff84f7120fb227d05f",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "point"
+   ],
+   "attempts": [
+    "match",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.00044924498070031404,
+   "isolated": true,
+   "ok": false
+  }
+ ],
+ "diagnostic": {
+  "fixed": {
+   "count": 0,
+   "example": null
+  },
+  "new_error": {
+   "count": 27,
+   "example": {
+    "target": "garbage can",
+    "views": [
+     {
+      "step": 2,
+      "heading": -90,
+      "pitch": 45,
+      "right_of_end_m": 2.75,
+      "forward_of_end_m": 0.0
+     },
+     {
+      "step": 8,
+      "heading": 90,
+      "pitch": 30,
+      "right_of_end_m": 2.25,
+      "forward_of_end_m": 0.0
+     }
+    ],
+    "visual_readings": {
+     "match": [
+      0.21949787437915802,
+      0.2292344570159912
+     ],
+     "point": [
+      [
+       0.35,
+       0.68
+      ],
+      null
+     ]
+    },
+    "answer": null,
+    "correct": "right",
+    "trace": null,
+    "error": "ValueError: visual budget exceeded"
+   }
+  },
+  "still_wrong": {
+   "count": 65,
+   "example": {
+    "target": "coffee machine",
+    "views": [
+     {
+      "step": 2,
+      "heading": 90,
+      "pitch": 45,
+      "right_of_end_m": -1.75,
+      "forward_of_end_m": 0.0
+     },
+     {
+      "step": 7,
+      "heading": -90,
+      "pitch": 45,
+      "right_of_end_m": -1.5,
+      "forward_of_end_m": 0.0
+     }
+    ],
+    "visual_readings": {
+     "match": [
+      0.20381203293800354,
+      0.22436556220054626
+     ],
+     "point": [
+      [
+       0.45,
+       0.75
+      ],
+      null
+     ]
+    },
+    "answer": null,
+    "correct": "right",
+    "trace": null,
+    "error": "ValueError: visual budget exceeded"
+   }
+  }
+ },
+ "accepted": false
+}

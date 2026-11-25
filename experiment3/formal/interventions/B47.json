@@ -1,0 +1,17 @@
+{
+ "final_hash": "19960a77e5f4bbaac96f87ed89ce12bd5c037720a87d8c3a8529cc95446f9d2a",
+ "rule": "R3 switches the visible-point evidence branch to the localized photo. R7 changes only missing-point actions. With R3 removed, keep R7 on missing points, return to v0 on visible points. With R7 removed replay the actual R3. With both removed replay v0.",
+ "items": [
+  {
+   "parent": 0,
+   "child": 3,
+   "reverted": "def decide(observation, tools):\n    point0, point1 = tools.point()\n    if point0 is None and point1 is None:\n        direct_left, direct_right = tools.direct()\n        if direct_right > direct_left:\n            return 1, \"right\", {\"branch\": \"no point, direct\"}\n        return 0, \"left\", {\"branch\": \"no point, direct\"}\n    scores = tools.match()\n    frame = int(scores[1] > scores[0])\n    heading = observation[\"views\"][frame][\"heading\"]\n    return frame, \"right\" if heading > 0 else \"left\", {\"heading\": heading}\n"
+  },
+  {
+   "parent": 3,
+   "child": 7,
+   "reverted": "def decide(observation, tools):\n    views = observation['views']\n    frame0, frame1 = views[0], views[1]\n    heading0, heading1 = frame0['heading'], frame1['heading']\n    right_of_end0, right_of_end1 = frame0['right_of_end_m'], frame1['right_of_end_m']\n    forward_of_end0, forward_of_end1 = frame0['forward_of_end_m'], frame1['forward_of_end_m']\n    \n    # Use point data: if available, prefer the frame with point\n    point0, point1 = tools.point()\n    if point0 is not None and point1 is not None:\n        # Both points exist: compare horizontal fractions\n        frac0, frac1 = point0[0], point1[0]\n        if abs(frac0 - frac1) < 0.01:\n            # Similar horizontal position, use heading sign\n            return 1, \"right\" if heading1 > 0 else \"left\", {\"heading\": heading1}\n        elif frac0 > frac1:\n            return 0, \"right\" if heading0 > 0 else \"left\", {\"heading\": heading0}\n        else:\n            return 1, \"right\" if heading1 > 0 else \"left\", {\"heading\": heading1}\n    elif point0 is not None:\n        return 0, \"right\" if heading0 > 0 else \"left\", {\"heading\": heading0}\n    elif point1 is not None:\n        return 1, \"right\" if heading1 > 0 else \"left\", {\"heading\": heading1}\n    else:\n        # No point data: use match score\n        match_scores = tools.match()\n        frame = 1 if match_scores[1] > match_scores[0] else 0\n        return frame, \"right\" if heading1 > 0 else \"left\", {\"heading\": heading1}\n"
+  }
+ ],
+ "both": "def decide(observation, tools):\n    scores = tools.match()\n    frame = int(scores[1] > scores[0])\n    heading = observation[\"views\"][frame][\"heading\"]\n    return frame, \"right\" if heading > 0 else \"left\", {\"heading\": heading}\n"
+}

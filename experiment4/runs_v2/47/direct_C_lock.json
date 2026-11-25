@@ -1,0 +1,10 @@
+{
+ "curve": [
+  "def decide(observation, tools):\n    scores = tools.direct()\n    return 0, 'right' if scores[1] > scores[0] else 'left', {}\n",
+  "def decide(observation, tools):\n    scores = tools.direct()\n    return 0, 'right' if scores[1] > scores[0] else 'left', {}\n",
+  "def decide(observation, tools):\n    direct = tools.direct()\n    point = tools.point()\n    if point[1] is not None:\n        x, y = point[1]\n        h = observation['views'][1]['heading']\n        r = observation['views'][1]['right_of_end_m']\n        d = 1.0 if h == 90 else -1.0\n        dx = r + d * (y * 24 - 12)\n        return 1, 'right' if dx > 0 else 'left', {}\n    return 0, 'right' if direct[1] > direct[0] else 'left', {}\n",
+  "def decide(observation, tools):\n    direct = tools.direct()\n    point = tools.point()\n    if point[1] is not None:\n        x, y = point[1]\n        h = observation['views'][1]['heading']\n        r = observation['views'][1]['right_of_end_m']\n        d = 1.0 if h == 90 else -1.0\n        dx = r + d * (y * 24 - 12)\n        return 1, 'right' if dx > 0 else 'left', {}\n    return 0, 'right' if direct[1] > direct[0] else 'left', {}\n",
+  "def decide(observation, tools):\n    direct = tools.direct()\n    point = tools.point()\n    if point[1] is not None:\n        x, y = point[1]\n        h = observation['views'][1]['heading']\n        r = observation['views'][1]['right_of_end_m']\n        d = 1.0 if h == 90 else -1.0\n        dx = r + d * (y * 24 - 12)\n        return 1, 'right' if dx > 0 else 'left', {}\n    return 0, 'right' if direct[1] > direct[0] else 'left', {}\n"
+ ],
+ "guide_hash": "f96fecb1843fded613162b63899cd11638ad1193e52c548d4c47ce1c1c52c6e2"
+}

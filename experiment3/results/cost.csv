@@ -1,0 +1,4 @@
+arm,proposals,input_tokens,output_tokens,generation_seconds,dev_questions,logical_visual_calls,invalid_decisions,all_invalid
+A,60,84420,27867,535.3303849190124,7200,12980,3351,25
+B,60,102005,26852,519.1659129849286,7200,13225,2221,16
+C,60,117663,25208,478.80956064304337,7200,12725,2032,11

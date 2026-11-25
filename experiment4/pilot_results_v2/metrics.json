@@ -1,0 +1,302 @@
+{
+ "11/identify/B": {
+  "curve": [
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   0.5
+  ],
+  "by_kind": {
+   "target": [
+    1,
+    2
+   ],
+   "endpoint": [
+    0,
+    2
+   ],
+   "reliability": [
+    2,
+    2
+   ]
+  },
+  "actions": 9,
+  "frames": 9
+ },
+ "11/identify/C": {
+  "curve": [
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   0.5
+  ],
+  "by_kind": {
+   "target": [
+    1,
+    2
+   ],
+   "endpoint": [
+    0,
+    2
+   ],
+   "reliability": [
+    2,
+    2
+   ]
+  },
+  "actions": 9,
+  "frames": 9
+ },
+ "11/direct/B": {
+  "curve": [
+   0.0,
+   0.3333333333333333,
+   0.3333333333333333,
+   0.3333333333333333,
+   0.3333333333333333
+  ],
+  "by_kind": {
+   "target": [
+    0,
+    2
+   ],
+   "endpoint": [
+    0,
+    2
+   ],
+   "reliability": [
+    2,
+    2
+   ]
+  },
+  "actions": 8,
+  "frames": 8
+ },
+ "11/direct/C": {
+  "curve": [
+   0.0,
+   0.3333333333333333,
+   0.3333333333333333,
+   0.3333333333333333,
+   0.3333333333333333
+  ],
+  "by_kind": {
+   "target": [
+    0,
+    2
+   ],
+   "endpoint": [
+    0,
+    2
+   ],
+   "reliability": [
+    2,
+    2
+   ]
+  },
+  "actions": 8,
+  "frames": 8
+ },
+ "29/identify/B": {
+  "curve": [
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   0.5
+  ],
+  "by_kind": {
+   "target": [
+    1,
+    2
+   ],
+   "endpoint": [
+    0,
+    2
+   ],
+   "reliability": [
+    2,
+    2
+   ]
+  },
+  "actions": 9,
+  "frames": 9
+ },
+ "29/identify/C": {
+  "curve": [
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   0.5
+  ],
+  "by_kind": {
+   "target": [
+    1,
+    2
+   ],
+   "endpoint": [
+    0,
+    2
+   ],
+   "reliability": [
+    2,
+    2
+   ]
+  },
+  "actions": 9,
+  "frames": 9
+ },
+ "29/direct/B": {
+  "curve": [
+   0.0,
+   0.0,
+   0.3333333333333333,
+   0.3333333333333333,
+   0.3333333333333333
+  ],
+  "by_kind": {
+   "target": [
+    0,
+    2
+   ],
+   "endpoint": [
+    0,
+    2
+   ],
+   "reliability": [
+    2,
+    2
+   ]
+  },
+  "actions": 8,
+  "frames": 8
+ },
+ "29/direct/C": {
+  "curve": [
+   0.0,
+   0.0,
+   0.3333333333333333,
+   0.3333333333333333,
+   0.3333333333333333
+  ],
+  "by_kind": {
+   "target": [
+    0,
+    2
+   ],
+   "endpoint": [
+    0,
+    2
+   ],
+   "reliability": [
+    2,
+    2
+   ]
+  },
+  "actions": 8,
+  "frames": 8
+ },
+ "47/identify/B": {
+  "curve": [
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   0.5
+  ],
+  "by_kind": {
+   "target": [
+    1,
+    2
+   ],
+   "endpoint": [
+    0,
+    2
+   ],
+   "reliability": [
+    2,
+    2
+   ]
+  },
+  "actions": 9,
+  "frames": 9
+ },
+ "47/identify/C": {
+  "curve": [
+   0.5,
+   0.5,
+   0.5,
+   0.5,
+   0.5
+  ],
+  "by_kind": {
+   "target": [
+    1,
+    2
+   ],
+   "endpoint": [
+    0,
+    2
+   ],
+   "reliability": [
+    2,
+    2
+   ]
+  },
+  "actions": 9,
+  "frames": 9
+ },
+ "47/direct/B": {
+  "curve": [
+   0.0,
+   0.0,
+   0.3333333333333333,
+   0.3333333333333333,
+   0.3333333333333333
+  ],
+  "by_kind": {
+   "target": [
+    0,
+    2
+   ],
+   "endpoint": [
+    0,
+    2
+   ],
+   "reliability": [
+    2,
+    2
+   ]
+  },
+  "actions": 8,
+  "frames": 8
+ },
+ "47/direct/C": {
+  "curve": [
+   0.0,
+   0.0,
+   0.5,
+   0.5,
+   0.5
+  ],
+  "by_kind": {
+   "target": [
+    1,
+    2
+   ],
+   "endpoint": [
+    0,
+    2
+   ],
+   "reliability": [
+    2,
+    2
+   ]
+  },
+  "actions": 9,
+  "frames": 12
+ }
+}

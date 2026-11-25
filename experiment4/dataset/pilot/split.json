@@ -1,0 +1,18 @@
+{
+  "learn": [
+    "FloorPlan17",
+    "FloorPlan327"
+  ],
+  "calibrate": [
+    "FloorPlan212",
+    "FloorPlan223"
+  ],
+  "adapt": [
+    "FloorPlan216",
+    "FloorPlan29"
+  ],
+  "holdout": [
+    "FloorPlan222",
+    "FloorPlan319"
+  ]
+}

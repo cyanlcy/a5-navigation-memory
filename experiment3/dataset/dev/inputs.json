@@ -1,0 +1,10082 @@
+[
+ {
+  "key": "03c91ee1bcfb9e071d",
+  "route": "2cda7e66a21f9295c2",
+  "observation": {
+   "target": "coffee machine",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -1.75,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": -1.5,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "062c67a182d9176417",
+  "route": "b7fbedc71141893420",
+  "observation": {
+   "target": "garbage can",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 2.75,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 8,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 2.25,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     2
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "074ce75998c718aff2",
+  "route": "29730419d488dcac32",
+  "observation": {
+   "target": "garbage can",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 2.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 9,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 1.75,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     3
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "0c68d534e6f95a0679",
+  "route": "062f78eb0ea8fb2c05",
+  "observation": {
+   "target": "coffee machine",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": -1.75,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 9,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -1.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     3
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "10aaa99e19f38d37ea",
+  "route": "65224c1951d105780d",
+  "observation": {
+   "target": "toaster",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": -2.75,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -2.5,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "116c7e7e161d62790f",
+  "route": "ff39b25fd9b3641044",
+  "observation": {
+   "target": "garbage can",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": -3.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 9,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -2.25,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     3
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "15c585fc79f3084c36",
+  "route": "df2a2128b52db7ae2c",
+  "observation": {
+   "target": "box",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -3.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 8,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -2.75,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     2
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "1746c5f1bd38f86957",
+  "route": "2d20d601498ecf4bdf",
+  "observation": {
+   "target": "garbage can",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 2.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 8,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": 1.75,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     2
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     3
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "191752d9429519352a",
+  "route": "79f0958311efc11ced",
+  "observation": {
+   "target": "garbage can",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -3.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -2.75,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "1f5d13c72a5958bcb9",
+  "route": "de4f4097bc510d8a3c",
+  "observation": {
+   "target": "toaster",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": 2.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 8,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 2.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     2
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     3
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "24141606cab140935f",
+  "route": "522f01abe0504bf627",
+  "observation": {
+   "target": "side table",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": -2.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 8,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -1.5,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     2
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "2c80498a5e62e125f9",
+  "route": "b58ab690bad4441b89",
+  "observation": {
+   "target": "arm chair",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": 3.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 9,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 2.75,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     3
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "2c9896007661b29b53",
+  "route": "9b0585367bff012a70",
+  "observation": {
+   "target": "stool",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 1.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 1.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "2e397f712266eeb28f",
+  "route": "20d03a32d29c452963",
+  "observation": {
+   "target": "garbage can",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 2.25,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 8,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 1.75,
+     "forward_of_end_m": -0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     2
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     3
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "2e3dcc8e61f6bb7630",
+  "route": "d06feed6a31eec23e2",
+  "observation": {
+   "target": "house plant",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -1.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -1.25,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "2e9363e9734ce44ec0",
+  "route": "f21e8848072266cedc",
+  "observation": {
+   "target": "house plant",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -3.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 9,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -2.75,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     3
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "308454cd14fabfbac3",
+  "route": "cf62955e8c6e6aadf4",
+  "observation": {
+   "target": "house plant",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": 1.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 1.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "330081892500e65fcd",
+  "route": "2634961c570b831d72",
+  "observation": {
+   "target": "house plant",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -1.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -1.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "34c1378b601efa30d4",
+  "route": "353b8508de6280ac93",
+  "observation": {
+   "target": "house plant",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -2.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -2.25,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "3c888e7b9da4f9598b",
+  "route": "2a3cdc702c8b2b3452",
+  "observation": {
+   "target": "house plant",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": 2.75,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 2.5,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "3f6cad27a3b10fa98c",
+  "route": "78a3ada18a9cfa53a0",
+  "observation": {
+   "target": "laptop",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 1.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 9,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 0.5,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     3
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "436b91d25234c6b2c1",
+  "route": "ec86b3a42e8e8ea8d7",
+  "observation": {
+   "target": "boots",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": -3.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 8,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -3.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     2
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "45e0f01089be9fe665",
+  "route": "1785544098db42f1b7",
+  "observation": {
+   "target": "pillow",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -1.75,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 9,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": -1.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     3
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "46bff1770335c58602",
+  "route": "eb226f902a6ff81c81",
+  "observation": {
+   "target": "stool",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": 1.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 8,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 0.75,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     2
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     3
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "46dd4431529e1c4986",
+  "route": "75944ff3631e37882a",
+  "observation": {
+   "target": "box",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 2.5,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 7,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 2.25,
+     "forward_of_end_m": -0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "49009701bd937c84b6",
+  "route": "8f935bcacb1784e442",
+  "observation": {
+   "target": "toaster",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": -1.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -1.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "4ccfb27ae0aa10ae37",
+  "route": "082fdb2e4735b8722e",
+  "observation": {
+   "target": "toaster",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -1.75,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 8,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -1.25,
+     "forward_of_end_m": -0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     2
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "4dc72c417397fb5a94",
+  "route": "0aaf67bfd834c4aef2",
+  "observation": {
+   "target": "side table",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": 1.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 1.25,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "4e591ea0f43f05f5f7",
+  "route": "ec86b3a42e8e8ea8d7",
+  "observation": {
+   "target": "ottoman",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": -3.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 8,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -3.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     2
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "501543ca64a83c630c",
+  "route": "4cb3c562f9823d1967",
+  "observation": {
+   "target": "garbage can",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -1.75,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -1.5,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "54898a5323c571b5b8",
+  "route": "eb226f902a6ff81c81",
+  "observation": {
+   "target": "microwave",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": 1.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 8,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 0.75,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     2
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     3
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "55eb52e5428fb003fc",
+  "route": "b58ab690bad4441b89",
+  "observation": {
+   "target": "teddy bear",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": 3.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 9,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 2.75,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     3
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "5cd0762095264a566a",
+  "route": "0aaf67bfd834c4aef2",
+  "observation": {
+   "target": "garbage can",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": 1.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 1.25,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "5f7ec8ac276247fd1f",
+  "route": "29382910263eefce1c",
+  "observation": {
+   "target": "box",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 1.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 8,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 1.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     2
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "5fd7c722f2ebbd008b",
+  "route": "2d20d601498ecf4bdf",
+  "observation": {
+   "target": "microwave",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 2.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 8,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": 1.75,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     2
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     3
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "6074da525c23caf9d2",
+  "route": "57a07673e89a696761",
+  "observation": {
+   "target": "laptop",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": 2.75,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 2.5,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "610001d1105e2d40b1",
+  "route": "3be54b84ab9875faa1",
+  "observation": {
+   "target": "teddy bear",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": 2.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 9,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 1.25,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     3
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "66c3a7a896e31fc98f",
+  "route": "9dd57b77d744c48d0b",
+  "observation": {
+   "target": "microwave",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 1.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 1.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "6a767374dbd55f8569",
+  "route": "1c047e189d86a457d5",
+  "observation": {
+   "target": "laptop",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": 1.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 8,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 0.75,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     2
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     3
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "6c5ce13da47198b9a7",
+  "route": "7a4deba31c8f0fbc90",
+  "observation": {
+   "target": "box",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -3.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -2.75,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "6dd85f06cd0eaf1a6f",
+  "route": "2b9ab13ab0658fb20e",
+  "observation": {
+   "target": "microwave",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -1.75,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 7,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": -1.5,
+     "forward_of_end_m": -0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "6e8ef18f4dde6ba36c",
+  "route": "611e1c4d78f686922c",
+  "observation": {
+   "target": "coffee machine",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 1.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 8,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": 0.75,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     2
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     3
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "7039b29864405ce7ee",
+  "route": "3e597721a911e2a9bb",
+  "observation": {
+   "target": "garbage can",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -2.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -2.25,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "70f9f3778d9d00b2d5",
+  "route": "3b44bf91fedaefdb8e",
+  "observation": {
+   "target": "pot",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 2.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 2.25,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "75627ffd2e32decc91",
+  "route": "cb4743938307559b58",
+  "observation": {
+   "target": "stool",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -3.25,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 7,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": -3.0,
+     "forward_of_end_m": -0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "75863e91edae4f2357",
+  "route": "3799e930356d5e57ac",
+  "observation": {
+   "target": "laptop",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -1.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -1.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "77c0734fab679ebef1",
+  "route": "75944ff3631e37882a",
+  "observation": {
+   "target": "garbage can",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 2.5,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 7,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 2.25,
+     "forward_of_end_m": -0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "7887dc30089536d491",
+  "route": "0b650272a90b530284",
+  "observation": {
+   "target": "stool",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -3.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -2.75,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "7bb3ee2424b4a01b52",
+  "route": "611e1c4d78f686922c",
+  "observation": {
+   "target": "microwave",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 1.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 8,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": 0.75,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     2
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     3
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "7cc07d2526899fd215",
+  "route": "353b8508de6280ac93",
+  "observation": {
+   "target": "coffee machine",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -2.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -2.25,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "818d604bc141d80b02",
+  "route": "ff39b25fd9b3641044",
+  "observation": {
+   "target": "coffee machine",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": -3.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 9,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -2.25,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     3
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "8378933114a8f4528b",
+  "route": "03e4370d0d421f1cb5",
+  "observation": {
+   "target": "pillow",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 3.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": 2.75,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "85d7d341be40b740ba",
+  "route": "18fcc16aca64aa21fb",
+  "observation": {
+   "target": "house plant",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -2.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 9,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -1.25,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     3
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "885ce641cab8138937",
+  "route": "413cb076c610ea055a",
+  "observation": {
+   "target": "chair",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -2.75,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 9,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": -2.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     3
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "895653b9d17390fd5c",
+  "route": "0a0f6b6c8ca4d11a62",
+  "observation": {
+   "target": "laptop",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -1.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -1.25,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "8ab9e869556ba88dd7",
+  "route": "7c2ba02eeb9632717f",
+  "observation": {
+   "target": "garbage can",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": 2.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 8,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 2.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     2
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "8c0b78f353bc1cce92",
+  "route": "3e597721a911e2a9bb",
+  "observation": {
+   "target": "laptop",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -2.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -2.25,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "8ec8716800fcc85c84",
+  "route": "7c2ba02eeb9632717f",
+  "observation": {
+   "target": "laptop",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": 2.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 8,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 2.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     2
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "8ed369574d1181a0da",
+  "route": "2f07840fd87e7d4564",
+  "observation": {
+   "target": "box",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 1.25,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 7,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 1.0,
+     "forward_of_end_m": -0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "904e2e43ac36ac24b6",
+  "route": "29730419d488dcac32",
+  "observation": {
+   "target": "box",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 2.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 9,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 1.75,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     3
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "91759234299aba7165",
+  "route": "3b44bf91fedaefdb8e",
+  "observation": {
+   "target": "toaster",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 2.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 2.25,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "9314b16410a0f9ca82",
+  "route": "d472bc750e36f584da",
+  "observation": {
+   "target": "laptop",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -1.75,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 8,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -1.25,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     2
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "96086aa5057f869046",
+  "route": "d06feed6a31eec23e2",
+  "observation": {
+   "target": "stool",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -1.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -1.25,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "982d9aef01d7d10713",
+  "route": "0c1842289c853b7e85",
+  "observation": {
+   "target": "toaster",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -2.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 8,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -1.75,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     2
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     3
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "9850df202aef645496",
+  "route": "f2632b125949034aea",
+  "observation": {
+   "target": "toaster",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -1.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 8,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -0.75,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     2
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     3
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "9911918f4b8b2648ae",
+  "route": "7a4deba31c8f0fbc90",
+  "observation": {
+   "target": "desk lamp",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -3.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -2.75,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "9b2581e30a7f0dd148",
+  "route": "abd6a93a4740798f4c",
+  "observation": {
+   "target": "stool",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -3.0,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 8,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -2.5,
+     "forward_of_end_m": -0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     2
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "9b2aaff0a5fcede7e0",
+  "route": "062f78eb0ea8fb2c05",
+  "observation": {
+   "target": "stool",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": -1.75,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 9,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -1.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     3
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "9cab80c8ef03a58e76",
+  "route": "4cb3c562f9823d1967",
+  "observation": {
+   "target": "desk lamp",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -1.75,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -1.5,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "9d79d54de24e157c93",
+  "route": "79f0958311efc11ced",
+  "observation": {
+   "target": "laptop",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -3.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -2.75,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "a104e3be7f82679ef2",
+  "route": "1785544098db42f1b7",
+  "observation": {
+   "target": "boots",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -1.75,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 9,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": -1.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     3
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "a930df1f39591710f5",
+  "route": "b32f1dfc860284e2b2",
+  "observation": {
+   "target": "garbage can",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 1.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": 1.25,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "aa69b7a6ce6f7ac466",
+  "route": "f21e8848072266cedc",
+  "observation": {
+   "target": "pillow",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -3.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 9,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -2.75,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     3
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "abe9f9c925aef25e13",
+  "route": "c178bdffcd5bbdb3cc",
+  "observation": {
+   "target": "box",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": 1.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 8,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 1.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     2
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "ac669b871650df0225",
+  "route": "35e26490a7bafc0901",
+  "observation": {
+   "target": "box",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 2.75,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 9,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 2.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     3
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     3
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "b026c7454cb2ad9bec",
+  "route": "b7fbedc71141893420",
+  "observation": {
+   "target": "laptop",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 2.75,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 8,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 2.25,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     2
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "b098ef9ddd277fe023",
+  "route": "3be54b84ab9875faa1",
+  "observation": {
+   "target": "house plant",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": 2.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 9,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 1.25,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     3
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "b5aab8216f010707d1",
+  "route": "d28cd0381eab7abeec",
+  "observation": {
+   "target": "garbage can",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 2.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 2.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "b7eb67269b22b76060",
+  "route": "2a3cdc702c8b2b3452",
+  "observation": {
+   "target": "safe",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": 2.75,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 2.5,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "b7f5d9f780b5100b3c",
+  "route": "65224c1951d105780d",
+  "observation": {
+   "target": "pot",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": -2.75,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -2.5,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "bd6152806f29764f3a",
+  "route": "cba3a6557578f40f52",
+  "observation": {
+   "target": "side table",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 1.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 9,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 0.75,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     3
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     3
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "bf3bc1a7c336437de6",
+  "route": "f2632b125949034aea",
+  "observation": {
+   "target": "microwave",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -1.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 8,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -0.75,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     2
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     3
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "c039f8751bb2166805",
+  "route": "413cb076c610ea055a",
+  "observation": {
+   "target": "boots",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -2.75,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 9,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": -2.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     3
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "c0ca4798d234ac0620",
+  "route": "18fcc16aca64aa21fb",
+  "observation": {
+   "target": "laptop",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -2.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 9,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -1.25,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     3
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "c32909fa23ccaf3795",
+  "route": "de4f4097bc510d8a3c",
+  "observation": {
+   "target": "stool",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": 2.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 8,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 2.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     2
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     3
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "c5445e2f357b7b1c16",
+  "route": "522f01abe0504bf627",
+  "observation": {
+   "target": "ottoman",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": -2.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 8,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -1.5,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     2
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "c5985dcd91d7aff5e1",
+  "route": "9b0585367bff012a70",
+  "observation": {
+   "target": "garbage can",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 1.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 1.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "c5acd581cdc3cfbbf1",
+  "route": "6ce176e65fcb03e0f0",
+  "observation": {
+   "target": "garbage can",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 1.25,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 8,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 0.75,
+     "forward_of_end_m": -0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     2
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     3
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "c982c36a0de3d5b30f",
+  "route": "35e26490a7bafc0901",
+  "observation": {
+   "target": "pillow",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 2.75,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 9,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 2.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     3
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     3
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "cecc9fec89ae82d821",
+  "route": "abd6a93a4740798f4c",
+  "observation": {
+   "target": "toaster",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -3.0,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 8,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -2.5,
+     "forward_of_end_m": -0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     2
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "d7817a45b3c4ed1f28",
+  "route": "cb4743938307559b58",
+  "observation": {
+   "target": "microwave",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -3.25,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 7,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": -3.0,
+     "forward_of_end_m": -0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "d78cc25b566a12bd2f",
+  "route": "9ee071b93b7656e734",
+  "observation": {
+   "target": "coffee machine",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -3.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": -3.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "d859057420b939ea29",
+  "route": "13d7c156d18d893757",
+  "observation": {
+   "target": "teddy bear",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": 2.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 8,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 1.75,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     2
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     3
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "d882ecc6355beac3c1",
+  "route": "03e4370d0d421f1cb5",
+  "observation": {
+   "target": "chair",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 3.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": 2.75,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "d97c16e6a6364f8111",
+  "route": "57a07673e89a696761",
+  "observation": {
+   "target": "garbage can",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": 2.75,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 2.5,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "d9959f4c06dc811431",
+  "route": "0a0f6b6c8ca4d11a62",
+  "observation": {
+   "target": "side table",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -1.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -1.25,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "db13966135c7684f73",
+  "route": "082fdb2e4735b8722e",
+  "observation": {
+   "target": "coffee machine",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -1.75,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 8,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -1.25,
+     "forward_of_end_m": -0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     2
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "dc189a45e7082f5c74",
+  "route": "d472bc750e36f584da",
+  "observation": {
+   "target": "box",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -1.75,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 8,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -1.25,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     2
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "dde5a5b74070889185",
+  "route": "9dd57b77d744c48d0b",
+  "observation": {
+   "target": "toaster",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 1.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 1.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "ded25d4fe7664e2160",
+  "route": "2b9ab13ab0658fb20e",
+  "observation": {
+   "target": "coffee machine",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -1.75,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 7,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": -1.5,
+     "forward_of_end_m": -0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "dfd0829e7208453caa",
+  "route": "2634961c570b831d72",
+  "observation": {
+   "target": "garbage can",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -1.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -1.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "e10b15c7b940fc0978",
+  "route": "cba3a6557578f40f52",
+  "observation": {
+   "target": "pillow",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 1.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 9,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 0.75,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     3
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     3
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "e1f16928e5a81da0d7",
+  "route": "d28cd0381eab7abeec",
+  "observation": {
+   "target": "microwave",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 2.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 2.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "e3f8d26f9b4b16c93b",
+  "route": "df2a2128b52db7ae2c",
+  "observation": {
+   "target": "chair",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -3.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 8,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -2.75,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     2
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "e4b3beffa3ab6132c7",
+  "route": "b32f1dfc860284e2b2",
+  "observation": {
+   "target": "pillow",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 1.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": 1.25,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "e74b81f87de1ffb9a4",
+  "route": "2cda7e66a21f9295c2",
+  "observation": {
+   "target": "stool",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -1.75,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": -1.5,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "e92122f9e347da9aba",
+  "route": "3799e930356d5e57ac",
+  "observation": {
+   "target": "teddy bear",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -1.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -1.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "eb8909a31f3f9ae16e",
+  "route": "78a3ada18a9cfa53a0",
+  "observation": {
+   "target": "box",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 1.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 9,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 0.5,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     3
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "ee0979d30dd01bf824",
+  "route": "29382910263eefce1c",
+  "observation": {
+   "target": "garbage can",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 1.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 8,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 1.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     2
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "efb3f7fc7b1c9d0b4a",
+  "route": "20d03a32d29c452963",
+  "observation": {
+   "target": "pillow",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 2.25,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 8,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 1.75,
+     "forward_of_end_m": -0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     2
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     3
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "f1657a831c87b6ff3c",
+  "route": "8f935bcacb1784e442",
+  "observation": {
+   "target": "garbage can",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": -1.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -1.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "f46ef1cf9750bb3939",
+  "route": "9ee071b93b7656e734",
+  "observation": {
+   "target": "microwave",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -3.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": -3.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "f4e639bb4749ca4af3",
+  "route": "0c1842289c853b7e85",
+  "observation": {
+   "target": "stool",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -2.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 8,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -1.75,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     2
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     3
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "f5e144a71cbc679b94",
+  "route": "13d7c156d18d893757",
+  "observation": {
+   "target": "desk lamp",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": 2.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 8,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 1.75,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     2
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     3
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "f5ea785488d7381116",
+  "route": "c178bdffcd5bbdb3cc",
+  "observation": {
+   "target": "garbage can",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": 1.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 8,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 1.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     2
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "f73ddf5011893d7a42",
+  "route": "2f07840fd87e7d4564",
+  "observation": {
+   "target": "laptop",
+   "views": [
+    {
+     "step": 2,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 1.25,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 7,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 1.0,
+     "forward_of_end_m": -0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "fb072b4c6bbeeec0df",
+  "route": "6ce176e65fcb03e0f0",
+  "observation": {
+   "target": "laptop",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 1.25,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 8,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 0.75,
+     "forward_of_end_m": -0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     2
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     3
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "fb2675f02f73600b86",
+  "route": "1c047e189d86a457d5",
+  "observation": {
+   "target": "teddy bear",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": 1.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 8,
+     "heading": -90,
+     "pitch": 45,
+     "right_of_end_m": 0.75,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     2
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     3
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "fb570bef0a4972422e",
+  "route": "cf62955e8c6e6aadf4",
+  "observation": {
+   "target": "desk lamp",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": 1.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 1.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "key": "ff84f7120fb227d05f",
+  "route": "0b650272a90b530284",
+  "observation": {
+   "target": "microwave",
+   "views": [
+    {
+     "step": 2,
+     "heading": 90,
+     "pitch": 45,
+     "right_of_end_m": -3.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 7,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -2.75,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   },
+   "movement": [
+    [
+     "start",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ]
+  }
+ }
+]

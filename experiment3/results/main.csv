@@ -1,0 +1,4 @@
+arm,budget,dev_correct,dev_both_targets,dev_both_endpoints,dev_cross,dev_same,hidden_correct,hidden_both_targets,hidden_both_endpoints,hidden_cross,hidden_same,dev_gain_pp,hidden_gain_pp,overfit_gap_pp
+A,12,61.4,4.6,0.2,20,41.4,59.6,4,0.2,19,40.6,5.333333333333332,-1.1666666666666654,6.499999999999997
+B,12,60.4,3,0,8.2,52.2,59.4,3.2,0,9,50.4,4.499999999999999,-1.3333333333333346,5.833333333333334
+C,12,57,4.8,0.2,16.6,40.4,58.8,5.6,0,17.8,41,1.6666666666666667,-1.8333333333333357,3.5000000000000027

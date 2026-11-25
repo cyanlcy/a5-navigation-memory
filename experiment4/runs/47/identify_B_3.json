@@ -1,0 +1,311 @@
+{
+ "prompt": "Photograph direction at capture and target direction after walking can differ. Consider how recorded position changes the bearing. Write a complete executable Python robot controller to return to an object seen earlier.\nInputs for decide(observation, tools): observation['target'] is a category, ['views'] is two old camera poses in time order. Each has heading (degrees relative to final facing, +90 right, -90 left), pitch, right_of_end_m and forward_of_end_m (old camera relative to final position, metres), step. observation['movement'] is recorded actions. Target is hidden at endpoint; one left/right turn reveals it. Each problem is independent. Coordinate convention: if the old camera was x metres to the right of the endpoint, an object d metres ahead along a +90 old heading has final lateral coordinate x+d, or x-d for a -90 heading. Positive means turn right. The actual d is unknown. The starting method ignores x; consider a plausible estimate or visual evidence. You choose how and when to use it.\nThere are just TWO calls across all tools combined, including repeats. Choose only one or two readings to use. A returned None action gets zero. tools.match() gives two CLIP similarities (larger better). tools.identify() gives two old-frame visual identification logits; tools.direct() gives two RGB+motion turn logits ordered left,right. tools.locate() gives two estimated camera-to-target forward ranges in metres from RGB; 0 means not detected. tools.point() returns two entries (one per old image); each is [horizontal_fraction,vertical_fraction] at the estimated bottom of the object, or None when absent. Image top-left is (0,0). Only use tools explicitly listed below. The raw RGB values are available in observation['rgb'] as three 24x24 RGB arrays when the observation includes them. If supplied, observation['calibration'] gives the robot camera height over the floor in metres and vertical field of view in degrees. A positive pitch looks down. In the calibrated four-question layout, queried objects rest on the floor. All evidence comes from frozen readings on public RGB.\nReturn (frame_index:int 0 or 1, action:'left' or 'right', trace:small dict). Write plain Python functions only, no imports, type annotations, docstrings, printing, exception handling, variable attributes or dictionary methods. Standard sin,cos,tan,atan,atan2,radians,sqrt,abs,all,any,bool,dict,enumerate,float,int,len,list,max,min,range,round,sorted,sum,tuple,zip,str and arithmetic are available. Use square brackets to access fields. Score first on whole paired tasks (valid evidence and action on BOTH), then on action accuracy and fewer calls. Return one fenced Python program.\nDebugging guide: Reproduce a failure. Compare its execution with a successful case. Identify the first divergence. Change one cause and check the regression on an earlier success.\nParent source:\ndef decide(observation, tools):\n    s = tools.identify()\n    f = int(s[1] > s[0])\n    return f, 'right' if observation['views'][f]['heading'] > 0 else 'left', {}\n\nDevelopment feedback: {\"still_wrong\": {\"count\": 4, \"example\": {\"family\": \"reliability\", \"valid_frame\": false, \"action_ok\": false, \"calls\": [\"identify\", \"direct\"], \"error\": \"ValueError: visual budget exceeded\", \"trace\": null}}, \"regressed\": {\"count\": 8, \"example\": {\"family\": \"endpoint\", \"valid_frame\": false, \"action_ok\": false, \"calls\": [\"identify\", \"direct\"], \"error\": \"ValueError: visual budget exceeded\", \"trace\": null}}}",
+ "raw": "```python\ndef decide(observation, tools):\n    # Use only two tool calls total: identify and direct\n    # We need to determine which turn (left/right) reveals the target\n    # The target is hidden at the endpoint; one turn reveals it\n    # We have two past camera views with heading, pitch, and relative position\n    \n    # Step 1: Use identify to get visual confidence for each frame\n    s = tools.identify()\n    # s[0] and s[1] are logits for frame 0 and frame 1 (left/right order)\n    # We pick the frame with higher confidence\n    if s[1] > s[0]:\n        frame_idx = 1\n        frame_heading = observation['views'][1]['heading']\n    else:\n        frame_idx = 0\n        frame_heading = observation['views'][0]['heading']\n    \n    # Step 2: Use direct to get turn preference\n    # direct returns two turn logits: left, right\n    direct_result = tools.direct()\n    # direct_result[0] = left turn logits, direct_result[1] = right turn logits\n    if direct_result[1] > direct_result[0]:\n        action = 'right'\n    else:\n        action = 'left'\n    \n    # Determine final bearing based on old heading and turn\n    # We need to return action and frame index\n    # The actual object position is unknown, but we use the old heading to infer lateral offset\n    # However, the problem says: if old camera was x metres right of endpoint, then:\n    # - d metres ahead along +90 heading \u2192 final lateral = x + d (if heading +90) or x - d (if -90)\n    # But we don't know d or x.\n    \n    # Instead, we rely on direct() which gives turn preference based on visual input.\n    # We use direct() only once, and we already used identify() once.\n    \n    # We do not use locate, point, or match because:\n    # - match gives CLIP similarity (not needed for turn decision)\n    # - locate gives range (unknown d), and we don't have d\n    # - point gives position (but only at bottom of object, and we don't know if object is visible)\n    \n    # Therefore, we base action on direct(), and frame on identify() confidence\n    \n    # Final decision: use the frame with higher identify confidence, and turn based on direct()\n    return frame_idx, action, {}\n```",
+ "input_tokens": 784,
+ "output_tokens": 529,
+ "seconds": 10.85477912198985,
+ "seed": 4733,
+ "source": "def decide(observation, tools):\n    # Use only two tool calls total: identify and direct\n    # We need to determine which turn (left/right) reveals the target\n    # The target is hidden at the endpoint; one turn reveals it\n    # We have two past camera views with heading, pitch, and relative position\n    \n    # Step 1: Use identify to get visual confidence for each frame\n    s = tools.identify()\n    # s[0] and s[1] are logits for frame 0 and frame 1 (left/right order)\n    # We pick the frame with higher confidence\n    if s[1] > s[0]:\n        frame_idx = 1\n        frame_heading = observation['views'][1]['heading']\n    else:\n        frame_idx = 0\n        frame_heading = observation['views'][0]['heading']\n    \n    # Step 2: Use direct to get turn preference\n    # direct returns two turn logits: left, right\n    direct_result = tools.direct()\n    # direct_result[0] = left turn logits, direct_result[1] = right turn logits\n    if direct_result[1] > direct_result[0]:\n        action = 'right'\n    else:\n        action = 'left'\n    \n    # Determine final bearing based on old heading and turn\n    # We need to return action and frame index\n    # The actual object position is unknown, but we use the old heading to infer lateral offset\n    # However, the problem says: if old camera was x metres right of endpoint, then:\n    # - d metres ahead along +90 heading \u2192 final lateral = x + d (if heading +90) or x - d (if -90)\n    # But we don't know d or x.\n    \n    # Instead, we rely on direct() which gives turn preference based on visual input.\n    # We use direct() only once, and we already used identify() once.\n    \n    # We do not use locate, point, or match because:\n    # - match gives CLIP similarity (not needed for turn decision)\n    # - locate gives range (unknown d), and we don't have d\n    # - point gives position (but only at bottom of object, and we don't know if object is visible)\n    \n    # Therefore, we base action on direct(), and frame on identify() confidence\n    \n    # Final decision: use the frame with higher identify confidence, and turn based on direct()\n    return frame_idx, action, {}\n",
+ "parent": "def decide(observation, tools):\n    s = tools.identify()\n    f = int(s[1] > s[0])\n    return f, 'right' if observation['views'][f]['heading'] > 0 else 'left', {}\n",
+ "parent_hash": "4511614c157db099c5b42c6a003bb4c1fd733a242a85385cf2a985f3d4956669",
+ "diff": "--- \n+++ \n@@ -1,4 +1,45 @@\n def decide(observation, tools):\n+    # Use only two tool calls total: identify and direct\n+    # We need to determine which turn (left/right) reveals the target\n+    # The target is hidden at the endpoint; one turn reveals it\n+    # We have two past camera views with heading, pitch, and relative position\n+    \n+    # Step 1: Use identify to get visual confidence for each frame\n     s = tools.identify()\n-    f = int(s[1] > s[0])\n-    return f, 'right' if observation['views'][f]['heading'] > 0 else 'left', {}\n+    # s[0] and s[1] are logits for frame 0 and frame 1 (left/right order)\n+    # We pick the frame with higher confidence\n+    if s[1] > s[0]:\n+        frame_idx = 1\n+        frame_heading = observation['views'][1]['heading']\n+    else:\n+        frame_idx = 0\n+        frame_heading = observation['views'][0]['heading']\n+    \n+    # Step 2: Use direct to get turn preference\n+    # direct returns two turn logits: left, right\n+    direct_result = tools.direct()\n+    # direct_result[0] = left turn logits, direct_result[1] = right turn logits\n+    if direct_result[1] > direct_result[0]:\n+        action = 'right'\n+    else:\n+        action = 'left'\n+    \n+    # Determine final bearing based on old heading and turn\n+    # We need to return action and frame index\n+    # The actual object position is unknown, but we use the old heading to infer lateral offset\n+    # However, the problem says: if old camera was x metres right of endpoint, then:\n+    # - d metres ahead along +90 heading \u2192 final lateral = x + d (if heading +90) or x - d (if -90)\n+    # But we don't know d or x.\n+    \n+    # Instead, we rely on direct() which gives turn preference based on visual input.\n+    # We use direct() only once, and we already used identify() once.\n+    \n+    # We do not use locate, point, or match because:\n+    # - match gives CLIP similarity (not needed for turn decision)\n+    # - locate gives range (unknown d), and we don't have d\n+    # - point gives position (but only at bottom of object, and we don't know if object is visible)\n+    \n+    # Therefore, we base action on direct(), and frame on identify() confidence\n+    \n+    # Final decision: use the frame with higher identify confidence, and turn based on direct()\n+    return frame_idx, action, {}\n",
+ "rank": [
+  0.16666666666666666,
+  6,
+  -24
+ ],
+ "parent_rank": [
+  0.3333333333333333,
+  9,
+  -12
+ ],
+ "rows": [
+  {
+   "key": "0a1700675dc5ce7588",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "identify",
+    "direct"
+   ],
+   "attempts": [
+    "identify",
+    "direct"
+   ],
+   "seconds": 0.000455638044513762,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "157659114479d3d71d",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "identify",
+    "direct"
+   ],
+   "attempts": [
+    "identify",
+    "direct"
+   ],
+   "seconds": 0.00042486703023314476,
+   "isolated": true,
+   "ok": false,
+   "good_frame": true,
+   "joint": false
+  },
+  {
+   "key": "16cba0a0ea4bef05c1",
+   "frame": 0,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "identify",
+    "direct"
+   ],
+   "attempts": [
+    "identify",
+    "direct"
+   ],
+   "seconds": 0.0005549709894694388,
+   "isolated": true,
+   "ok": true,
+   "good_frame": true,
+   "joint": true
+  },
+  {
+   "key": "24afc7b9d04774ced6",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "identify",
+    "direct"
+   ],
+   "attempts": [
+    "identify",
+    "direct"
+   ],
+   "seconds": 0.0004468149854801595,
+   "isolated": true,
+   "ok": true,
+   "good_frame": true,
+   "joint": true
+  },
+  {
+   "key": "2e4dcdbc9a3771dac0",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "identify",
+    "direct"
+   ],
+   "attempts": [
+    "identify",
+    "direct"
+   ],
+   "seconds": 0.0004217410460114479,
+   "isolated": true,
+   "ok": false,
+   "good_frame": true,
+   "joint": false
+  },
+  {
+   "key": "4639ef7a6d372feec9",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "identify",
+    "direct"
+   ],
+   "attempts": [
+    "identify",
+    "direct"
+   ],
+   "seconds": 0.0004457649774849415,
+   "isolated": true,
+   "ok": true,
+   "good_frame": true,
+   "joint": true
+  },
+  {
+   "key": "53fddba93a945c51d4",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "identify",
+    "direct"
+   ],
+   "attempts": [
+    "identify",
+    "direct"
+   ],
+   "seconds": 0.00046110799303278327,
+   "isolated": true,
+   "ok": false,
+   "good_frame": true,
+   "joint": false
+  },
+  {
+   "key": "8f06c8d86ad6b9579c",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "identify",
+    "direct"
+   ],
+   "attempts": [
+    "identify",
+    "direct"
+   ],
+   "seconds": 0.00043256202479824424,
+   "isolated": true,
+   "ok": true,
+   "good_frame": true,
+   "joint": true
+  },
+  {
+   "key": "a96d4d762e0b0d6352",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "identify",
+    "direct"
+   ],
+   "attempts": [
+    "identify",
+    "direct"
+   ],
+   "seconds": 0.0004325929912738502,
+   "isolated": true,
+   "ok": true,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "ccb1c4d82743f51cf8",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "identify",
+    "direct"
+   ],
+   "attempts": [
+    "identify",
+    "direct"
+   ],
+   "seconds": 0.0004612710326910019,
+   "isolated": true,
+   "ok": false,
+   "good_frame": true,
+   "joint": false
+  },
+  {
+   "key": "f0f262ea14ddb33e6f",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "identify",
+    "direct"
+   ],
+   "attempts": [
+    "identify",
+    "direct"
+   ],
+   "seconds": 0.0004304019967094064,
+   "isolated": true,
+   "ok": true,
+   "good_frame": true,
+   "joint": true
+  },
+  {
+   "key": "fb1a7ce310ad972104",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "identify",
+    "direct"
+   ],
+   "attempts": [
+    "identify",
+    "direct"
+   ],
+   "seconds": 0.00039878301322460175,
+   "isolated": true,
+   "ok": false,
+   "good_frame": true,
+   "joint": false
+  }
+ ],
+ "feedback": {
+  "still_wrong": {
+   "count": 2,
+   "example": {
+    "family": "reliability",
+    "valid_frame": false,
+    "action_ok": false,
+    "calls": [
+     "identify",
+     "direct"
+    ],
+    "error": null,
+    "trace": {}
+   }
+  },
+  "regressed": {
+   "count": 5,
+   "example": {
+    "family": "endpoint",
+    "valid_frame": true,
+    "action_ok": false,
+    "calls": [
+     "identify",
+     "direct"
+    ],
+    "error": null,
+    "trace": {}
+   }
+  },
+  "stable": {
+   "count": 3,
+   "example": {
+    "family": "target",
+    "valid_frame": true,
+    "action_ok": true,
+    "calls": [
+     "identify",
+     "direct"
+    ],
+    "error": null,
+    "trace": {}
+   }
+  },
+  "fixed": {
+   "count": 2,
+   "example": {
+    "family": "endpoint",
+    "valid_frame": true,
+    "action_ok": true,
+    "calls": [
+     "identify",
+     "direct"
+    ],
+    "error": null,
+    "trace": {}
+   }
+  }
+ },
+ "accepted": false
+}

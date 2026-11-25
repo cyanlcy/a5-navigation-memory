@@ -1,0 +1,205 @@
+{
+ "prompt": "Photograph direction at capture and target direction after walking can differ. Consider how recorded position changes the bearing. Write a complete executable Python robot controller to return to an object seen earlier.\nInputs for decide(observation, tools): observation['target'] is a category, ['views'] is two old camera poses in time order. Each has heading (degrees relative to final facing, +90 right, -90 left), pitch, right_of_end_m and forward_of_end_m (old camera relative to final position, metres), step. observation['movement'] is recorded actions. Target is hidden at endpoint; one left/right turn reveals it. Each problem is independent. Coordinate convention: if the old camera was x metres to the right of the endpoint, an object d metres ahead along a +90 old heading has final lateral coordinate x+d, or x-d for a -90 heading. Positive means turn right. The actual d is unknown. The starting method ignores x; consider a plausible estimate or visual evidence. You choose how and when to use it.\nThere are just TWO calls across all tools combined, including repeats. Choose only one or two readings to use. A returned None action gets zero. tools.match() gives two CLIP similarities (larger better). tools.identify() gives two old-frame visual identification logits; tools.direct() gives two RGB+motion turn logits ordered left,right. tools.locate() gives two estimated camera-to-target forward ranges in metres from RGB; 0 means not detected. tools.point() returns two entries (one per old image); each is [horizontal_fraction,vertical_fraction] at the estimated bottom of the object, or None when absent. Image top-left is (0,0). Only use tools explicitly listed below. The raw RGB values are available in observation['rgb'] as three 24x24 RGB arrays when the observation includes them. If supplied, observation['calibration'] gives the robot camera height over the floor in metres and vertical field of view in degrees. A positive pitch looks down. In the calibrated four-question layout, queried objects rest on the floor. All evidence comes from frozen readings on public RGB.\nReturn (frame_index:int 0 or 1, action:'left' or 'right', trace:small dict). Write plain Python functions only, no imports, type annotations, docstrings, printing, exception handling, variable attributes or dictionary methods. Standard sin,cos,tan,atan,atan2,radians,sqrt,abs,all,any,bool,dict,enumerate,float,int,len,list,max,min,range,round,sorted,sum,tuple,zip,str and arithmetic are available. Use square brackets to access fields. Score first on whole paired tasks (valid evidence and action on BOTH), then on action accuracy and fewer calls. Return one fenced Python program.\nDebugging guide: Reproduce a failure. Compare its execution with a successful case. Identify the first divergence. Change one cause and check the regression on an earlier success.\nParent source:\ndef decide(observation, tools):\n    s = tools.identify()\n    f = int(s[1] > s[0])\n    return f, 'right' if observation['views'][f]['heading'] > 0 else 'left', {}\n\nDevelopment feedback: {\"still_wrong\": {\"count\": 4, \"example\": {\"family\": \"reliability\", \"valid_frame\": false, \"action_ok\": true, \"calls\": [\"identify\"], \"error\": null, \"trace\": {}}}, \"stable\": {\"count\": 8, \"example\": {\"family\": \"endpoint\", \"valid_frame\": true, \"action_ok\": true, \"calls\": [\"identify\"], \"error\": null, \"trace\": {}}}}",
+ "raw": "```python\ndef decide(observation, tools):\n    # Use identify to get visual confidence for left/right\n    s = tools.identify()\n    if s[1] > s[0]:\n        f = 1  # right\n    else:\n        f = 0  # left\n    \n    # Get the heading from the selected view (f-th view)\n    heading = observation['views'][f]['heading']\n    \n    # Determine the direction to turn based on heading sign\n    # Positive heading means the camera was facing right relative to final facing\n    # So if heading > 0, turn right; if heading < 0, turn left\n    action = 'right' if heading > 0 else 'left'\n    \n    # Use point to get object position if available\n    point_left = tools.point(0)\n    point_right = tools.point(1)\n    \n    # If we have a point from one of the views, use it to estimate lateral position\n    # But only if we have a valid frame and we're not just relying on identify\n    # We only use one point for estimation; choose the one with better confidence\n    \n    # Only use point if it's valid and we have calibration\n    cal = observation.get('calibration')\n    if cal and (point_left is not None or point_right is not None):\n        # Assume object is at bottom of image; use horizontal fraction\n        # Convert to meters using field of view and height\n        height_m = cal[0]  # camera height in meters\n        fov_deg = cal[1]   # vertical field of view in degrees\n        if fov_deg > 0:\n            fov_rad = fov_deg * (3.14159 / 180)\n            image_height = 24\n            image_width = 24\n            # The vertical field of view covers image_height pixels\n            # So each pixel corresponds to height_m / (image_height * tan(fov_rad/2))\n            pixel_to_m = height_m / (image_height * (1.0 / 2.0) * (1.0 / tan(fov_rad / 2)))\n            # But we don't have vertical position, so ignore for now\n            # Only use horizontal fraction to estimate lateral offset\n            if point_left is not None:\n                h_frac = point_left[0]\n                # The lateral offset is h_frac * image_width\n                # But we don't have the camera's lateral offset from endpoint\n                # So we can't directly compute it\n                # Instead, we use the heading to infer the turn direction\n                pass\n            if point_right is not None:\n                h_frac = point_right[0]\n                # Same issue\n                pass\n    \n    # We only make one call to identify, and we are using it to decide action\n    # We do not use match, locate, or direct because they are not required\n    # And we are only allowed two calls total, including repeats\n    \n    # Final action: based on identify result and heading\n    return f, action, {}\n```",
+ "input_tokens": 767,
+ "output_tokens": 643,
+ "seconds": 13.071952743979637,
+ "seed": 1130,
+ "source": "def decide(observation, tools):\n    # Use identify to get visual confidence for left/right\n    s = tools.identify()\n    if s[1] > s[0]:\n        f = 1  # right\n    else:\n        f = 0  # left\n    \n    # Get the heading from the selected view (f-th view)\n    heading = observation['views'][f]['heading']\n    \n    # Determine the direction to turn based on heading sign\n    # Positive heading means the camera was facing right relative to final facing\n    # So if heading > 0, turn right; if heading < 0, turn left\n    action = 'right' if heading > 0 else 'left'\n    \n    # Use point to get object position if available\n    point_left = tools.point(0)\n    point_right = tools.point(1)\n    \n    # If we have a point from one of the views, use it to estimate lateral position\n    # But only if we have a valid frame and we're not just relying on identify\n    # We only use one point for estimation; choose the one with better confidence\n    \n    # Only use point if it's valid and we have calibration\n    cal = observation.get('calibration')\n    if cal and (point_left is not None or point_right is not None):\n        # Assume object is at bottom of image; use horizontal fraction\n        # Convert to meters using field of view and height\n        height_m = cal[0]  # camera height in meters\n        fov_deg = cal[1]   # vertical field of view in degrees\n        if fov_deg > 0:\n            fov_rad = fov_deg * (3.14159 / 180)\n            image_height = 24\n            image_width = 24\n            # The vertical field of view covers image_height pixels\n            # So each pixel corresponds to height_m / (image_height * tan(fov_rad/2))\n            pixel_to_m = height_m / (image_height * (1.0 / 2.0) * (1.0 / tan(fov_rad / 2)))\n            # But we don't have vertical position, so ignore for now\n            # Only use horizontal fraction to estimate lateral offset\n            if point_left is not None:\n                h_frac = point_left[0]\n                # The lateral offset is h_frac * image_width\n                # But we don't have the camera's lateral offset from endpoint\n                # So we can't directly compute it\n                # Instead, we use the heading to infer the turn direction\n                pass\n            if point_right is not None:\n                h_frac = point_right[0]\n                # Same issue\n                pass\n    \n    # We only make one call to identify, and we are using it to decide action\n    # We do not use match, locate, or direct because they are not required\n    # And we are only allowed two calls total, including repeats\n    \n    # Final action: based on identify result and heading\n    return f, action, {}\n",
+ "parent": "def decide(observation, tools):\n    s = tools.identify()\n    f = int(s[1] > s[0])\n    return f, 'right' if observation['views'][f]['heading'] > 0 else 'left', {}\n",
+ "parent_hash": "4511614c157db099c5b42c6a003bb4c1fd733a242a85385cf2a985f3d4956669",
+ "diff": "--- \n+++ \n@@ -1,4 +1,58 @@\n def decide(observation, tools):\n+    # Use identify to get visual confidence for left/right\n     s = tools.identify()\n-    f = int(s[1] > s[0])\n-    return f, 'right' if observation['views'][f]['heading'] > 0 else 'left', {}\n+    if s[1] > s[0]:\n+        f = 1  # right\n+    else:\n+        f = 0  # left\n+    \n+    # Get the heading from the selected view (f-th view)\n+    heading = observation['views'][f]['heading']\n+    \n+    # Determine the direction to turn based on heading sign\n+    # Positive heading means the camera was facing right relative to final facing\n+    # So if heading > 0, turn right; if heading < 0, turn left\n+    action = 'right' if heading > 0 else 'left'\n+    \n+    # Use point to get object position if available\n+    point_left = tools.point(0)\n+    point_right = tools.point(1)\n+    \n+    # If we have a point from one of the views, use it to estimate lateral position\n+    # But only if we have a valid frame and we're not just relying on identify\n+    # We only use one point for estimation; choose the one with better confidence\n+    \n+    # Only use point if it's valid and we have calibration\n+    cal = observation.get('calibration')\n+    if cal and (point_left is not None or point_right is not None):\n+        # Assume object is at bottom of image; use horizontal fraction\n+        # Convert to meters using field of view and height\n+        height_m = cal[0]  # camera height in meters\n+        fov_deg = cal[1]   # vertical field of view in degrees\n+        if fov_deg > 0:\n+            fov_rad = fov_deg * (3.14159 / 180)\n+            image_height = 24\n+            image_width = 24\n+            # The vertical field of view covers image_height pixels\n+            # So each pixel corresponds to height_m / (image_height * tan(fov_rad/2))\n+            pixel_to_m = height_m / (image_height * (1.0 / 2.0) * (1.0 / tan(fov_rad / 2)))\n+            # But we don't have vertical position, so ignore for now\n+            # Only use horizontal fraction to estimate lateral offset\n+            if point_left is not None:\n+                h_frac = point_left[0]\n+                # The lateral offset is h_frac * image_width\n+                # But we don't have the camera's lateral offset from endpoint\n+                # So we can't directly compute it\n+                # Instead, we use the heading to infer the turn direction\n+                pass\n+            if point_right is not None:\n+                h_frac = point_right[0]\n+                # Same issue\n+                pass\n+    \n+    # We only make one call to identify, and we are using it to decide action\n+    # We do not use match, locate, or direct because they are not required\n+    # And we are only allowed two calls total, including repeats\n+    \n+    # Final action: based on identify result and heading\n+    return f, action, {}\n",
+ "rank": [
+  0.0,
+  0,
+  0
+ ],
+ "parent_rank": [
+  0.3333333333333333,
+  9,
+  -12
+ ],
+ "rows": [
+  {
+   "key": "0a1700675dc5ce7588",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: only declared visual tool attributes are available",
+   "calls": [],
+   "attempts": [],
+   "seconds": 0.00040442601311951876,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "157659114479d3d71d",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: only declared visual tool attributes are available",
+   "calls": [],
+   "attempts": [],
+   "seconds": 0.00039693398866802454,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "16cba0a0ea4bef05c1",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: only declared visual tool attributes are available",
+   "calls": [],
+   "attempts": [],
+   "seconds": 0.0003563440404832363,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "24afc7b9d04774ced6",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: only declared visual tool attributes are available",
+   "calls": [],
+   "attempts": [],
+   "seconds": 0.0005558009725064039,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "2e4dcdbc9a3771dac0",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: only declared visual tool attributes are available",
+   "calls": [],
+   "attempts": [],
+   "seconds": 0.00038335402496159077,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "4639ef7a6d372feec9",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: only declared visual tool attributes are available",
+   "calls": [],
+   "attempts": [],
+   "seconds": 0.00039156503044068813,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "53fddba93a945c51d4",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: only declared visual tool attributes are available",
+   "calls": [],
+   "attempts": [],
+   "seconds": 0.0003791889757849276,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "8f06c8d86ad6b9579c",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: only declared visual tool attributes are available",
+   "calls": [],
+   "attempts": [],
+   "seconds": 0.0005308119580149651,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "a96d4d762e0b0d6352",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: only declared visual tool attributes are available",
+   "calls": [],
+   "attempts": [],
+   "seconds": 0.0003820410347543657,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "ccb1c4d82743f51cf8",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: only declared visual tool attributes are available",
+   "calls": [],
+   "attempts": [],
+   "seconds": 0.0003933789557777345,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "f0f262ea14ddb33e6f",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: only declared visual tool attributes are available",
+   "calls": [],
+   "attempts": [],
+   "seconds": 0.00040410400833934546,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "fb1a7ce310ad972104",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: only declared visual tool attributes are available",
+   "calls": [],
+   "attempts": [],
+   "seconds": 0.00037818599957972765,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  }
+ ],
+ "feedback": {
+  "still_wrong": {
+   "count": 4,
+   "example": {
+    "family": "reliability",
+    "valid_frame": false,
+    "action_ok": false,
+    "calls": [],
+    "error": "ValueError: only declared visual tool attributes are available",
+    "trace": null
+   }
+  },
+  "regressed": {
+   "count": 8,
+   "example": {
+    "family": "endpoint",
+    "valid_frame": false,
+    "action_ok": false,
+    "calls": [],
+    "error": "ValueError: only declared visual tool attributes are available",
+    "trace": null
+   }
+  }
+ },
+ "accepted": false
+}

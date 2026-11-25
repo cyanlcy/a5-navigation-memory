@@ -1,0 +1,10 @@
+{
+ "curve": [
+  "def decide(observation, tools):\n    scores = tools.direct()\n    return 0, 'right' if scores[1] > scores[0] else 'left', {}\n",
+  "def decide(observation, tools):\n    scores = tools.direct()\n    return 0, 'right' if scores[1] > scores[0] else 'left', {}\n",
+  "def decide(observation, tools):\n    direct = tools.direct()\n    if direct[1] > direct[0]:\n        return 1, 'right', {}\n    elif direct[0] > direct[1]:\n        return 1, 'left', {}\n    else:\n        locate = tools.locate()\n        if locate[0] > 0.1 and locate[1] == 0.0:\n            return 0, 'right', {}\n        elif locate[1] > 0.1 and locate[0] == 0.0:\n            return 0, 'left', {}\n        return 0, 'right', {}\n",
+  "def decide(observation, tools):\n    direct = tools.direct()\n    if direct[1] > direct[0]:\n        return 1, 'right', {}\n    elif direct[0] > direct[1]:\n        return 1, 'left', {}\n    else:\n        locate = tools.locate()\n        if locate[0] > 0.1 and locate[1] == 0.0:\n            return 0, 'right', {}\n        elif locate[1] > 0.1 and locate[0] == 0.0:\n            return 0, 'left', {}\n        return 0, 'right', {}\n",
+  "def decide(observation, tools):\n    direct = tools.direct()\n    if direct[1] > direct[0]:\n        return 1, 'right', {}\n    elif direct[0] > direct[1]:\n        return 1, 'left', {}\n    else:\n        locate = tools.locate()\n        if locate[0] > 0.1 and locate[1] == 0.0:\n            return 0, 'right', {}\n        elif locate[1] > 0.1 and locate[0] == 0.0:\n            return 0, 'left', {}\n        return 0, 'right', {}\n"
+ ],
+ "guide_hash": "70544e455db12fae7f54597c570fb17276a352df186e77b1ef7040d87c5ef23e"
+}

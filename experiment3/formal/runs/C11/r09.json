@@ -1,0 +1,2350 @@
+{
+ "round": 9,
+ "arm": "C",
+ "seed": 1109,
+ "model": "models/coder",
+ "gpu": "0",
+ "prompt": "Photograph direction at capture and target direction after walking can differ. Consider how recorded position changes the bearing. Write a complete executable Python robot controller to return to an object seen earlier.\nInputs for decide(observation, tools): observation['target'] is a category, ['views'] is two old camera poses in time order. Each has heading (degrees relative to final facing, +90 right, -90 left), pitch, right_of_end_m and forward_of_end_m (old camera relative to final position, metres), step. observation['movement'] is recorded actions. Target is hidden at endpoint; one left/right turn reveals it. Each problem is independent. Coordinate convention: if the old camera was x metres to the right of the endpoint, an object d metres ahead along a +90 old heading has final lateral coordinate x+d, or x-d for a -90 heading. Positive means turn right. The actual d is unknown. The starting method ignores x; consider a plausible estimate or visual evidence. You choose how and when to use it.\nThere are just TWO calls across all tools combined, including repeats. Choose only one or two readings to use. A returned None action gets zero. tools.match() gives two CLIP similarities (larger better). tools.identify() gives two old-frame visual identification logits; tools.direct() gives two RGB+motion turn logits ordered left,right. tools.locate() gives two estimated camera-to-target forward ranges in metres from RGB; 0 means not detected. tools.point() returns two entries (one per old image); each is [horizontal_fraction,vertical_fraction] at the estimated bottom of the object, or None when absent. Image top-left is (0,0). Only use tools explicitly listed below. The raw RGB values are available in observation['rgb'] as three 24x24 RGB arrays when the observation includes them. If supplied, observation['calibration'] gives the robot camera height over the floor in metres and vertical field of view in degrees. A positive pitch looks down. In the calibrated four-question layout, queried objects rest on the floor. All evidence comes from frozen readings on public RGB.\nReturn (frame_index:int 0 or 1, action:'left' or 'right', trace:small dict). Write plain Python functions only, no imports, type annotations, docstrings, printing, exception handling, variable attributes or dictionary methods. Standard sin,cos,tan,atan,atan2,radians,sqrt,abs,all,any,bool,dict,enumerate,float,int,len,list,max,min,range,round,sorted,sum,tuple,zip,str and arithmetic are available. Use square brackets to access fields. Optimize development accuracy, both members of a pair correct, then fewer calls. Respond with a short failure hypothesis and potential regression then ONE fenced python code block containing the entire program. Do not copy labels from examples into rules.\nAvailable tools: direct, identify, locate, match, point\nCommon example: [{\"observation\": {\"target\": \"garbage can\", \"views\": [{\"step\": 2, \"heading\": 90, \"pitch\": 30, \"right_of_end_m\": 2.75, \"forward_of_end_m\": 0.0}, {\"step\": 8, \"heading\": -90, \"pitch\": 45, \"right_of_end_m\": 2.25, \"forward_of_end_m\": 0.0}], \"endpoint_pitch\": 45, \"calibration\": {\"height_m\": 1.575, \"vertical_fov_deg\": 80}, \"movement\": [[\"start\", 1], [\"RotateRight\", 1], [\"LookDown\", 1], [\"LookUp\", 1], [\"RotateLeft\", 1], [\"MoveLeft\", 2], [\"RotateLeft\", 1], [\"LookDown\", 1], [\"LookUp\", 1], [\"RotateRight\", 1], [\"MoveLeft\", 5], [\"LookDown\", 1], [\"LookUp\", 1], [\"MoveLeft\", 4], [\"LookDown\", 1]]}, \"visual\": {\"match\": [0.19941438734531403, 0.2411607950925827], \"identify\": [17.875, 23.375], \"direct\": [19.625, 19.125], \"locate\": [0.0, 4.5], \"point\": [null, [0.35, 0.68]]}, \"answer\": \"right\"}, {\"observation\": {\"target\": \"pillow\", \"views\": [{\"step\": 2, \"heading\": 90, \"pitch\": 30, \"right_of_end_m\": 2.75, \"forward_of_end_m\": 0.0}, {\"step\": 8, \"heading\": -90, \"pitch\": 45, \"right_of_end_m\": 2.25, \"forward_of_end_m\": 0.0}], \"endpoint_pitch\": 45, \"calibration\": {\"height_m\": 1.575, \"vertical_fov_deg\": 80}, \"movement\": [[\"start\", 1], [\"RotateRight\", 1], [\"LookDown\", 1], [\"LookUp\", 1], [\"RotateLeft\", 1], [\"MoveLeft\", 2], [\"RotateLeft\", 1], [\"LookDown\", 1], [\"LookUp\", 1], [\"RotateRight\", 1], [\"MoveLeft\", 5], [\"LookDown\", 1], [\"LookUp\", 1], [\"MoveLeft\", 4], [\"LookDown\", 1]]}, \"visual\": {\"match\": [0.22206290066242218, 0.1982342004776001], \"identify\": [19.5, 22.5], \"direct\": [20.0, 19.375], \"locate\": [0.0, 2.5], \"point\": [null, [0.35, 0.48]]}, \"answer\": \"left\"}]\nStarting correct count: 55/120\nParent source:\ndef decide(observation, tools):\n    views = observation['views']\n    frame0 = views[0]\n    frame1 = views[1]\n    \n    # Use point data if available to infer lateral position\n    point0 = tools.point()[0]\n    point1 = tools.point()[1]\n    \n    # If both point data are available, prefer the one with valid coordinates\n    if point0 is not None and point1 is not None:\n        # Compare horizontal positions: higher x means more right\n        # We use the frame with higher horizontal fraction to infer direction\n        if point1[0] > point0[0]:\n            frame = 1\n        else:\n            frame = 0\n    elif point0 is not None:\n        frame = 0\n    elif point1 is not None:\n        frame = 1\n    else:\n        # Fall back to match score: higher similarity means use that frame\n        match_scores = tools.match()\n        frame = 1 if match_scores[1] > match_scores[0] else 0\n    \n    # Get the heading from the selected frame\n    heading = views[frame]['heading']\n    \n    # Determine turn: positive heading means right, negative means left\n    turn = \"right\" if heading > 0 else \"left\"\n    \n    return frame, turn, {\"heading\": heading}\n\nPrevious scores and retention: [{\"round\": 1, \"correct\": 0, \"retained\": false}, {\"round\": 2, \"correct\": 55, \"retained\": false}, {\"round\": 3, \"correct\": 52, \"retained\": false}, {\"round\": 4, \"correct\": 58, \"retained\": true}, {\"round\": 5, \"correct\": 58, \"retained\": false}, {\"round\": 6, \"correct\": 58, \"retained\": false}, {\"round\": 7, \"correct\": 58, \"retained\": false}, {\"round\": 8, \"correct\": 58, \"retained\": false}]\nLast candidate compared with its actual parent: {\"fixed\": {\"count\": 0, \"example\": null}, \"new_error\": {\"count\": 0, \"example\": null}, \"still_wrong\": {\"count\": 62, \"example\": {\"target\": \"garbage can\", \"views\": [{\"step\": 2, \"heading\": -90, \"pitch\": 45, \"right_of_end_m\": 2.75, \"forward_of_end_m\": 0.0}, {\"step\": 8, \"heading\": 90, \"pitch\": 30, \"right_of_end_m\": 2.25, \"forward_of_end_m\": 0.0}], \"visual_readings\": {\"point\": [[0.35, 0.68], null]}, \"answer\": \"left\", \"correct\": \"right\", \"trace\": {\"heading\": -90}, \"error\": null}}}",
+ "raw": "Failure hypothesis: The model incorrectly assumes that a higher horizontal fraction in a point corresponds to a right turn, but in some cases the object is offset due to camera position and heading. When the camera is facing left (-90), a point at 0.35 is actually more right than a point at 0.25, but the lateral offset calculation fails to account for the heading direction. This leads to wrong turn decisions when the object is symmetric or when the camera is mirrored.\n\nRegression: In cases where the target is visible in both frames but with opposite heading directions, the point-based inference fails because it does not adjust for heading orientation. The model should use the point only after validating the heading context.\n\n```python\ndef decide(observation, tools):\n    views = observation['views']\n    frame0 = views[0]\n    frame1 = views[1]\n    \n    point0 = tools.point()[0]\n    point1 = tools.point()[1]\n    \n    # Prefer frame with valid point data\n    if point0 is not None and point1 is not None:\n        # Compare horizontal positions with heading context\n        h0, h1 = point0[0], point1[0]\n        h0_frame = frame0['heading']\n        h1_frame = frame1['heading']\n        \n        # If both frames have points, use the one where the point is more right relative to heading\n        # For positive heading (right), higher x is more right; for negative (left), higher x is more left\n        # So we need to compare relative to direction\n        if h0_frame > 0 and h1_frame > 0:\n            # Both facing right: higher horizontal fraction means more right\n            if h1 > h0:\n                frame = 1\n            else:\n                frame = 0\n        elif h0_frame < 0 and h1_frame < 0:\n            # Both facing left: higher horizontal fraction means more left (so we want lower x)\n            if h1 < h0:\n                frame = 1\n            else:\n                frame = 0\n        else:\n            # Mixed heading: use the frame with higher point score or better match\n            match_scores = tools.match()\n            frame = 1 if match_scores[1] > match_scores[0] else 0\n    elif point0 is not None:\n        frame = 0\n    elif point1 is not None:\n        frame = 1\n    else:\n        # No point data: use match score\n        match_scores = tools.match()\n        frame = 1 if match_scores[1] > match_scores[0] else 0\n    \n    heading = views[frame]['heading']\n    turn = \"right\" if heading > 0 else \"left\"\n    \n    return frame, turn, {\"heading\": heading}\n```",
+ "source": "def decide(observation, tools):\n    views = observation['views']\n    frame0 = views[0]\n    frame1 = views[1]\n    \n    point0 = tools.point()[0]\n    point1 = tools.point()[1]\n    \n    # Prefer frame with valid point data\n    if point0 is not None and point1 is not None:\n        # Compare horizontal positions with heading context\n        h0, h1 = point0[0], point1[0]\n        h0_frame = frame0['heading']\n        h1_frame = frame1['heading']\n        \n        # If both frames have points, use the one where the point is more right relative to heading\n        # For positive heading (right), higher x is more right; for negative (left), higher x is more left\n        # So we need to compare relative to direction\n        if h0_frame > 0 and h1_frame > 0:\n            # Both facing right: higher horizontal fraction means more right\n            if h1 > h0:\n                frame = 1\n            else:\n                frame = 0\n        elif h0_frame < 0 and h1_frame < 0:\n            # Both facing left: higher horizontal fraction means more left (so we want lower x)\n            if h1 < h0:\n                frame = 1\n            else:\n                frame = 0\n        else:\n            # Mixed heading: use the frame with higher point score or better match\n            match_scores = tools.match()\n            frame = 1 if match_scores[1] > match_scores[0] else 0\n    elif point0 is not None:\n        frame = 0\n    elif point1 is not None:\n        frame = 1\n    else:\n        # No point data: use match score\n        match_scores = tools.match()\n        frame = 1 if match_scores[1] > match_scores[0] else 0\n    \n    heading = views[frame]['heading']\n    turn = \"right\" if heading > 0 else \"left\"\n    \n    return frame, turn, {\"heading\": heading}\n",
+ "hash": "cc258c01bf6966a193e223fbb8acf600af884a3f75e5edb9c5b0bd10a0bc1ed5",
+ "parent_hash": "e9eb6fab55289aa55cdd724ad59bdf1d0f940e467f114aaf3784dd8ae7a3a533",
+ "parent_round": 4,
+ "diff": "--- \n+++ \n@@ -3,31 +3,45 @@\n     frame0 = views[0]\n     frame1 = views[1]\n     \n-    # Use point data if available to infer lateral position\n     point0 = tools.point()[0]\n     point1 = tools.point()[1]\n     \n-    # If both point data are available, prefer the one with valid coordinates\n+    # Prefer frame with valid point data\n     if point0 is not None and point1 is not None:\n-        # Compare horizontal positions: higher x means more right\n-        # We use the frame with higher horizontal fraction to infer direction\n-        if point1[0] > point0[0]:\n-            frame = 1\n+        # Compare horizontal positions with heading context\n+        h0, h1 = point0[0], point1[0]\n+        h0_frame = frame0['heading']\n+        h1_frame = frame1['heading']\n+        \n+        # If both frames have points, use the one where the point is more right relative to heading\n+        # For positive heading (right), higher x is more right; for negative (left), higher x is more left\n+        # So we need to compare relative to direction\n+        if h0_frame > 0 and h1_frame > 0:\n+            # Both facing right: higher horizontal fraction means more right\n+            if h1 > h0:\n+                frame = 1\n+            else:\n+                frame = 0\n+        elif h0_frame < 0 and h1_frame < 0:\n+            # Both facing left: higher horizontal fraction means more left (so we want lower x)\n+            if h1 < h0:\n+                frame = 1\n+            else:\n+                frame = 0\n         else:\n-            frame = 0\n+            # Mixed heading: use the frame with higher point score or better match\n+            match_scores = tools.match()\n+            frame = 1 if match_scores[1] > match_scores[0] else 0\n     elif point0 is not None:\n         frame = 0\n     elif point1 is not None:\n         frame = 1\n     else:\n-        # Fall back to match score: higher similarity means use that frame\n+        # No point data: use match score\n         match_scores = tools.match()\n         frame = 1 if match_scores[1] > match_scores[0] else 0\n     \n-    # Get the heading from the selected frame\n     heading = views[frame]['heading']\n-    \n-    # Determine turn: positive heading means right, negative means left\n     turn = \"right\" if heading > 0 else \"left\"\n     \n     return frame, turn, {\"heading\": heading}\n",
+ "rank": [
+  58,
+  1,
+  -240
+ ],
+ "input_tokens": 1982,
+ "output_tokens": 587,
+ "generation_seconds": 11.016564837016631,
+ "device_map": {
+  "": "0"
+ },
+ "rows": [
+  {
+   "key": "03c91ee1bcfb9e071d",
+   "frame": 0,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0008032760233618319,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "062c67a182d9176417",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0012213660520501435,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "074ce75998c718aff2",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point",
+    "match"
+   ],
+   "seconds": 0.0007354810368269682,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "0c68d534e6f95a0679",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.001094588020350784,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "10aaa99e19f38d37ea",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007545499829575419,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "116c7e7e161d62790f",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0010775800328701735,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "15c585fc79f3084c36",
+   "frame": 0,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007081509684212506,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "1746c5f1bd38f86957",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007174480124376714,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "191752d9429519352a",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.001038669957779348,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "1f5d13c72a5958bcb9",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007046190439723432,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "24141606cab140935f",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.000723914010450244,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "2c80498a5e62e125f9",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007567449938505888,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "2c9896007661b29b53",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007181800319813192,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "2e397f712266eeb28f",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0011106599704362452,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "2e3dcc8e61f6bb7630",
+   "frame": 0,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007338330033235252,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "2e9363e9734ce44ec0",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0010795300477184355,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "308454cd14fabfbac3",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007228099857456982,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "330081892500e65fcd",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007262100116349757,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "34c1378b601efa30d4",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007163050468079746,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "3c888e7b9da4f9598b",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007095990004017949,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "3f6cad27a3b10fa98c",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007411050028167665,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "436b91d25234c6b2c1",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007278529810719192,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "45e0f01089be9fe665",
+   "frame": 0,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007434849976561964,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "46bff1770335c58602",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007231759955175221,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "46dd4431529e1c4986",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007417729939334095,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "49009701bd937c84b6",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007965080440044403,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "4ccfb27ae0aa10ae37",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007264770101755857,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "4dc72c417397fb5a94",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007233800133690238,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "4e591ea0f43f05f5f7",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007193110068328679,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "501543ca64a83c630c",
+   "frame": 0,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007227889727801085,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "54898a5323c571b5b8",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007188650197349489,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "55eb52e5428fb003fc",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007704839808866382,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "5cd0762095264a566a",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007664019940420985,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "5f7ec8ac276247fd1f",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007068429840728641,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "5fd7c722f2ebbd008b",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007349879597313702,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "6074da525c23caf9d2",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007331289816647768,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "610001d1105e2d40b1",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007687009638175368,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "66c3a7a896e31fc98f",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007461709901690483,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "6a767374dbd55f8569",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007232130155898631,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "6c5ce13da47198b9a7",
+   "frame": 0,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007338880095630884,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "6dd85f06cd0eaf1a6f",
+   "frame": 0,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.000722500029951334,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "6e8ef18f4dde6ba36c",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007131050224415958,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "7039b29864405ce7ee",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007560850353911519,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "70f9f3778d9d00b2d5",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.000753925007302314,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "75627ffd2e32decc91",
+   "frame": 0,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007538119680248201,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "75863e91edae4f2357",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007543079555034637,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "77c0734fab679ebef1",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007248679758049548,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "7887dc30089536d491",
+   "frame": 0,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.000718199007678777,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "7bb3ee2424b4a01b52",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007220989791676402,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "7cc07d2526899fd215",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007469810079783201,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "818d604bc141d80b02",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007492949953302741,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "8378933114a8f4528b",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point",
+    "match"
+   ],
+   "seconds": 0.0007251999923028052,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "85d7d341be40b740ba",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007385159842669964,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "885ce641cab8138937",
+   "frame": 0,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007589670130982995,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "895653b9d17390fd5c",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007741710287518799,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "8ab9e869556ba88dd7",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.000727921025827527,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "8c0b78f353bc1cce92",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007407369557768106,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "8ec8716800fcc85c84",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007536860066466033,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "8ed369574d1181a0da",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007711840444244444,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "904e2e43ac36ac24b6",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007396400324068964,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "91759234299aba7165",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007284300518222153,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "9314b16410a0f9ca82",
+   "frame": 0,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007208409951999784,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "96086aa5057f869046",
+   "frame": 0,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.000716135953553021,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "982d9aef01d7d10713",
+   "frame": 0,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007377470028586686,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "9850df202aef645496",
+   "frame": 0,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007500560022890568,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "9911918f4b8b2648ae",
+   "frame": 0,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.000748760998249054,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "9b2581e30a7f0dd148",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007358620059676468,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "9b2aaff0a5fcede7e0",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007717699627391994,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "9cab80c8ef03a58e76",
+   "frame": 0,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007368650403805077,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "9d79d54de24e157c93",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007541629602201283,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "a104e3be7f82679ef2",
+   "frame": 0,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007139899535104632,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "a930df1f39591710f5",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007176150102168322,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "aa69b7a6ce6f7ac466",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007256669923663139,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "abe9f9c925aef25e13",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.000717120012268424,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "ac669b871650df0225",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007199230021797121,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "b026c7454cb2ad9bec",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.000738409988116473,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "b098ef9ddd277fe023",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.000746790028642863,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "b5aab8216f010707d1",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007601790130138397,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "b7eb67269b22b76060",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007429569959640503,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "b7f5d9f780b5100b3c",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007287979824468493,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "bd6152806f29764f3a",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007494320161640644,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "bf3bc1a7c336437de6",
+   "frame": 0,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007634600042365491,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "c039f8751bb2166805",
+   "frame": 0,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0008216709829866886,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "c0ca4798d234ac0620",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007726880139671266,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "c32909fa23ccaf3795",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007634049979969859,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "c5445e2f357b7b1c16",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007631410262547433,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "c5985dcd91d7aff5e1",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.000774092972278595,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "c5acd581cdc3cfbbf1",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007500220090150833,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "c982c36a0de3d5b30f",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point",
+    "match"
+   ],
+   "seconds": 0.0006944200140424073,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "cecc9fec89ae82d821",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.000766666023992002,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "d7817a45b3c4ed1f28",
+   "frame": 0,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007648380124010146,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "d78cc25b566a12bd2f",
+   "frame": 0,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007165030110627413,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "d859057420b939ea29",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007440380286425352,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "d882ecc6355beac3c1",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007612329791299999,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "d97c16e6a6364f8111",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007266679895110428,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "d9959f4c06dc811431",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007530319853685796,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "db13966135c7684f73",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007719499990344048,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "dc189a45e7082f5c74",
+   "frame": 0,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.000745398981962353,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "dde5a5b74070889185",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007551420130766928,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "ded25d4fe7664e2160",
+   "frame": 0,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007192110060714185,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "dfd0829e7208453caa",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007691280334256589,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "e10b15c7b940fc0978",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point",
+    "match"
+   ],
+   "seconds": 0.0007331949891522527,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "e1f16928e5a81da0d7",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007962369709275663,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "e3f8d26f9b4b16c93b",
+   "frame": 0,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007524630054831505,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "e4b3beffa3ab6132c7",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point",
+    "match"
+   ],
+   "seconds": 0.0007114179898053408,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "e74b81f87de1ffb9a4",
+   "frame": 0,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007475549937225878,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "e92122f9e347da9aba",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007301139994524419,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "eb8909a31f3f9ae16e",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007408889941871166,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "ee0979d30dd01bf824",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.000767934019677341,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "efb3f7fc7b1c9d0b4a",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007789289811626077,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "f1657a831c87b6ff3c",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007292119553312659,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "f46ef1cf9750bb3939",
+   "frame": 0,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007524410029873252,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "f4e639bb4749ca4af3",
+   "frame": 0,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007574889459647238,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "f5e144a71cbc679b94",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007796309655532241,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "f5ea785488d7381116",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007556999917142093,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "f73ddf5011893d7a42",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007408719975501299,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "fb072b4c6bbeeec0df",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007573249749839306,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "fb2675f02f73600b86",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007483100052922964,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "fb570bef0a4972422e",
+   "frame": 0,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007463579531759024,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "ff84f7120fb227d05f",
+   "frame": 0,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point"
+   ],
+   "seconds": 0.0007052180008031428,
+   "isolated": true,
+   "ok": true
+  }
+ ],
+ "diagnostic": {
+  "fixed": {
+   "count": 0,
+   "example": null
+  },
+  "new_error": {
+   "count": 0,
+   "example": null
+  },
+  "still_wrong": {
+   "count": 62,
+   "example": {
+    "target": "garbage can",
+    "views": [
+     {
+      "step": 2,
+      "heading": -90,
+      "pitch": 45,
+      "right_of_end_m": 2.75,
+      "forward_of_end_m": 0.0
+     },
+     {
+      "step": 8,
+      "heading": 90,
+      "pitch": 30,
+      "right_of_end_m": 2.25,
+      "forward_of_end_m": 0.0
+     }
+    ],
+    "visual_readings": {
+     "point": [
+      [
+       0.35,
+       0.68
+      ],
+      null
+     ]
+    },
+    "answer": "left",
+    "correct": "right",
+    "trace": {
+     "heading": -90
+    },
+    "error": null
+   }
+  }
+ },
+ "accepted": false
+}

@@ -1,0 +1,7 @@
+version,seed,start,key,family,B_frame,C_frame,B_action,C_action,B_joint,C_joint
+2,47,direct,0c7244eb8c7ee27765,target,1,1,left,right,False,True
+2,47,direct,1179cb6457ffc5955d,endpoint,1,0,left,left,False,True
+2,47,direct,447c32d911eccdebeb,target,1,0,left,left,False,False
+2,47,direct,bd1c69f4028a6680ea,endpoint,1,0,left,left,False,False
+2,47,direct,ce2ccd4bb5cfd57a64,reliability,1,0,left,left,True,True
+2,47,direct,fa4746f7c265fc997e,target,1,0,left,left,False,True

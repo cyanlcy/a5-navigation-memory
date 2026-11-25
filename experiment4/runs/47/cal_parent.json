@@ -1,0 +1,285 @@
+{
+ "prompt": "Photograph direction at capture and target direction after walking can differ. Consider how recorded position changes the bearing. Write a complete executable Python robot controller to return to an object seen earlier.\nInputs for decide(observation, tools): observation['target'] is a category, ['views'] is two old camera poses in time order. Each has heading (degrees relative to final facing, +90 right, -90 left), pitch, right_of_end_m and forward_of_end_m (old camera relative to final position, metres), step. observation['movement'] is recorded actions. Target is hidden at endpoint; one left/right turn reveals it. Each problem is independent. Coordinate convention: if the old camera was x metres to the right of the endpoint, an object d metres ahead along a +90 old heading has final lateral coordinate x+d, or x-d for a -90 heading. Positive means turn right. The actual d is unknown. The starting method ignores x; consider a plausible estimate or visual evidence. You choose how and when to use it.\nThere are just TWO calls across all tools combined, including repeats. Choose only one or two readings to use. A returned None action gets zero. tools.match() gives two CLIP similarities (larger better). tools.identify() gives two old-frame visual identification logits; tools.direct() gives two RGB+motion turn logits ordered left,right. tools.locate() gives two estimated camera-to-target forward ranges in metres from RGB; 0 means not detected. tools.point() returns two entries (one per old image); each is [horizontal_fraction,vertical_fraction] at the estimated bottom of the object, or None when absent. Image top-left is (0,0). Only use tools explicitly listed below. The raw RGB values are available in observation['rgb'] as three 24x24 RGB arrays when the observation includes them. If supplied, observation['calibration'] gives the robot camera height over the floor in metres and vertical field of view in degrees. A positive pitch looks down. In the calibrated four-question layout, queried objects rest on the floor. All evidence comes from frozen readings on public RGB.\nReturn (frame_index:int 0 or 1, action:'left' or 'right', trace:small dict). Write plain Python functions only, no imports, type annotations, docstrings, printing, exception handling, variable attributes or dictionary methods. Standard sin,cos,tan,atan,atan2,radians,sqrt,abs,all,any,bool,dict,enumerate,float,int,len,list,max,min,range,round,sorted,sum,tuple,zip,str and arithmetic are available. Use square brackets to access fields. Score first on whole paired tasks (valid evidence and action on BOTH), then on action accuracy and fewer calls. Return one fenced Python program.\nDebugging guide: Reproduce a failure. Compare its execution with a successful case. Identify the first divergence. Change one cause and check the regression on an earlier success.\nParent source:\ndef decide(observation, tools):\n    scores = tools.match()\n    frame = int(scores[1] > scores[0])\n    heading = observation[\"views\"][frame][\"heading\"]\n    return frame, \"right\" if heading > 0 else \"left\", {\"heading\": heading}\n\nDevelopment feedback: {\"still_wrong\": {\"count\": 6, \"example\": {\"family\": \"endpoint\", \"valid_frame\": true, \"action_ok\": false, \"calls\": [\"match\"], \"error\": null, \"trace\": {\"heading\": -90}}}, \"stable\": {\"count\": 6, \"example\": {\"family\": \"reliability\", \"valid_frame\": true, \"action_ok\": true, \"calls\": [\"match\"], \"error\": null, \"trace\": {\"heading\": 90}}}}",
+ "raw": "```python\ndef decide(observation, tools):\n    # Use match to select frame with higher similarity\n    scores = tools.match()\n    frame = 1 if scores[1] > scores[0] else 0\n    \n    # Get the heading from the selected frame\n    view = observation[\"views\"][frame]\n    heading = view[\"heading\"]\n    \n    # Determine action based on heading: positive means turn right, negative means turn left\n    action = \"right\" if heading > 0 else \"left\"\n    \n    # Return frame index, action, and trace with heading\n    return frame, action, {\"heading\": heading}\n```",
+ "input_tokens": 784,
+ "output_tokens": 133,
+ "seconds": 2.522327409009449,
+ "seed": 4717,
+ "source": "def decide(observation, tools):\n    # Use match to select frame with higher similarity\n    scores = tools.match()\n    frame = 1 if scores[1] > scores[0] else 0\n    \n    # Get the heading from the selected frame\n    view = observation[\"views\"][frame]\n    heading = view[\"heading\"]\n    \n    # Determine action based on heading: positive means turn right, negative means turn left\n    action = \"right\" if heading > 0 else \"left\"\n    \n    # Return frame index, action, and trace with heading\n    return frame, action, {\"heading\": heading}\n",
+ "parent": "def decide(observation, tools):\n    scores = tools.match()\n    frame = int(scores[1] > scores[0])\n    heading = observation[\"views\"][frame][\"heading\"]\n    return frame, \"right\" if heading > 0 else \"left\", {\"heading\": heading}\n",
+ "parent_hash": "5e8da065da852c6a8d20e3c952c777dded68248122817a5de17fb60e7518c700",
+ "diff": "--- \n+++ \n@@ -1,5 +1,14 @@\n def decide(observation, tools):\n+    # Use match to select frame with higher similarity\n     scores = tools.match()\n-    frame = int(scores[1] > scores[0])\n-    heading = observation[\"views\"][frame][\"heading\"]\n-    return frame, \"right\" if heading > 0 else \"left\", {\"heading\": heading}\n+    frame = 1 if scores[1] > scores[0] else 0\n+    \n+    # Get the heading from the selected frame\n+    view = observation[\"views\"][frame]\n+    heading = view[\"heading\"]\n+    \n+    # Determine action based on heading: positive means turn right, negative means turn left\n+    action = \"right\" if heading > 0 else \"left\"\n+    \n+    # Return frame index, action, and trace with heading\n+    return frame, action, {\"heading\": heading}\n",
+ "rank": [
+  0.16666666666666666,
+  9,
+  -12
+ ],
+ "parent_rank": [
+  0.16666666666666666,
+  9,
+  -12
+ ],
+ "rows": [
+  {
+   "key": "1e422bf2473d2c84c8",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "match"
+   ],
+   "attempts": [
+    "match"
+   ],
+   "seconds": 0.0003878719871863723,
+   "isolated": true,
+   "ok": false,
+   "good_frame": true,
+   "joint": false
+  },
+  {
+   "key": "3e2e771f1c69862b19",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "match"
+   ],
+   "attempts": [
+    "match"
+   ],
+   "seconds": 0.00036409503081813455,
+   "isolated": true,
+   "ok": true,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "41694b17305d6715e3",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "match"
+   ],
+   "attempts": [
+    "match"
+   ],
+   "seconds": 0.00038093398325145245,
+   "isolated": true,
+   "ok": true,
+   "good_frame": true,
+   "joint": true
+  },
+  {
+   "key": "4de63ff445caebb9a3",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "match"
+   ],
+   "attempts": [
+    "match"
+   ],
+   "seconds": 0.0003796980017796159,
+   "isolated": true,
+   "ok": true,
+   "good_frame": true,
+   "joint": true
+  },
+  {
+   "key": "809e4ebeb6d8426ba6",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "match"
+   ],
+   "attempts": [
+    "match"
+   ],
+   "seconds": 0.0003642149968072772,
+   "isolated": true,
+   "ok": true,
+   "good_frame": true,
+   "joint": true
+  },
+  {
+   "key": "8691bab58eb3bbdfe5",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "match"
+   ],
+   "attempts": [
+    "match"
+   ],
+   "seconds": 0.0003797300159931183,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "93276495f93473a4a2",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "match"
+   ],
+   "attempts": [
+    "match"
+   ],
+   "seconds": 0.00037380401045084,
+   "isolated": true,
+   "ok": true,
+   "good_frame": true,
+   "joint": true
+  },
+  {
+   "key": "987f57fce51bbc980f",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "match"
+   ],
+   "attempts": [
+    "match"
+   ],
+   "seconds": 0.0003839090350084007,
+   "isolated": true,
+   "ok": true,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "b0ebba563a84ec0d01",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "match"
+   ],
+   "attempts": [
+    "match"
+   ],
+   "seconds": 0.00036728696431964636,
+   "isolated": true,
+   "ok": true,
+   "good_frame": true,
+   "joint": true
+  },
+  {
+   "key": "c774e811487548a25e",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "heading": 90
+   },
+   "calls": [
+    "match"
+   ],
+   "attempts": [
+    "match"
+   ],
+   "seconds": 0.00039134599501267076,
+   "isolated": true,
+   "ok": true,
+   "good_frame": true,
+   "joint": true
+  },
+  {
+   "key": "c8c3904c9ac5b3b4b3",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "match"
+   ],
+   "attempts": [
+    "match"
+   ],
+   "seconds": 0.0003474010154604912,
+   "isolated": true,
+   "ok": true,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "fab4fbab007844aab8",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "heading": -90
+   },
+   "calls": [
+    "match"
+   ],
+   "attempts": [
+    "match"
+   ],
+   "seconds": 0.0003749990137293935,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  }
+ ],
+ "feedback": {
+  "still_wrong": {
+   "count": 6,
+   "example": {
+    "family": "endpoint",
+    "valid_frame": true,
+    "action_ok": false,
+    "calls": [
+     "match"
+    ],
+    "error": null,
+    "trace": {
+     "heading": -90
+    }
+   }
+  },
+  "stable": {
+   "count": 6,
+   "example": {
+    "family": "reliability",
+    "valid_frame": true,
+    "action_ok": true,
+    "calls": [
+     "match"
+    ],
+    "error": null,
+    "trace": {
+     "heading": 90
+    }
+   }
+  }
+ },
+ "accepted": false
+}

@@ -1,0 +1,3203 @@
+{
+ "round": 11,
+ "arm": "C",
+ "seed": 7111,
+ "model": "models/coder",
+ "gpu": "1",
+ "prompt": "Photograph direction at capture and target direction after walking can differ. Consider how recorded position changes the bearing. Write a complete executable Python robot controller to return to an object seen earlier.\nInputs for decide(observation, tools): observation['target'] is a category, ['views'] is two old camera poses in time order. Each has heading (degrees relative to final facing, +90 right, -90 left), pitch, right_of_end_m and forward_of_end_m (old camera relative to final position, metres), step. observation['movement'] is recorded actions. Target is hidden at endpoint; one left/right turn reveals it. Each problem is independent. Coordinate convention: if the old camera was x metres to the right of the endpoint, an object d metres ahead along a +90 old heading has final lateral coordinate x+d, or x-d for a -90 heading. Positive means turn right. The actual d is unknown. The starting method ignores x; consider a plausible estimate or visual evidence. You choose how and when to use it.\nThere are just TWO calls across all tools combined, including repeats. Choose only one or two readings to use. A returned None action gets zero. tools.match() gives two CLIP similarities (larger better). tools.identify() gives two old-frame visual identification logits; tools.direct() gives two RGB+motion turn logits ordered left,right. tools.locate() gives two estimated camera-to-target forward ranges in metres from RGB; 0 means not detected. tools.point() returns two entries (one per old image); each is [horizontal_fraction,vertical_fraction] at the estimated bottom of the object, or None when absent. Image top-left is (0,0). Only use tools explicitly listed below. The raw RGB values are available in observation['rgb'] as three 24x24 RGB arrays when the observation includes them. If supplied, observation['calibration'] gives the robot camera height over the floor in metres and vertical field of view in degrees. A positive pitch looks down. In the calibrated four-question layout, queried objects rest on the floor. All evidence comes from frozen readings on public RGB.\nReturn (frame_index:int 0 or 1, action:'left' or 'right', trace:small dict). Write plain Python functions only, no imports, type annotations, docstrings, printing, exception handling, variable attributes or dictionary methods. Standard sin,cos,tan,atan,atan2,radians,sqrt,abs,all,any,bool,dict,enumerate,float,int,len,list,max,min,range,round,sorted,sum,tuple,zip,str and arithmetic are available. Use square brackets to access fields. Optimize development accuracy, both members of a pair correct, then fewer calls. Respond with a short failure hypothesis and potential regression then ONE fenced python code block containing the entire program. Do not copy labels from examples into rules.\nAvailable tools: direct, identify, locate, match, point\nCommon example: [{\"observation\": {\"target\": \"garbage can\", \"views\": [{\"step\": 2, \"heading\": 90, \"pitch\": 30, \"right_of_end_m\": 2.75, \"forward_of_end_m\": 0.0}, {\"step\": 8, \"heading\": -90, \"pitch\": 45, \"right_of_end_m\": 2.25, \"forward_of_end_m\": 0.0}], \"endpoint_pitch\": 45, \"calibration\": {\"height_m\": 1.575, \"vertical_fov_deg\": 80}, \"movement\": [[\"start\", 1], [\"RotateRight\", 1], [\"LookDown\", 1], [\"LookUp\", 1], [\"RotateLeft\", 1], [\"MoveLeft\", 2], [\"RotateLeft\", 1], [\"LookDown\", 1], [\"LookUp\", 1], [\"RotateRight\", 1], [\"MoveLeft\", 5], [\"LookDown\", 1], [\"LookUp\", 1], [\"MoveLeft\", 4], [\"LookDown\", 1]]}, \"visual\": {\"match\": [0.19941438734531403, 0.2411607950925827], \"identify\": [17.875, 23.375], \"direct\": [19.625, 19.125], \"locate\": [0.0, 4.5], \"point\": [null, [0.35, 0.68]]}, \"answer\": \"right\"}, {\"observation\": {\"target\": \"pillow\", \"views\": [{\"step\": 2, \"heading\": 90, \"pitch\": 30, \"right_of_end_m\": 2.75, \"forward_of_end_m\": 0.0}, {\"step\": 8, \"heading\": -90, \"pitch\": 45, \"right_of_end_m\": 2.25, \"forward_of_end_m\": 0.0}], \"endpoint_pitch\": 45, \"calibration\": {\"height_m\": 1.575, \"vertical_fov_deg\": 80}, \"movement\": [[\"start\", 1], [\"RotateRight\", 1], [\"LookDown\", 1], [\"LookUp\", 1], [\"RotateLeft\", 1], [\"MoveLeft\", 2], [\"RotateLeft\", 1], [\"LookDown\", 1], [\"LookUp\", 1], [\"RotateRight\", 1], [\"MoveLeft\", 5], [\"LookDown\", 1], [\"LookUp\", 1], [\"MoveLeft\", 4], [\"LookDown\", 1]]}, \"visual\": {\"match\": [0.22206290066242218, 0.1982342004776001], \"identify\": [19.5, 22.5], \"direct\": [20.0, 19.375], \"locate\": [0.0, 2.5], \"point\": [null, [0.35, 0.48]]}, \"answer\": \"left\"}]\nStarting correct count: 55/120\nParent source:\ndef decide(observation, tools):\n    scores = tools.match()\n    frame = int(scores[1] > scores[0])\n    direct_scores = tools.direct()\n    turn = \"left\" if direct_scores[0] > direct_scores[1] else \"right\"\n    return frame, turn, {\"match\": scores, \"direct\": direct_scores}\n\nPrevious scores and retention: [{\"round\": 1, \"correct\": 28, \"retained\": false}, {\"round\": 2, \"correct\": 32, \"retained\": false}, {\"round\": 3, \"correct\": 50, \"retained\": false}, {\"round\": 4, \"correct\": 2, \"retained\": false}, {\"round\": 5, \"correct\": 55, \"retained\": false}, {\"round\": 6, \"correct\": 55, \"retained\": false}, {\"round\": 7, \"correct\": 0, \"retained\": false}, {\"round\": 8, \"correct\": 58, \"retained\": true}, {\"round\": 9, \"correct\": 0, \"retained\": false}, {\"round\": 10, \"correct\": 0, \"retained\": false}]\nLast candidate compared with its actual parent: {\"fixed\": {\"count\": 0, \"example\": null}, \"new_error\": {\"count\": 58, \"example\": {\"target\": \"garbage can\", \"views\": [{\"step\": 2, \"heading\": -90, \"pitch\": 45, \"right_of_end_m\": 2.5, \"forward_of_end_m\": 0.0}, {\"step\": 9, \"heading\": 90, \"pitch\": 30, \"right_of_end_m\": 1.75, \"forward_of_end_m\": 0.0}], \"visual_readings\": {\"direct\": [19.875, 18.5], \"point\": [null, null]}, \"answer\": null, \"correct\": \"left\", \"trace\": null, \"error\": \"ValueError: visual budget exceeded\"}}, \"still_wrong\": {\"count\": 62, \"example\": {\"target\": \"coffee machine\", \"views\": [{\"step\": 2, \"heading\": 90, \"pitch\": 45, \"right_of_end_m\": -1.75, \"forward_of_end_m\": 0.0}, {\"step\": 7, \"heading\": -90, \"pitch\": 45, \"right_of_end_m\": -1.5, \"forward_of_end_m\": 0.0}], \"visual_readings\": {\"direct\": [19.375, 19.0], \"point\": [[0.45, 0.75], null]}, \"answer\": null, \"correct\": \"right\", \"trace\": null, \"error\": \"ValueError: visual budget exceeded\"}}}",
+ "raw": "Failure hypothesis: The current solution exceeds the tool call budget by using more than two tool calls (e.g., `match`, `direct`, `point`, `locate`, `identify`) across the entire problem, which is explicitly forbidden. The regression occurs when the controller attempts to use multiple tools without proper prioritization or when it fails to detect the target early enough, leading to a missed opportunity to use only two valid calls.\n\nRegression: Using `point` and `locate` without verifying their availability or relevance leads to unnecessary tool usage, violating the constraint of only two tool calls total.\n\nOptimized solution: Use only two calls — `match` and `direct` — to determine the frame and turn. `match` identifies which of the two old views is more similar to the current view (to choose the correct frame), and `direct` gives the turn preference (left/right) based on motion and visual cues. Avoid any calls to `point`, `locate`, or `identify` unless absolutely necessary, which they are not here.\n\n```python\ndef decide(observation, tools):\n    scores = tools.match()\n    frame = int(scores[1] > scores[0])\n    direct_scores = tools.direct()\n    turn = \"left\" if direct_scores[0] > direct_scores[1] else \"right\"\n    return frame, turn, {\"match\": scores, \"direct\": direct_scores}\n```",
+ "source": "def decide(observation, tools):\n    scores = tools.match()\n    frame = int(scores[1] > scores[0])\n    direct_scores = tools.direct()\n    turn = \"left\" if direct_scores[0] > direct_scores[1] else \"right\"\n    return frame, turn, {\"match\": scores, \"direct\": direct_scores}\n",
+ "hash": "d184f2592d1dc20c85093b760c723d4b16a381a312bffdfbf538a8cce2592700",
+ "parent_hash": "d184f2592d1dc20c85093b760c723d4b16a381a312bffdfbf538a8cce2592700",
+ "parent_round": 8,
+ "diff": "",
+ "rank": [
+  58,
+  1,
+  -240
+ ],
+ "input_tokens": 1979,
+ "output_tokens": 285,
+ "generation_seconds": 5.440119063016027,
+ "device_map": {
+  "": "0"
+ },
+ "rows": [
+  {
+   "key": "03c91ee1bcfb9e071d",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.20381203293800354,
+     0.22436556220054626
+    ],
+    "direct": [
+     19.375,
+     19.0
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00042378599755465984,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "062c67a182d9176417",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.21949787437915802,
+     0.2292344570159912
+    ],
+    "direct": [
+     19.75,
+     18.375
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00039710698183625937,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "074ce75998c718aff2",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.2251499444246292,
+     0.2256028801202774
+    ],
+    "direct": [
+     19.875,
+     18.5
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.000353328010533005,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "0c68d534e6f95a0679",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.2053077220916748,
+     0.2008315622806549
+    ],
+    "direct": [
+     18.625,
+     18.5
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00034975301241502166,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "10aaa99e19f38d37ea",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.23216788470745087,
+     0.21601034700870514
+    ],
+    "direct": [
+     18.75,
+     18.375
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003613400040194392,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "116c7e7e161d62790f",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.222371444106102,
+     0.24131843447685242
+    ],
+    "direct": [
+     18.5,
+     18.125
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003552880370989442,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "15c585fc79f3084c36",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.1888824701309204,
+     0.22401221096515656
+    ],
+    "direct": [
+     19.0,
+     18.625
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003513580304570496,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "1746c5f1bd38f86957",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.21183116734027863,
+     0.22307345271110535
+    ],
+    "direct": [
+     19.5,
+     18.375
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003903780016116798,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "191752d9429519352a",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.21598321199417114,
+     0.21939943730831146
+    ],
+    "direct": [
+     18.5,
+     18.25
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003657219931483269,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "1f5d13c72a5958bcb9",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.24516281485557556,
+     0.2170957773923874
+    ],
+    "direct": [
+     19.625,
+     19.5
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00036634295247495174,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "24141606cab140935f",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.24174977838993073,
+     0.26889488101005554
+    ],
+    "direct": [
+     19.25,
+     18.875
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003609560080803931,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "2c80498a5e62e125f9",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.2199677675962448,
+     0.22190843522548676
+    ],
+    "direct": [
+     19.5,
+     19.0
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00037316500674933195,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "2c9896007661b29b53",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.2267245501279831,
+     0.23506321012973785
+    ],
+    "direct": [
+     19.625,
+     18.75
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003774219658225775,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "2e397f712266eeb28f",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.2117154747247696,
+     0.2112782895565033
+    ],
+    "direct": [
+     18.75,
+     18.125
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003897150163538754,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "2e3dcc8e61f6bb7630",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.25518521666526794,
+     0.2288859784603119
+    ],
+    "direct": [
+     19.75,
+     19.25
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00037135800812393427,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "2e9363e9734ce44ec0",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.22570282220840454,
+     0.2390209287405014
+    ],
+    "direct": [
+     19.5,
+     19.125
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.000375898031052202,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "308454cd14fabfbac3",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.22813336551189423,
+     0.23446045815944672
+    ],
+    "direct": [
+     19.625,
+     19.125
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00037688197335228324,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "330081892500e65fcd",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.2498537302017212,
+     0.24539966881275177
+    ],
+    "direct": [
+     19.0,
+     18.625
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00036765000550076365,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "34c1378b601efa30d4",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.2498537302017212,
+     0.24539966881275177
+    ],
+    "direct": [
+     19.25,
+     18.875
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003796409582719207,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "3c888e7b9da4f9598b",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.22813336551189423,
+     0.23446045815944672
+    ],
+    "direct": [
+     20.125,
+     19.5
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003778240061365068,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "3f6cad27a3b10fa98c",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.21630118787288666,
+     0.20539000630378723
+    ],
+    "direct": [
+     19.5,
+     18.625
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00035600800765678287,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "436b91d25234c6b2c1",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.21878337860107422,
+     0.20606662333011627
+    ],
+    "direct": [
+     18.875,
+     18.375
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00035586796002462506,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "45e0f01089be9fe665",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.19403605163097382,
+     0.24466609954833984
+    ],
+    "direct": [
+     19.75,
+     19.375
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003713170299306512,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "46bff1770335c58602",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "match": [
+     0.21352806687355042,
+     0.2529366910457611
+    ],
+    "direct": [
+     19.5,
+     19.5
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00038015597965568304,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "46dd4431529e1c4986",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.2211146056652069,
+     0.2162828892469406
+    ],
+    "direct": [
+     19.125,
+     17.875
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.000394312955904752,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "49009701bd937c84b6",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.23216788470745087,
+     0.21601034700870514
+    ],
+    "direct": [
+     18.25,
+     18.125
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003646939876489341,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "4ccfb27ae0aa10ae37",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "match": [
+     0.22003485262393951,
+     0.26605018973350525
+    ],
+    "direct": [
+     18.75,
+     18.75
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003575209993869066,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "4dc72c417397fb5a94",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.2301659882068634,
+     0.2612963020801544
+    ],
+    "direct": [
+     20.0,
+     19.5
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00036583695327863097,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "4e591ea0f43f05f5f7",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.25042447447776794,
+     0.23142647743225098
+    ],
+    "direct": [
+     18.75,
+     18.25
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00035865098470821977,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "501543ca64a83c630c",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.22628270089626312,
+     0.21241359412670135
+    ],
+    "direct": [
+     19.625,
+     19.0
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003671279991976917,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "54898a5323c571b5b8",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.25783082842826843,
+     0.2103561908006668
+    ],
+    "direct": [
+     19.125,
+     18.75
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003814010415226221,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "55eb52e5428fb003fc",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.18395815789699554,
+     0.2060706913471222
+    ],
+    "direct": [
+     19.75,
+     19.375
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00036675395676866174,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "5cd0762095264a566a",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.21054260432720184,
+     0.23068243265151978
+    ],
+    "direct": [
+     19.5,
+     19.0
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0021454489906318486,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "5f7ec8ac276247fd1f",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.22815833985805511,
+     0.2328968644142151
+    ],
+    "direct": [
+     19.5,
+     18.5
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003686299896799028,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "5fd7c722f2ebbd008b",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.23859038949012756,
+     0.23005273938179016
+    ],
+    "direct": [
+     19.25,
+     18.5
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00039066997123882174,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "6074da525c23caf9d2",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.19598941504955292,
+     0.2192973792552948
+    ],
+    "direct": [
+     19.5,
+     19.0
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003591290442273021,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "610001d1105e2d40b1",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.18395815789699554,
+     0.2060706913471222
+    ],
+    "direct": [
+     19.5,
+     19.25
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00035671296063810587,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "66c3a7a896e31fc98f",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.24975238740444183,
+     0.21885637938976288
+    ],
+    "direct": [
+     18.875,
+     18.125
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00036124599864706397,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "6a767374dbd55f8569",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.2304152250289917,
+     0.18784433603286743
+    ],
+    "direct": [
+     18.875,
+     18.125
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003506430075503886,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "6c5ce13da47198b9a7",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.21537098288536072,
+     0.2094908207654953
+    ],
+    "direct": [
+     19.875,
+     19.125
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00036586495116353035,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "6dd85f06cd0eaf1a6f",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.2418566793203354,
+     0.19683843851089478
+    ],
+    "direct": [
+     18.875,
+     18.5
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00035822397330775857,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "6e8ef18f4dde6ba36c",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.241447314620018,
+     0.2110474705696106
+    ],
+    "direct": [
+     19.5,
+     18.5
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003481919993646443,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "7039b29864405ce7ee",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.20397505164146423,
+     0.2109377235174179
+    ],
+    "direct": [
+     19.0,
+     18.625
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00034956703893840313,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "70f9f3778d9d00b2d5",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.1964031457901001,
+     0.22842435538768768
+    ],
+    "direct": [
+     18.75,
+     18.25
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00035983597626909614,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "75627ffd2e32decc91",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.2444770485162735,
+     0.20808881521224976
+    ],
+    "direct": [
+     19.875,
+     19.5
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003532459959387779,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "75863e91edae4f2357",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.22574064135551453,
+     0.2024284154176712
+    ],
+    "direct": [
+     18.25,
+     17.875
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00035879103234037757,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "77c0734fab679ebef1",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.22772592306137085,
+     0.21442575752735138
+    ],
+    "direct": [
+     19.125,
+     17.875
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003608650295063853,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "7887dc30089536d491",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.2216305285692215,
+     0.2208118587732315
+    ],
+    "direct": [
+     19.25,
+     18.75
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00037020398303866386,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "7bb3ee2424b4a01b52",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.23859038949012756,
+     0.23005273938179016
+    ],
+    "direct": [
+     19.0,
+     18.25
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00035537395160645247,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "7cc07d2526899fd215",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.24457578361034393,
+     0.1965334713459015
+    ],
+    "direct": [
+     18.75,
+     18.375
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003608069964684546,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "818d604bc141d80b02",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.2053077220916748,
+     0.2008315622806549
+    ],
+    "direct": [
+     19.0,
+     18.75
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003652949817478657,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "8378933114a8f4528b",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.18679341673851013,
+     0.2002187818288803
+    ],
+    "direct": [
+     19.5,
+     18.625
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003572399728000164,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "85d7d341be40b740ba",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.22570282220840454,
+     0.2390209287405014
+    ],
+    "direct": [
+     18.875,
+     18.625
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00038379698526114225,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "885ce641cab8138937",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.2271191030740738,
+     0.2598029673099518
+    ],
+    "direct": [
+     19.375,
+     19.0
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0004228570032864809,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "895653b9d17390fd5c",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.18846172094345093,
+     0.22420749068260193
+    ],
+    "direct": [
+     18.625,
+     18.25
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.000358033983502537,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "8ab9e869556ba88dd7",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.24022255837917328,
+     0.2051340639591217
+    ],
+    "direct": [
+     19.625,
+     19.0
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00035660702269524336,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "8c0b78f353bc1cce92",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.22574064135551453,
+     0.2024284154176712
+    ],
+    "direct": [
+     18.875,
+     18.5
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003719290252774954,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "8ec8716800fcc85c84",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.22347602248191833,
+     0.1911495178937912
+    ],
+    "direct": [
+     19.375,
+     18.75
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00037740799598395824,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "8ed369574d1181a0da",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.2211146056652069,
+     0.2162828892469406
+    ],
+    "direct": [
+     19.0,
+     17.875
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00037165399407967925,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "904e2e43ac36ac24b6",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.22999230027198792,
+     0.2198389321565628
+    ],
+    "direct": [
+     20.0,
+     18.625
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003683940158225596,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "91759234299aba7165",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.22180132567882538,
+     0.1948496550321579
+    ],
+    "direct": [
+     19.375,
+     18.625
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003625790122896433,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "9314b16410a0f9ca82",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.1739279180765152,
+     0.20054508745670319
+    ],
+    "direct": [
+     19.375,
+     19.125
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00034384499303996563,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "96086aa5057f869046",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.2216305285692215,
+     0.2208118587732315
+    ],
+    "direct": [
+     19.125,
+     19.0
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00038922199746593833,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "982d9aef01d7d10713",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.22943173348903656,
+     0.24664150178432465
+    ],
+    "direct": [
+     20.0,
+     19.5
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003882289747707546,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "9850df202aef645496",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.22943173348903656,
+     0.24664150178432465
+    ],
+    "direct": [
+     19.75,
+     19.375
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003470009542070329,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "9911918f4b8b2648ae",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.2363092452287674,
+     0.21964794397354126
+    ],
+    "direct": [
+     20.375,
+     19.75
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003414940438233316,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "9b2581e30a7f0dd148",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.2531670928001404,
+     0.2452593296766281
+    ],
+    "direct": [
+     19.375,
+     18.875
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00034841999877244234,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "9b2aaff0a5fcede7e0",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "match": [
+     0.22806645929813385,
+     0.2610933780670166
+    ],
+    "direct": [
+     18.625,
+     18.625
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00035321299219504,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "9cab80c8ef03a58e76",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.2363092452287674,
+     0.21964794397354126
+    ],
+    "direct": [
+     20.25,
+     19.5
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003669119905680418,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "9d79d54de24e157c93",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.18846172094345093,
+     0.22420749068260193
+    ],
+    "direct": [
+     18.625,
+     18.125
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003415259998291731,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "a104e3be7f82679ef2",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.2095818966627121,
+     0.22717995941638947
+    ],
+    "direct": [
+     19.375,
+     19.25
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00035777699667960405,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "a930df1f39591710f5",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.17631477117538452,
+     0.20327691733837128
+    ],
+    "direct": [
+     18.5,
+     17.5
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003881369484588504,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "aa69b7a6ce6f7ac466",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.1979140192270279,
+     0.22205524146556854
+    ],
+    "direct": [
+     19.25,
+     18.875
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003730739699676633,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "abe9f9c925aef25e13",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.22974924743175507,
+     0.21254786849021912
+    ],
+    "direct": [
+     19.0,
+     18.375
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00035975396167486906,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "ac669b871650df0225",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.21482962369918823,
+     0.22915175557136536
+    ],
+    "direct": [
+     20.25,
+     19.125
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00034329399932175875,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "b026c7454cb2ad9bec",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.2206760048866272,
+     0.2161334902048111
+    ],
+    "direct": [
+     19.5,
+     18.5
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00035674701211974025,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "b098ef9ddd277fe023",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.1937023252248764,
+     0.2505849301815033
+    ],
+    "direct": [
+     19.875,
+     19.25
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.000355311029125005,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "b5aab8216f010707d1",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.20893849432468414,
+     0.22098411619663239
+    ],
+    "direct": [
+     19.125,
+     18.25
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00036442099371924996,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "b7eb67269b22b76060",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.21467703580856323,
+     0.17360158264636993
+    ],
+    "direct": [
+     19.125,
+     18.125
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003680650261230767,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "b7f5d9f780b5100b3c",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.22002123296260834,
+     0.22279708087444305
+    ],
+    "direct": [
+     18.375,
+     18.0
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003705740091390908,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "bd6152806f29764f3a",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.23690296709537506,
+     0.23613479733467102
+    ],
+    "direct": [
+     19.75,
+     18.875
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003697969950735569,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "bf3bc1a7c336437de6",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.22640544176101685,
+     0.2633107304573059
+    ],
+    "direct": [
+     19.125,
+     18.75
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00035708799259737134,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "c039f8751bb2166805",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.2095818966627121,
+     0.22717995941638947
+    ],
+    "direct": [
+     20.0,
+     19.375
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003548809909261763,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "c0ca4798d234ac0620",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.1781243234872818,
+     0.22565296292304993
+    ],
+    "direct": [
+     18.5,
+     18.0
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0004022089997306466,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "c32909fa23ccaf3795",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.21352806687355042,
+     0.2529366910457611
+    ],
+    "direct": [
+     19.875,
+     19.625
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00036468898179009557,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "c5445e2f357b7b1c16",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.25042447447776794,
+     0.23142647743225098
+    ],
+    "direct": [
+     19.0,
+     18.375
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003574700094759464,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "c5985dcd91d7aff5e1",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.20893849432468414,
+     0.22098411619663239
+    ],
+    "direct": [
+     19.25,
+     18.25
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00036138901486992836,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "c5acd581cdc3cfbbf1",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.2117154747247696,
+     0.2112782895565033
+    ],
+    "direct": [
+     18.625,
+     18.25
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003539330209605396,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "c982c36a0de3d5b30f",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.2078578919172287,
+     0.223798006772995
+    ],
+    "direct": [
+     19.75,
+     19.0
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003684160183183849,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "cecc9fec89ae82d821",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.22003485262393951,
+     0.26605018973350525
+    ],
+    "direct": [
+     19.125,
+     18.875
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.000367489003110677,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "d7817a45b3c4ed1f28",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.2418566793203354,
+     0.19683843851089478
+    ],
+    "direct": [
+     19.25,
+     18.75
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00035067100543528795,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "d78cc25b566a12bd2f",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.20381203293800354,
+     0.22436556220054626
+    ],
+    "direct": [
+     19.75,
+     19.25
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00035268603824079037,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "d859057420b939ea29",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.19619008898735046,
+     0.22446700930595398
+    ],
+    "direct": [
+     19.75,
+     19.125
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003456130507402122,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "d882ecc6355beac3c1",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.20651794970035553,
+     0.259607195854187
+    ],
+    "direct": [
+     19.125,
+     18.375
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003506659995764494,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "d97c16e6a6364f8111",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.21054260432720184,
+     0.23068243265151978
+    ],
+    "direct": [
+     19.75,
+     19.125
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00035242398735135794,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "d9959f4c06dc811431",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.22639471292495728,
+     0.2549426257610321
+    ],
+    "direct": [
+     19.125,
+     18.75
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003387650358490646,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "db13966135c7684f73",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.24205149710178375,
+     0.2397671341896057
+    ],
+    "direct": [
+     18.75,
+     18.125
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003546150401234627,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "dc189a45e7082f5c74",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.1888824701309204,
+     0.22401221096515656
+    ],
+    "direct": [
+     19.0,
+     18.625
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003517750301398337,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "dde5a5b74070889185",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.22180132567882538,
+     0.1948496550321579
+    ],
+    "direct": [
+     19.0,
+     18.25
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003478670259937644,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "ded25d4fe7664e2160",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.2249743640422821,
+     0.19893032312393188
+    ],
+    "direct": [
+     18.875,
+     18.5
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003571690176613629,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "dfd0829e7208453caa",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.2500689923763275,
+     0.22425103187561035
+    ],
+    "direct": [
+     18.125,
+     18.0
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00035063299583271146,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "e10b15c7b940fc0978",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.2078578919172287,
+     0.223798006772995
+    ],
+    "direct": [
+     19.625,
+     19.125
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00036796199856325984,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "e1f16928e5a81da0d7",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.2350403070449829,
+     0.2162524312734604
+    ],
+    "direct": [
+     19.0,
+     18.25
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003903880133293569,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "e3f8d26f9b4b16c93b",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.1961560994386673,
+     0.22564154863357544
+    ],
+    "direct": [
+     19.125,
+     18.875
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003606569953262806,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "e4b3beffa3ab6132c7",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.18679341673851013,
+     0.2002187818288803
+    ],
+    "direct": [
+     19.125,
+     18.25
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003451919765211642,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "e74b81f87de1ffb9a4",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.25510290265083313,
+     0.22915548086166382
+    ],
+    "direct": [
+     19.5,
+     19.125
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00034866202622652054,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "e92122f9e347da9aba",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.19919893145561218,
+     0.2460867315530777
+    ],
+    "direct": [
+     18.875,
+     18.5
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.000342081009875983,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "eb8909a31f3f9ae16e",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.22999230027198792,
+     0.2198389321565628
+    ],
+    "direct": [
+     19.625,
+     18.625
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00035844597732648253,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "ee0979d30dd01bf824",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.21949787437915802,
+     0.2292344570159912
+    ],
+    "direct": [
+     19.625,
+     18.375
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003608160186558962,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "efb3f7fc7b1c9d0b4a",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.20927411317825317,
+     0.18798522651195526
+    ],
+    "direct": [
+     19.25,
+     18.625
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00036233197897672653,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "f1657a831c87b6ff3c",
+   "frame": 1,
+   "action": "right",
+   "trace": {
+    "match": [
+     0.2272229939699173,
+     0.2308303862810135
+    ],
+    "direct": [
+     18.125,
+     18.125
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003586960374377668,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "f46ef1cf9750bb3939",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.19652613997459412,
+     0.21050119400024414
+    ],
+    "direct": [
+     19.375,
+     19.0
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003507549990899861,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "f4e639bb4749ca4af3",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.23608466982841492,
+     0.24061277508735657
+    ],
+    "direct": [
+     19.875,
+     19.25
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00036208401434123516,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "f5e144a71cbc679b94",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.2382679581642151,
+     0.2162458449602127
+    ],
+    "direct": [
+     19.375,
+     18.875
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003621119540184736,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "f5ea785488d7381116",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.24022255837917328,
+     0.2051340639591217
+    ],
+    "direct": [
+     19.0,
+     18.625
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003583199577406049,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "f73ddf5011893d7a42",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.19725199043750763,
+     0.19370216131210327
+    ],
+    "direct": [
+     18.625,
+     17.5
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00034851202508434653,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "fb072b4c6bbeeec0df",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.22843819856643677,
+     0.18936793506145477
+    ],
+    "direct": [
+     18.875,
+     18.5
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.0003658620407804847,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "fb2675f02f73600b86",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.19619008898735046,
+     0.22446700930595398
+    ],
+    "direct": [
+     19.125,
+     18.75
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00034766801400110126,
+   "isolated": true,
+   "ok": true
+  },
+  {
+   "key": "fb570bef0a4972422e",
+   "frame": 0,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.22096805274486542,
+     0.20550993084907532
+    ],
+    "direct": [
+     19.75,
+     19.125
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00037999299820512533,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "ff84f7120fb227d05f",
+   "frame": 1,
+   "action": "left",
+   "trace": {
+    "match": [
+     0.2024862915277481,
+     0.21759705245494843
+    ],
+    "direct": [
+     19.0,
+     18.5
+    ]
+   },
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct"
+   ],
+   "seconds": 0.00038591399788856506,
+   "isolated": true,
+   "ok": false
+  }
+ ],
+ "diagnostic": {
+  "fixed": {
+   "count": 0,
+   "example": null
+  },
+  "new_error": {
+   "count": 0,
+   "example": null
+  },
+  "still_wrong": {
+   "count": 62,
+   "example": {
+    "target": "coffee machine",
+    "views": [
+     {
+      "step": 2,
+      "heading": 90,
+      "pitch": 45,
+      "right_of_end_m": -1.75,
+      "forward_of_end_m": 0.0
+     },
+     {
+      "step": 7,
+      "heading": -90,
+      "pitch": 45,
+      "right_of_end_m": -1.5,
+      "forward_of_end_m": 0.0
+     }
+    ],
+    "visual_readings": {
+     "match": [
+      0.20381203293800354,
+      0.22436556220054626
+     ],
+     "direct": [
+      19.375,
+      19.0
+     ]
+    },
+    "answer": "left",
+    "correct": "right",
+    "trace": {
+     "match": [
+      0.20381203293800354,
+      0.22436556220054626
+     ],
+     "direct": [
+      19.375,
+      19.0
+     ]
+    },
+    "error": null
+   }
+  }
+ },
+ "accepted": false
+}

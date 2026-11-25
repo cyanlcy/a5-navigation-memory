@@ -1,0 +1,6482 @@
+[
+ {
+  "key": "01860de63459d2f94d",
+  "route": "01860de63459d2f94d",
+  "observation": {
+   "target": "microwave",
+   "views": [
+    {
+     "step": 5,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 1.5,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 15,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 0.0,
+     "forward_of_end_m": -0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     6
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "0a1700675dc5ce7588",
+  "route": "0a1700675dc5ce7588",
+  "observation": {
+   "target": "coffee machine",
+   "views": [
+    {
+     "step": 1,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 1.25,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 31,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -1.25,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "0c7244eb8c7ee27765",
+  "route": "0c7244eb8c7ee27765",
+  "observation": {
+   "target": "laptop",
+   "views": [
+    {
+     "step": 29,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -0.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 33,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -0.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     7
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "1179cb6457ffc5955d",
+  "route": "1179cb6457ffc5955d",
+  "observation": {
+   "target": "box",
+   "views": [
+    {
+     "step": 18,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -1.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 30,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 0.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "157659114479d3d71d",
+  "route": "157659114479d3d71d",
+  "observation": {
+   "target": "desk lamp",
+   "views": [
+    {
+     "step": 1,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -1.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 19,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 0.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "16cba0a0ea4bef05c1",
+  "route": "16cba0a0ea4bef05c1",
+  "observation": {
+   "target": "laptop",
+   "views": [
+    {
+     "step": 16,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 0.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 20,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 0.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     7
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "17120444e4cca9d9b2",
+  "route": "17120444e4cca9d9b2",
+  "observation": {
+   "target": "desk lamp",
+   "views": [
+    {
+     "step": 1,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -2.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 30,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 1.25,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     8
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "1e422bf2473d2c84c8",
+  "route": "1e422bf2473d2c84c8",
+  "observation": {
+   "target": "house plant",
+   "views": [
+    {
+     "step": 16,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 1.25,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 20,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 1.25,
+     "forward_of_end_m": -0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     7
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "24afc7b9d04774ced6",
+  "route": "24afc7b9d04774ced6",
+  "observation": {
+   "target": "garbage can",
+   "views": [
+    {
+     "step": 5,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -1.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 28,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 1.5,
+     "forward_of_end_m": -0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "2e4dcdbc9a3771dac0",
+  "route": "2e4dcdbc9a3771dac0",
+  "observation": {
+   "target": "microwave",
+   "views": [
+    {
+     "step": 27,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -0.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 31,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -0.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "3e2e771f1c69862b19",
+  "route": "3e2e771f1c69862b19",
+  "observation": {
+   "target": "box",
+   "views": [
+    {
+     "step": 18,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 1.25,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 31,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -0.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "3e4cb70162d5b8c4b0",
+  "route": "3e4cb70162d5b8c4b0",
+  "observation": {
+   "target": "coffee machine",
+   "views": [
+    {
+     "step": 28,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 0.0,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 32,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 0.0,
+     "forward_of_end_m": -0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "41694b17305d6715e3",
+  "route": "41694b17305d6715e3",
+  "observation": {
+   "target": "box",
+   "views": [
+    {
+     "step": 18,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 1.25,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 31,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -0.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "447c32d911eccdebeb",
+  "route": "447c32d911eccdebeb",
+  "observation": {
+   "target": "coffee table",
+   "views": [
+    {
+     "step": 18,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -0.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 26,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -1.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "4639ef7a6d372feec9",
+  "route": "4639ef7a6d372feec9",
+  "observation": {
+   "target": "garbage can",
+   "views": [
+    {
+     "step": 5,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -1.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 28,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 1.5,
+     "forward_of_end_m": -0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "4de00467e75c4c30ab",
+  "route": "4de00467e75c4c30ab",
+  "observation": {
+   "target": "book",
+   "views": [
+    {
+     "step": 20,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 0.0,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 32,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 1.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     7
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "4de63ff445caebb9a3",
+  "route": "4de63ff445caebb9a3",
+  "observation": {
+   "target": "house plant",
+   "views": [
+    {
+     "step": 16,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -0.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 20,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -0.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     7
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "53fddba93a945c51d4",
+  "route": "53fddba93a945c51d4",
+  "observation": {
+   "target": "pot",
+   "views": [
+    {
+     "step": 18,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 1.25,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 31,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -0.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "77c5871b666ed21e9f",
+  "route": "77c5871b666ed21e9f",
+  "observation": {
+   "target": "pillow",
+   "views": [
+    {
+     "step": 26,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -1.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 30,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -1.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "809e4ebeb6d8426ba6",
+  "route": "809e4ebeb6d8426ba6",
+  "observation": {
+   "target": "house plant",
+   "views": [
+    {
+     "step": 16,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -0.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 20,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -0.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     7
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "8691bab58eb3bbdfe5",
+  "route": "8691bab58eb3bbdfe5",
+  "observation": {
+   "target": "boots",
+   "views": [
+    {
+     "step": 14,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 1.5,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 32,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -0.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     6
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "888df12b05ff79d24f",
+  "route": "888df12b05ff79d24f",
+  "observation": {
+   "target": "laptop",
+   "views": [
+    {
+     "step": 18,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -0.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 26,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -1.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "8f06c8d86ad6b9579c",
+  "route": "8f06c8d86ad6b9579c",
+  "observation": {
+   "target": "desk lamp",
+   "views": [
+    {
+     "step": 1,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -3.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 19,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -1.5,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "93276495f93473a4a2",
+  "route": "93276495f93473a4a2",
+  "observation": {
+   "target": "garbage can",
+   "views": [
+    {
+     "step": 16,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -0.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 20,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -0.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     7
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "987f57fce51bbc980f",
+  "route": "987f57fce51bbc980f",
+  "observation": {
+   "target": "laptop",
+   "views": [
+    {
+     "step": 15,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -0.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 29,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -1.5,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     6
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     6
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "a96d4d762e0b0d6352",
+  "route": "a96d4d762e0b0d6352",
+  "observation": {
+   "target": "coffee machine",
+   "views": [
+    {
+     "step": 27,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -0.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 31,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -0.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "ae6f5c1a42a34100f2",
+  "route": "ae6f5c1a42a34100f2",
+  "observation": {
+   "target": "book",
+   "views": [
+    {
+     "step": 20,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -1.0,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 32,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 0.0,
+     "forward_of_end_m": -0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     7
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "b0ebba563a84ec0d01",
+  "route": "b0ebba563a84ec0d01",
+  "observation": {
+   "target": "box",
+   "views": [
+    {
+     "step": 1,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 1.5,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 31,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -1.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     6
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "b80cf6a9eafe66b4c6",
+  "route": "b80cf6a9eafe66b4c6",
+  "observation": {
+   "target": "pot",
+   "views": [
+    {
+     "step": 1,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 2.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 15,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 1.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     6
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "bd1c69f4028a6680ea",
+  "route": "bd1c69f4028a6680ea",
+  "observation": {
+   "target": "box",
+   "views": [
+    {
+     "step": 18,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 0.0,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 30,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 1.0,
+     "forward_of_end_m": -0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "c391ef9fa27e9b9e4a",
+  "route": "c391ef9fa27e9b9e4a",
+  "observation": {
+   "target": "pillow",
+   "views": [
+    {
+     "step": 5,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -1.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 18,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 0.0,
+     "forward_of_end_m": -0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "c774e811487548a25e",
+  "route": "c774e811487548a25e",
+  "observation": {
+   "target": "garbage can",
+   "views": [
+    {
+     "step": 14,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 1.5,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 32,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -0.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     6
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "c8c3904c9ac5b3b4b3",
+  "route": "c8c3904c9ac5b3b4b3",
+  "observation": {
+   "target": "box",
+   "views": [
+    {
+     "step": 1,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 1.5,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 31,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -1.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     6
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "cb379bbe2f465ff6c8",
+  "route": "cb379bbe2f465ff6c8",
+  "observation": {
+   "target": "microwave",
+   "views": [
+    {
+     "step": 5,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 2.75,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 15,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 1.25,
+     "forward_of_end_m": -0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     6
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "ccb1c4d82743f51cf8",
+  "route": "ccb1c4d82743f51cf8",
+  "observation": {
+   "target": "coffee machine",
+   "views": [
+    {
+     "step": 1,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 1.25,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 31,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -1.25,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "ce2ccd4bb5cfd57a64",
+  "route": "ce2ccd4bb5cfd57a64",
+  "observation": {
+   "target": "stool",
+   "views": [
+    {
+     "step": 5,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -1.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 27,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 1.0,
+     "forward_of_end_m": -0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "d82b295c3808b28cac",
+  "route": "d82b295c3808b28cac",
+  "observation": {
+   "target": "boots",
+   "views": [
+    {
+     "step": 26,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -1.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 30,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -1.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "e560474147a7b35a93",
+  "route": "e560474147a7b35a93",
+  "observation": {
+   "target": "desk lamp",
+   "views": [
+    {
+     "step": 1,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -3.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 30,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 0.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     8
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "ea2af4df6ec3cbe9f7",
+  "route": "ea2af4df6ec3cbe9f7",
+  "observation": {
+   "target": "toaster",
+   "views": [
+    {
+     "step": 28,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 0.0,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 32,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 0.0,
+     "forward_of_end_m": -0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "ec1189ead95db505ce",
+  "route": "ec1189ead95db505ce",
+  "observation": {
+   "target": "stool",
+   "views": [
+    {
+     "step": 5,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -1.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 27,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 1.0,
+     "forward_of_end_m": -0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "efbd1520a85ec7db65",
+  "route": "efbd1520a85ec7db65",
+  "observation": {
+   "target": "pot",
+   "views": [
+    {
+     "step": 1,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 2.5,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 15,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 1.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     6
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "f0e836e3aa9a21ef06",
+  "route": "f0e836e3aa9a21ef06",
+  "observation": {
+   "target": "statue",
+   "views": [
+    {
+     "step": 5,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -2.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 17,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -0.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     8
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "f0f262ea14ddb33e6f",
+  "route": "f0f262ea14ddb33e6f",
+  "observation": {
+   "target": "pot",
+   "views": [
+    {
+     "step": 18,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -0.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 31,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -1.25,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "f4a6d5378035775235",
+  "route": "f4a6d5378035775235",
+  "observation": {
+   "target": "statue",
+   "views": [
+    {
+     "step": 5,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -2.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 17,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -0.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     8
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "fa4746f7c265fc997e",
+  "route": "fa4746f7c265fc997e",
+  "observation": {
+   "target": "house plant",
+   "views": [
+    {
+     "step": 29,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -0.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 33,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -0.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     7
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "fab4fbab007844aab8",
+  "route": "fab4fbab007844aab8",
+  "observation": {
+   "target": "laptop",
+   "views": [
+    {
+     "step": 15,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 1.5,
+     "forward_of_end_m": -0.0
+    },
+    {
+     "step": 29,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": -0.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     6
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     6
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "MoveLeft",
+     6
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "fb1a7ce310ad972104",
+  "route": "fb1a7ce310ad972104",
+  "observation": {
+   "target": "garbage can",
+   "views": [
+    {
+     "step": 16,
+     "heading": -90,
+     "pitch": 30,
+     "right_of_end_m": 0.0,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 20,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 0.0,
+     "forward_of_end_m": 0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     7
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ },
+ {
+  "key": "fe42442d01e859094e",
+  "route": "fe42442d01e859094e",
+  "observation": {
+   "target": "pillow",
+   "views": [
+    {
+     "step": 5,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": -1.25,
+     "forward_of_end_m": 0.0
+    },
+    {
+     "step": 18,
+     "heading": 90,
+     "pitch": 30,
+     "right_of_end_m": 0.0,
+     "forward_of_end_m": -0.0
+    }
+   ],
+   "movement": [
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     5
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveRight",
+     4
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateRight",
+     2
+    ],
+    [
+     "LookDown",
+     1
+    ],
+    [
+     "LookUp",
+     1
+    ],
+    [
+     "RotateLeft",
+     1
+    ],
+    [
+     "MoveLeft",
+     4
+    ],
+    [
+     "LookDown",
+     1
+    ]
+   ],
+   "endpoint_pitch": 45,
+   "calibration": {
+    "height_m": 1.575,
+    "vertical_fov_deg": 80
+   }
+  }
+ }
+]

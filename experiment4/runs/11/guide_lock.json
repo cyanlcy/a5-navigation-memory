@@ -1,0 +1,15 @@
+{
+ "retained": false,
+ "guide": "Reproduce a failure. Compare its execution with a successful case. Identify the first divergence. Change one cause and check the regression on an earlier success.",
+ "sha": "70544e455db12fae7f54597c570fb17276a352df186e77b1ef7040d87c5ef23e",
+ "parent": [
+  0.0,
+  0,
+  0
+ ],
+ "candidate": [
+  0.16666666666666666,
+  9,
+  -12
+ ]
+}

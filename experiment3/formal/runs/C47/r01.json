@@ -1,0 +1,2266 @@
+{
+ "round": 1,
+ "arm": "C",
+ "seed": 4701,
+ "model": "models/coder",
+ "gpu": "0",
+ "prompt": "Photograph direction at capture and target direction after walking can differ. Consider how recorded position changes the bearing. Write a complete executable Python robot controller to return to an object seen earlier.\nInputs for decide(observation, tools): observation['target'] is a category, ['views'] is two old camera poses in time order. Each has heading (degrees relative to final facing, +90 right, -90 left), pitch, right_of_end_m and forward_of_end_m (old camera relative to final position, metres), step. observation['movement'] is recorded actions. Target is hidden at endpoint; one left/right turn reveals it. Each problem is independent. Coordinate convention: if the old camera was x metres to the right of the endpoint, an object d metres ahead along a +90 old heading has final lateral coordinate x+d, or x-d for a -90 heading. Positive means turn right. The actual d is unknown. The starting method ignores x; consider a plausible estimate or visual evidence. You choose how and when to use it.\nThere are just TWO calls across all tools combined, including repeats. Choose only one or two readings to use. A returned None action gets zero. tools.match() gives two CLIP similarities (larger better). tools.identify() gives two old-frame visual identification logits; tools.direct() gives two RGB+motion turn logits ordered left,right. tools.locate() gives two estimated camera-to-target forward ranges in metres from RGB; 0 means not detected. tools.point() returns two entries (one per old image); each is [horizontal_fraction,vertical_fraction] at the estimated bottom of the object, or None when absent. Image top-left is (0,0). Only use tools explicitly listed below. The raw RGB values are available in observation['rgb'] as three 24x24 RGB arrays when the observation includes them. If supplied, observation['calibration'] gives the robot camera height over the floor in metres and vertical field of view in degrees. A positive pitch looks down. In the calibrated four-question layout, queried objects rest on the floor. All evidence comes from frozen readings on public RGB.\nReturn (frame_index:int 0 or 1, action:'left' or 'right', trace:small dict). Write plain Python functions only, no imports, type annotations, docstrings, printing, exception handling, variable attributes or dictionary methods. Standard sin,cos,tan,atan,atan2,radians,sqrt,abs,all,any,bool,dict,enumerate,float,int,len,list,max,min,range,round,sorted,sum,tuple,zip,str and arithmetic are available. Use square brackets to access fields. Optimize development accuracy, both members of a pair correct, then fewer calls. Respond with a short failure hypothesis and potential regression then ONE fenced python code block containing the entire program. Do not copy labels from examples into rules.\nAvailable tools: direct, identify, locate, match, point\nCommon example: [{\"observation\": {\"target\": \"garbage can\", \"views\": [{\"step\": 2, \"heading\": 90, \"pitch\": 30, \"right_of_end_m\": 2.75, \"forward_of_end_m\": 0.0}, {\"step\": 8, \"heading\": -90, \"pitch\": 45, \"right_of_end_m\": 2.25, \"forward_of_end_m\": 0.0}], \"endpoint_pitch\": 45, \"calibration\": {\"height_m\": 1.575, \"vertical_fov_deg\": 80}, \"movement\": [[\"start\", 1], [\"RotateRight\", 1], [\"LookDown\", 1], [\"LookUp\", 1], [\"RotateLeft\", 1], [\"MoveLeft\", 2], [\"RotateLeft\", 1], [\"LookDown\", 1], [\"LookUp\", 1], [\"RotateRight\", 1], [\"MoveLeft\", 5], [\"LookDown\", 1], [\"LookUp\", 1], [\"MoveLeft\", 4], [\"LookDown\", 1]]}, \"visual\": {\"match\": [0.19941438734531403, 0.2411607950925827], \"identify\": [17.875, 23.375], \"direct\": [19.625, 19.125], \"locate\": [0.0, 4.5], \"point\": [null, [0.35, 0.68]]}, \"answer\": \"right\"}, {\"observation\": {\"target\": \"pillow\", \"views\": [{\"step\": 2, \"heading\": 90, \"pitch\": 30, \"right_of_end_m\": 2.75, \"forward_of_end_m\": 0.0}, {\"step\": 8, \"heading\": -90, \"pitch\": 45, \"right_of_end_m\": 2.25, \"forward_of_end_m\": 0.0}], \"endpoint_pitch\": 45, \"calibration\": {\"height_m\": 1.575, \"vertical_fov_deg\": 80}, \"movement\": [[\"start\", 1], [\"RotateRight\", 1], [\"LookDown\", 1], [\"LookUp\", 1], [\"RotateLeft\", 1], [\"MoveLeft\", 2], [\"RotateLeft\", 1], [\"LookDown\", 1], [\"LookUp\", 1], [\"RotateRight\", 1], [\"MoveLeft\", 5], [\"LookDown\", 1], [\"LookUp\", 1], [\"MoveLeft\", 4], [\"LookDown\", 1]]}, \"visual\": {\"match\": [0.22206290066242218, 0.1982342004776001], \"identify\": [19.5, 22.5], \"direct\": [20.0, 19.375], \"locate\": [0.0, 2.5], \"point\": [null, [0.35, 0.48]]}, \"answer\": \"left\"}]\nStarting correct count: 55/120\nParent source:\ndef decide(observation, tools):\n    scores = tools.match()\n    frame = int(scores[1] > scores[0])\n    heading = observation[\"views\"][frame][\"heading\"]\n    return frame, \"right\" if heading > 0 else \"left\", {\"heading\": heading}\n",
+ "raw": "{ \"failure_hypothesis\": \"The model assumes a consistent heading offset without accounting for lateral displacement; when the object is hidden and only one view reveals it, the bearing shift due to lateral movement is misinterpreted.\", \"regression\": \"Incorrect frame selection based on match score alone when visual evidence shows a clear left/right turn preference.\" }\n\n```python\ndef decide(observation, tools):\n    match_scores = tools.match()\n    direct_scores = tools.direct()\n    point_data = tools.point()\n    \n    # Use the frame with higher match score as initial guess\n    frame = int(match_scores[1] > match_scores[0])\n    \n    # If point data is available, use it to infer direction\n    if point_data[0] is None and point_data[1] is not None:\n        frame = 1\n    elif point_data[1] is None and point_data[0] is not None:\n        frame = 0\n    \n    # Use direct turn logits to decide final action\n    direct_left, direct_right = direct_scores\n    action = \"right\" if direct_right > direct_left else \"left\"\n    \n    # If both point and direct are weak, fall back to match-based frame and use heading sign\n    if point_data[0] is None and point_data[1] is None:\n        # Use the heading from the selected frame to infer turn direction\n        heading = observation[\"views\"][frame][\"heading\"]\n        action = \"right\" if heading > 0 else \"left\"\n    \n    return frame, action, {\"frame\": frame, \"action\": action}\n```",
+ "source": "def decide(observation, tools):\n    match_scores = tools.match()\n    direct_scores = tools.direct()\n    point_data = tools.point()\n    \n    # Use the frame with higher match score as initial guess\n    frame = int(match_scores[1] > match_scores[0])\n    \n    # If point data is available, use it to infer direction\n    if point_data[0] is None and point_data[1] is not None:\n        frame = 1\n    elif point_data[1] is None and point_data[0] is not None:\n        frame = 0\n    \n    # Use direct turn logits to decide final action\n    direct_left, direct_right = direct_scores\n    action = \"right\" if direct_right > direct_left else \"left\"\n    \n    # If both point and direct are weak, fall back to match-based frame and use heading sign\n    if point_data[0] is None and point_data[1] is None:\n        # Use the heading from the selected frame to infer turn direction\n        heading = observation[\"views\"][frame][\"heading\"]\n        action = \"right\" if heading > 0 else \"left\"\n    \n    return frame, action, {\"frame\": frame, \"action\": action}\n",
+ "hash": "67dae50533197717eb43cf078f4a138aa0fb3fdbb1036908ec53dbe2c049e104",
+ "parent_hash": "5e8da065da852c6a8d20e3c952c777dded68248122817a5de17fb60e7518c700",
+ "parent_round": 0,
+ "diff": "--- \n+++ \n@@ -1,5 +1,25 @@\n def decide(observation, tools):\n-    scores = tools.match()\n-    frame = int(scores[1] > scores[0])\n-    heading = observation[\"views\"][frame][\"heading\"]\n-    return frame, \"right\" if heading > 0 else \"left\", {\"heading\": heading}\n+    match_scores = tools.match()\n+    direct_scores = tools.direct()\n+    point_data = tools.point()\n+    \n+    # Use the frame with higher match score as initial guess\n+    frame = int(match_scores[1] > match_scores[0])\n+    \n+    # If point data is available, use it to infer direction\n+    if point_data[0] is None and point_data[1] is not None:\n+        frame = 1\n+    elif point_data[1] is None and point_data[0] is not None:\n+        frame = 0\n+    \n+    # Use direct turn logits to decide final action\n+    direct_left, direct_right = direct_scores\n+    action = \"right\" if direct_right > direct_left else \"left\"\n+    \n+    # If both point and direct are weak, fall back to match-based frame and use heading sign\n+    if point_data[0] is None and point_data[1] is None:\n+        # Use the heading from the selected frame to infer turn direction\n+        heading = observation[\"views\"][frame][\"heading\"]\n+        action = \"right\" if heading > 0 else \"left\"\n+    \n+    return frame, action, {\"frame\": frame, \"action\": action}\n",
+ "rank": [
+  0,
+  0,
+  -240
+ ],
+ "input_tokens": 1407,
+ "output_tokens": 330,
+ "generation_seconds": 6.9452709759934805,
+ "device_map": {
+  "": "0"
+ },
+ "rows": [
+  {
+   "key": "03c91ee1bcfb9e071d",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0006030510412529111,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "062c67a182d9176417",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005901859840378165,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "074ce75998c718aff2",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005763039807789028,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "0c68d534e6f95a0679",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005672359839081764,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "10aaa99e19f38d37ea",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.000598104961682111,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "116c7e7e161d62790f",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005837299977429211,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "15c585fc79f3084c36",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005817119963467121,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "1746c5f1bd38f86957",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005381260416470468,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "191752d9429519352a",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005664099589921534,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "1f5d13c72a5958bcb9",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005920800031162798,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "24141606cab140935f",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005497380043379962,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "2c80498a5e62e125f9",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005818830104544759,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "2c9896007661b29b53",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.000553710968233645,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "2e397f712266eeb28f",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005337610491551459,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "2e3dcc8e61f6bb7630",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005874100024811924,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "2e9363e9734ce44ec0",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005938870017416775,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "308454cd14fabfbac3",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005631539970636368,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "330081892500e65fcd",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005503389984369278,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "34c1378b601efa30d4",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005546899628825486,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "3c888e7b9da4f9598b",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005511260242201388,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "3f6cad27a3b10fa98c",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005808480200357735,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "436b91d25234c6b2c1",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005853259935975075,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "45e0f01089be9fe665",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005603890167549253,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "46bff1770335c58602",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005866910214535892,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "46dd4431529e1c4986",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005750430282205343,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "49009701bd937c84b6",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005731020355597138,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "4ccfb27ae0aa10ae37",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005529419868253171,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "4dc72c417397fb5a94",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005545560270547867,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "4e591ea0f43f05f5f7",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005735749728046358,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "501543ca64a83c630c",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005887029692530632,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "54898a5323c571b5b8",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005835199845023453,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "55eb52e5428fb003fc",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005882589612156153,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "5cd0762095264a566a",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005449280142784119,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "5f7ec8ac276247fd1f",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005783970118500292,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "5fd7c722f2ebbd008b",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005839570076204836,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "6074da525c23caf9d2",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005845780251547694,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "610001d1105e2d40b1",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005757450126111507,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "66c3a7a896e31fc98f",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005958009860478342,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "6a767374dbd55f8569",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005842979880981147,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "6c5ce13da47198b9a7",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.000567240989767015,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "6dd85f06cd0eaf1a6f",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0006020760047249496,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "6e8ef18f4dde6ba36c",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005963330040685833,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "7039b29864405ce7ee",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005504629807546735,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "70f9f3778d9d00b2d5",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005845690029673278,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "75627ffd2e32decc91",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.00055065902415663,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "75863e91edae4f2357",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.00054501200793311,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "77c0734fab679ebef1",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005961329443380237,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "7887dc30089536d491",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005915380315855145,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "7bb3ee2424b4a01b52",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.000558761996217072,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "7cc07d2526899fd215",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005561000434681773,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "818d604bc141d80b02",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005935129593126476,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "8378933114a8f4528b",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005742039647884667,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "85d7d341be40b740ba",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005761649808846414,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "885ce641cab8138937",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005529350019060075,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "895653b9d17390fd5c",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0010868440149351954,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "8ab9e869556ba88dd7",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005938830436207354,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "8c0b78f353bc1cce92",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005909790052101016,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "8ec8716800fcc85c84",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005783719825558364,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "8ed369574d1181a0da",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.000599116028752178,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "904e2e43ac36ac24b6",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005629649967886508,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "91759234299aba7165",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005734199658036232,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "9314b16410a0f9ca82",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.000589551986195147,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "96086aa5057f869046",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.000562352011911571,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "982d9aef01d7d10713",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005754610174335539,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "9850df202aef645496",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.000607747002504766,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "9911918f4b8b2648ae",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005670940154232085,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "9b2581e30a7f0dd148",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005965650198049843,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "9b2aaff0a5fcede7e0",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005882459809072316,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "9cab80c8ef03a58e76",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.000539481989108026,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "9d79d54de24e157c93",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005764489760622382,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "a104e3be7f82679ef2",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005664639757014811,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "a930df1f39591710f5",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005645609926432371,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "aa69b7a6ce6f7ac466",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0006097329896874726,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "abe9f9c925aef25e13",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005673670093528926,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "ac669b871650df0225",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005426229909062386,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "b026c7454cb2ad9bec",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005645789788104594,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "b098ef9ddd277fe023",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005801109946332872,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "b5aab8216f010707d1",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005809229915030301,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "b7eb67269b22b76060",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005618089926429093,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "b7f5d9f780b5100b3c",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0007949690334498882,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "bd6152806f29764f3a",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005630609812214971,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "bf3bc1a7c336437de6",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005582949961535633,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "c039f8751bb2166805",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005793339805677533,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "c0ca4798d234ac0620",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005821950035169721,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "c32909fa23ccaf3795",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.000568549963645637,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "c5445e2f357b7b1c16",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005593390087597072,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "c5985dcd91d7aff5e1",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.000576813006773591,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "c5acd581cdc3cfbbf1",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005656069843098521,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "c982c36a0de3d5b30f",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005590480286628008,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "cecc9fec89ae82d821",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.000552481971681118,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "d7817a45b3c4ed1f28",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005394049803726375,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "d78cc25b566a12bd2f",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005611290107481182,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "d859057420b939ea29",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005943700089119375,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "d882ecc6355beac3c1",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005829330184496939,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "d97c16e6a6364f8111",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005428059957921505,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "d9959f4c06dc811431",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.000586979032959789,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "db13966135c7684f73",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005713769933208823,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "dc189a45e7082f5c74",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005809339927509427,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "dde5a5b74070889185",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005823789979331195,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "ded25d4fe7664e2160",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.000561267021112144,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "dfd0829e7208453caa",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005831719608977437,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "e10b15c7b940fc0978",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005705819930881262,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "e1f16928e5a81da0d7",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.000584026041906327,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "e3f8d26f9b4b16c93b",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005763480439782143,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "e4b3beffa3ab6132c7",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005525850574485958,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "e74b81f87de1ffb9a4",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005782409571111202,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "e92122f9e347da9aba",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005635489942505956,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "eb8909a31f3f9ae16e",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005718210013583302,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "ee0979d30dd01bf824",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005514060030691326,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "efb3f7fc7b1c9d0b4a",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005680570029653609,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "f1657a831c87b6ff3c",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005510129849426448,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "f46ef1cf9750bb3939",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005407200078479946,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "f4e639bb4749ca4af3",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.000580843014176935,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "f5e144a71cbc679b94",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005896299844607711,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "f5ea785488d7381116",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005727059906348586,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "f73ddf5011893d7a42",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005676400032825768,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "fb072b4c6bbeeec0df",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005869829910807312,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "fb2675f02f73600b86",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0006098639569245279,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "fb570bef0a4972422e",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0007399579626508057,
+   "isolated": true,
+   "ok": false
+  },
+  {
+   "key": "ff84f7120fb227d05f",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "match",
+    "direct"
+   ],
+   "attempts": [
+    "match",
+    "direct",
+    "point"
+   ],
+   "seconds": 0.0005733540165238082,
+   "isolated": true,
+   "ok": false
+  }
+ ],
+ "diagnostic": {
+  "fixed": {
+   "count": 0,
+   "example": null
+  },
+  "new_error": {
+   "count": 55,
+   "example": {
+    "target": "garbage can",
+    "views": [
+     {
+      "step": 2,
+      "heading": -90,
+      "pitch": 45,
+      "right_of_end_m": 2.75,
+      "forward_of_end_m": 0.0
+     },
+     {
+      "step": 8,
+      "heading": 90,
+      "pitch": 30,
+      "right_of_end_m": 2.25,
+      "forward_of_end_m": 0.0
+     }
+    ],
+    "visual_readings": {
+     "match": [
+      0.21949787437915802,
+      0.2292344570159912
+     ],
+     "direct": [
+      19.75,
+      18.375
+     ]
+    },
+    "answer": null,
+    "correct": "right",
+    "trace": null,
+    "error": "ValueError: visual budget exceeded"
+   }
+  },
+  "still_wrong": {
+   "count": 65,
+   "example": {
+    "target": "coffee machine",
+    "views": [
+     {
+      "step": 2,
+      "heading": 90,
+      "pitch": 45,
+      "right_of_end_m": -1.75,
+      "forward_of_end_m": 0.0
+     },
+     {
+      "step": 7,
+      "heading": -90,
+      "pitch": 45,
+      "right_of_end_m": -1.5,
+      "forward_of_end_m": 0.0
+     }
+    ],
+    "visual_readings": {
+     "match": [
+      0.20381203293800354,
+      0.22436556220054626
+     ],
+     "direct": [
+      19.375,
+      19.0
+     ]
+    },
+    "answer": null,
+    "correct": "right",
+    "trace": null,
+    "error": "ValueError: visual budget exceeded"
+   }
+  }
+ },
+ "accepted": false
+}

@@ -1,0 +1,205 @@
+{
+ "prompt": "Photograph direction at capture and target direction after walking can differ. Consider how recorded position changes the bearing. Write a complete executable Python robot controller to return to an object seen earlier.\nInputs for decide(observation, tools): observation['target'] is a category, ['views'] is two old camera poses in time order. Each has heading (degrees relative to final facing, +90 right, -90 left), pitch, right_of_end_m and forward_of_end_m (old camera relative to final position, metres), step. observation['movement'] is recorded actions. Target is hidden at endpoint; one left/right turn reveals it. Each problem is independent. Coordinate convention: if the old camera was x metres to the right of the endpoint, an object d metres ahead along a +90 old heading has final lateral coordinate x+d, or x-d for a -90 heading. Positive means turn right. The actual d is unknown. The starting method ignores x; consider a plausible estimate or visual evidence. You choose how and when to use it.\nThere are just TWO calls across all tools combined, including repeats. Choose only one or two readings to use. A returned None action gets zero. tools.match() gives two CLIP similarities (larger better). tools.identify() gives two old-frame visual identification logits; tools.direct() gives two RGB+motion turn logits ordered left,right. tools.locate() gives two estimated camera-to-target forward ranges in metres from RGB; 0 means not detected. tools.point() returns two entries (one per old image); each is [horizontal_fraction,vertical_fraction] at the estimated bottom of the object, or None when absent. Image top-left is (0,0). Only use tools explicitly listed below. The raw RGB values are available in observation['rgb'] as three 24x24 RGB arrays when the observation includes them. If supplied, observation['calibration'] gives the robot camera height over the floor in metres and vertical field of view in degrees. A positive pitch looks down. In the calibrated four-question layout, queried objects rest on the floor. All evidence comes from frozen readings on public RGB.\nReturn (frame_index:int 0 or 1, action:'left' or 'right', trace:small dict). Write plain Python functions only, no imports, type annotations, docstrings, printing, exception handling, variable attributes or dictionary methods. Standard sin,cos,tan,atan,atan2,radians,sqrt,abs,all,any,bool,dict,enumerate,float,int,len,list,max,min,range,round,sorted,sum,tuple,zip,str and arithmetic are available. Use square brackets to access fields. Score first on whole paired tasks (valid evidence and action on BOTH), then on action accuracy and fewer calls. Return one fenced Python program.\nDebugging guide: Reproduce a failure. Compare its execution with a successful case. Identify the first divergence. Change one cause and check the regression on an earlier success.\nParent source:\ndef decide(observation, tools):\n    scores = tools.match()\n    frame = int(scores[1] > scores[0])\n    heading = observation[\"views\"][frame][\"heading\"]\n    return frame, \"right\" if heading > 0 else \"left\", {\"heading\": heading}\n\nDevelopment feedback: {\"still_wrong\": {\"count\": 6, \"example\": {\"family\": \"endpoint\", \"valid_frame\": true, \"action_ok\": false, \"calls\": [\"match\"], \"error\": null, \"trace\": {\"heading\": -90}}}, \"stable\": {\"count\": 6, \"example\": {\"family\": \"reliability\", \"valid_frame\": true, \"action_ok\": true, \"calls\": [\"match\"], \"error\": null, \"trace\": {\"heading\": 90}}}}",
+ "raw": "```python\ndef decide(observation, tools):\n    # Use match to decide frame, preferring the higher similarity\n    scores = tools.match()\n    frame = 1 if scores[1] > scores[0] else 0\n    \n    # Get the heading from the selected frame's view\n    view = observation[\"views\"][frame]\n    heading = view[\"heading\"]\n    \n    # Determine turn direction based on heading: positive means right, negative means left\n    action = \"right\" if heading > 0 else \"left\"\n    \n    # If we have calibration data, use it to estimate lateral offset\n    # But we only need to use it if we have a valid point or range to refine direction\n    # We are not using locate, point, or identify here because we only have two tool calls total\n    # and the problem says to use only one or two readings \u2014 match is one, we use direct as second\n    \n    # Instead, we use direct for turn decision: it gives turn logits for left/right\n    # But we must use only two calls total. So we use match and direct.\n    # We already used match. Now we use direct only if we have RGB and want to refine action.\n    \n    # However, the problem says: \"Each problem is independent\" and \"only one or two calls across all tools combined\"\n    # We used match \u2014 that's one. We can use direct as second.\n    \n    # But in the feedback, \"still_wrong\" has valid_frame=true, action_ok=false, trace.heading=-90\n    # So when heading is negative, we return left \u2014 which is correct \u2014 so why is it wrong?\n    \n    # The issue may be: the bearing change due to walking alters the apparent direction.\n    # The coordinate system: if old camera was x metres to the right of endpoint, then:\n    # - object d metres ahead along +90 heading \u2192 final lateral = x + d (if +90) or x - d (if -90)\n    # But we don't know d or x.\n    \n    # However, we are not told to estimate x or d \u2014 we are to return to the object seen earlier.\n    # The object is hidden at endpoint. One left/right turn reveals it.\n    \n    # The key: the target is hidden at endpoint. We need to turn left or right to reveal it.\n    # The initial bearing (heading) is relative to final facing.\n    # So if the object was seen at a +90 heading, then it is to the right of the endpoint.\n    # If seen at -90, then to the left.\n    \n    # But the robot has moved. The camera moved relative to endpoint.\n    # The actual lateral position of the object is not known \u2014 only its relative direction from the old camera.\n    \n    # The problem says: \"the actual d is unknown\" \u2014 so we can't compute final position.\n    # So we must rely on the initial heading to infer the turn direction.\n    \n    # However, the feedback shows failure when heading is -90 \u2014 meaning we return left, which is correct.\n   ",
+ "input_tokens": 784,
+ "output_tokens": 650,
+ "seconds": 12.345628815994132,
+ "seed": 2917,
+ "source": "",
+ "parent": "def decide(observation, tools):\n    scores = tools.match()\n    frame = int(scores[1] > scores[0])\n    heading = observation[\"views\"][frame][\"heading\"]\n    return frame, \"right\" if heading > 0 else \"left\", {\"heading\": heading}\n",
+ "parent_hash": "5e8da065da852c6a8d20e3c952c777dded68248122817a5de17fb60e7518c700",
+ "diff": "--- \n+++ \n@@ -1,5 +0,0 @@\n-def decide(observation, tools):\n-    scores = tools.match()\n-    frame = int(scores[1] > scores[0])\n-    heading = observation[\"views\"][frame][\"heading\"]\n-    return frame, \"right\" if heading > 0 else \"left\", {\"heading\": heading}\n",
+ "rank": [
+  0.0,
+  0,
+  0
+ ],
+ "parent_rank": [
+  0.16666666666666666,
+  9,
+  -12
+ ],
+ "rows": [
+  {
+   "key": "1e422bf2473d2c84c8",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: invalid function name",
+   "calls": [],
+   "attempts": [],
+   "seconds": 3.417301923036575e-05,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "3e2e771f1c69862b19",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: invalid function name",
+   "calls": [],
+   "attempts": [],
+   "seconds": 3.3509975764900446e-05,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "41694b17305d6715e3",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: invalid function name",
+   "calls": [],
+   "attempts": [],
+   "seconds": 3.066501813009381e-05,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "4de63ff445caebb9a3",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: invalid function name",
+   "calls": [],
+   "attempts": [],
+   "seconds": 2.9399991035461426e-05,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "809e4ebeb6d8426ba6",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: invalid function name",
+   "calls": [],
+   "attempts": [],
+   "seconds": 3.308500163257122e-05,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "8691bab58eb3bbdfe5",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: invalid function name",
+   "calls": [],
+   "attempts": [],
+   "seconds": 3.104499774053693e-05,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "93276495f93473a4a2",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: invalid function name",
+   "calls": [],
+   "attempts": [],
+   "seconds": 3.435899270698428e-05,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "987f57fce51bbc980f",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: invalid function name",
+   "calls": [],
+   "attempts": [],
+   "seconds": 3.7744990549981594e-05,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "b0ebba563a84ec0d01",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: invalid function name",
+   "calls": [],
+   "attempts": [],
+   "seconds": 3.3092976082116365e-05,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "c774e811487548a25e",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: invalid function name",
+   "calls": [],
+   "attempts": [],
+   "seconds": 3.30490292981267e-05,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "c8c3904c9ac5b3b4b3",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: invalid function name",
+   "calls": [],
+   "attempts": [],
+   "seconds": 3.2398966141045094e-05,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "fab4fbab007844aab8",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: invalid function name",
+   "calls": [],
+   "attempts": [],
+   "seconds": 4.5241962652653456e-05,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  }
+ ],
+ "feedback": {
+  "still_wrong": {
+   "count": 6,
+   "example": {
+    "family": "endpoint",
+    "valid_frame": false,
+    "action_ok": false,
+    "calls": [],
+    "error": "ValueError: invalid function name",
+    "trace": null
+   }
+  },
+  "regressed": {
+   "count": 6,
+   "example": {
+    "family": "reliability",
+    "valid_frame": false,
+    "action_ok": false,
+    "calls": [],
+    "error": "ValueError: invalid function name",
+    "trace": null
+   }
+  }
+ },
+ "accepted": false
+}

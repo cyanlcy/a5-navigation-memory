@@ -1,0 +1,295 @@
+{
+ "prompt": "Photograph direction at capture and target direction after walking can differ. Consider how recorded position changes the bearing. Write a complete executable Python robot controller to return to an object seen earlier.\nInputs for decide(observation, tools): observation['target'] is a category, ['views'] is two old camera poses in time order. Each has heading (degrees relative to final facing, +90 right, -90 left), pitch, right_of_end_m and forward_of_end_m (old camera relative to final position, metres), step. observation['movement'] is recorded actions. Target is hidden at endpoint; one left/right turn reveals it. Each problem is independent. Coordinate convention: if the old camera was x metres to the right of the endpoint, an object d metres ahead along a +90 old heading has final lateral coordinate x+d, or x-d for a -90 heading. Positive means turn right. The actual d is unknown. The starting method ignores x; consider a plausible estimate or visual evidence. You choose how and when to use it.\nThere are just TWO calls across all tools combined, including repeats. Choose only one or two readings to use. A returned None action gets zero. tools.match() gives two CLIP similarities (larger better). tools.identify() gives two old-frame visual identification logits; tools.direct() gives two RGB+motion turn logits ordered left,right. tools.locate() gives two estimated camera-to-target forward ranges in metres from RGB; 0 means not detected. tools.point() returns two entries (one per old image); each is [horizontal_fraction,vertical_fraction] at the estimated bottom of the object, or None when absent. Image top-left is (0,0). Only use tools explicitly listed below. The raw RGB values are available in observation['rgb'] as three 24x24 RGB arrays when the observation includes them. If supplied, observation['calibration'] gives the robot camera height over the floor in metres and vertical field of view in degrees. A positive pitch looks down. In the calibrated four-question layout, queried objects rest on the floor. All evidence comes from frozen readings on public RGB.\nReturn (frame_index:int 0 or 1, action:'left' or 'right', trace:small dict). Write plain Python functions only, no imports, type annotations, docstrings, printing, exception handling, variable attributes or dictionary methods. Standard sin,cos,tan,atan,atan2,radians,sqrt,abs,all,any,bool,dict,enumerate,float,int,len,list,max,min,range,round,sorted,sum,tuple,zip,str and arithmetic are available. Use square brackets to access fields. Score first on whole paired tasks (valid evidence and action on BOTH), then on action accuracy and fewer calls. Return one fenced Python program.\nDebugging guide: Reproduce a failure. Compare its execution with a successful case. Identify the first divergence. Change one cause and check the regression on an earlier success.\nParent source:\ndef decide(observation, tools):\n    scores = tools.direct()\n    return 0, 'right' if scores[1] > scores[0] else 'left', {}\n\nDevelopment feedback: {\"still_wrong\": {\"count\": 9, \"example\": {\"family\": \"reliability\", \"valid_frame\": true, \"action_ok\": false, \"calls\": [\"direct\"], \"error\": null, \"trace\": {}}}, \"stable\": {\"count\": 3, \"example\": {\"family\": \"target\", \"valid_frame\": true, \"action_ok\": true, \"calls\": [\"direct\"], \"error\": null, \"trace\": {}}}}",
+ "raw": "```python\ndef decide(observation, tools):\n    # Extract necessary data\n    views = observation['views']\n    movement = observation['movement']\n    \n    # Get the two old camera poses (time order)\n    view0 = views[0]\n    view1 = views[1]\n    \n    # Extract heading, pitch, and relative positions\n    h0 = view0['heading']  # degrees relative to final facing (+90 = right, -90 = left)\n    h1 = view1['heading']\n    pitch0 = view0['pitch']\n    pitch1 = view1['pitch']\n    right0 = view0['right_of_end_m']\n    right1 = view1['right_of_end_m']\n    forward0 = view0['forward_of_end_m']\n    forward1 = view1['forward_of_end_m']\n    \n    # We need to estimate the target's lateral position relative to final endpoint\n    # The key insight: if the target was seen at a known heading, and the camera was offset,\n    # then the final lateral position is: x + d (if heading +90) or x - d (if heading -90)\n    # But d is unknown. We can estimate d from the point detection if available.\n    \n    # Check for point detection in either view\n    point0 = tools.point()  # returns list of [frac_x, frac_y] for each view, or None\n    point1 = tools.point()\n    \n    # Only use point data if available\n    if point0 is not None and point1 is not None:\n        # Use the point in the first view to estimate relative position\n        # Assume object is at the bottom of the image in the detection\n        # Bottom of image is at vertical fraction = 1.0 (image top-left (0,0), bottom-right (24,24))\n        # We assume the object is at the estimated bottom of the image\n        y0 = point0[1] if point0[1] is not None else 0.5\n        y1 = point1[1] if point1[1] is not None else 0.5\n        \n        # If both points are present, use the one with better consistency\n        # But we only have two calls total, so we must be conservative\n        \n        # If both points exist, we can use the one with higher confidence\n        # But we don't have confidence scores \u2014 so use both for estimation\n        # We will use the first view to estimate direction\n        \n        # Use direct turn logits to decide turn\n        scores = tools.direct()\n        if scores[1] > scores[0]:\n            return 1, 'right', {}\n        else:\n            return 1, 'left', {}\n    \n    # If no point detection, fall back to direct turn logits\n    scores = tools.direct()\n    if scores[1] > scores[0]:\n        return 1, 'right', {}\n    else:\n        return 1, 'left', {}\n```",
+ "input_tokens": 752,
+ "output_tokens": 631,
+ "seconds": 11.910767894994933,
+ "seed": 2930,
+ "source": "def decide(observation, tools):\n    # Extract necessary data\n    views = observation['views']\n    movement = observation['movement']\n    \n    # Get the two old camera poses (time order)\n    view0 = views[0]\n    view1 = views[1]\n    \n    # Extract heading, pitch, and relative positions\n    h0 = view0['heading']  # degrees relative to final facing (+90 = right, -90 = left)\n    h1 = view1['heading']\n    pitch0 = view0['pitch']\n    pitch1 = view1['pitch']\n    right0 = view0['right_of_end_m']\n    right1 = view1['right_of_end_m']\n    forward0 = view0['forward_of_end_m']\n    forward1 = view1['forward_of_end_m']\n    \n    # We need to estimate the target's lateral position relative to final endpoint\n    # The key insight: if the target was seen at a known heading, and the camera was offset,\n    # then the final lateral position is: x + d (if heading +90) or x - d (if heading -90)\n    # But d is unknown. We can estimate d from the point detection if available.\n    \n    # Check for point detection in either view\n    point0 = tools.point()  # returns list of [frac_x, frac_y] for each view, or None\n    point1 = tools.point()\n    \n    # Only use point data if available\n    if point0 is not None and point1 is not None:\n        # Use the point in the first view to estimate relative position\n        # Assume object is at the bottom of the image in the detection\n        # Bottom of image is at vertical fraction = 1.0 (image top-left (0,0), bottom-right (24,24))\n        # We assume the object is at the estimated bottom of the image\n        y0 = point0[1] if point0[1] is not None else 0.5\n        y1 = point1[1] if point1[1] is not None else 0.5\n        \n        # If both points are present, use the one with better consistency\n        # But we only have two calls total, so we must be conservative\n        \n        # If both points exist, we can use the one with higher confidence\n        # But we don't have confidence scores \u2014 so use both for estimation\n        # We will use the first view to estimate direction\n        \n        # Use direct turn logits to decide turn\n        scores = tools.direct()\n        if scores[1] > scores[0]:\n            return 1, 'right', {}\n        else:\n            return 1, 'left', {}\n    \n    # If no point detection, fall back to direct turn logits\n    scores = tools.direct()\n    if scores[1] > scores[0]:\n        return 1, 'right', {}\n    else:\n        return 1, 'left', {}\n",
+ "parent": "def decide(observation, tools):\n    scores = tools.direct()\n    return 0, 'right' if scores[1] > scores[0] else 'left', {}\n",
+ "parent_hash": "24337bdbb93039a22c45cc3838650e87031fa562b09bdf8d298bd6bcd7be948c",
+ "diff": "--- \n+++ \n@@ -1,3 +1,57 @@\n def decide(observation, tools):\n+    # Extract necessary data\n+    views = observation['views']\n+    movement = observation['movement']\n+    \n+    # Get the two old camera poses (time order)\n+    view0 = views[0]\n+    view1 = views[1]\n+    \n+    # Extract heading, pitch, and relative positions\n+    h0 = view0['heading']  # degrees relative to final facing (+90 = right, -90 = left)\n+    h1 = view1['heading']\n+    pitch0 = view0['pitch']\n+    pitch1 = view1['pitch']\n+    right0 = view0['right_of_end_m']\n+    right1 = view1['right_of_end_m']\n+    forward0 = view0['forward_of_end_m']\n+    forward1 = view1['forward_of_end_m']\n+    \n+    # We need to estimate the target's lateral position relative to final endpoint\n+    # The key insight: if the target was seen at a known heading, and the camera was offset,\n+    # then the final lateral position is: x + d (if heading +90) or x - d (if heading -90)\n+    # But d is unknown. We can estimate d from the point detection if available.\n+    \n+    # Check for point detection in either view\n+    point0 = tools.point()  # returns list of [frac_x, frac_y] for each view, or None\n+    point1 = tools.point()\n+    \n+    # Only use point data if available\n+    if point0 is not None and point1 is not None:\n+        # Use the point in the first view to estimate relative position\n+        # Assume object is at the bottom of the image in the detection\n+        # Bottom of image is at vertical fraction = 1.0 (image top-left (0,0), bottom-right (24,24))\n+        # We assume the object is at the estimated bottom of the image\n+        y0 = point0[1] if point0[1] is not None else 0.5\n+        y1 = point1[1] if point1[1] is not None else 0.5\n+        \n+        # If both points are present, use the one with better consistency\n+        # But we only have two calls total, so we must be conservative\n+        \n+        # If both points exist, we can use the one with higher confidence\n+        # But we don't have confidence scores \u2014 so use both for estimation\n+        # We will use the first view to estimate direction\n+        \n+        # Use direct turn logits to decide turn\n+        scores = tools.direct()\n+        if scores[1] > scores[0]:\n+            return 1, 'right', {}\n+        else:\n+            return 1, 'left', {}\n+    \n+    # If no point detection, fall back to direct turn logits\n     scores = tools.direct()\n-    return 0, 'right' if scores[1] > scores[0] else 'left', {}\n+    if scores[1] > scores[0]:\n+        return 1, 'right', {}\n+    else:\n+        return 1, 'left', {}\n",
+ "rank": [
+  0.0,
+  0,
+  -24
+ ],
+ "parent_rank": [
+  0.0,
+  6,
+  -12
+ ],
+ "rows": [
+  {
+   "key": "0a1700675dc5ce7588",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0007508870330639184,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "157659114479d3d71d",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0007365240016952157,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "16cba0a0ea4bef05c1",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.000711592030711472,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "24afc7b9d04774ced6",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0006854659877717495,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "2e4dcdbc9a3771dac0",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0007002909551374614,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "4639ef7a6d372feec9",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0006958979647606611,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "53fddba93a945c51d4",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0006810439517721534,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "8f06c8d86ad6b9579c",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0007031720015220344,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "a96d4d762e0b0d6352",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0007122660172171891,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "ccb1c4d82743f51cf8",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0007019510376267135,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "f0f262ea14ddb33e6f",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.0006898720166645944,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "fb1a7ce310ad972104",
+   "frame": null,
+   "action": null,
+   "error": "ValueError: visual budget exceeded",
+   "calls": [
+    "point",
+    "point"
+   ],
+   "attempts": [
+    "point",
+    "point",
+    "direct"
+   ],
+   "seconds": 0.000667937973048538,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  }
+ ],
+ "feedback": {
+  "still_wrong": {
+   "count": 9,
+   "example": {
+    "family": "reliability",
+    "valid_frame": false,
+    "action_ok": false,
+    "calls": [
+     "point",
+     "point"
+    ],
+    "error": "ValueError: visual budget exceeded",
+    "trace": null
+   }
+  },
+  "regressed": {
+   "count": 3,
+   "example": {
+    "family": "target",
+    "valid_frame": false,
+    "action_ok": false,
+    "calls": [
+     "point",
+     "point"
+    ],
+    "error": "ValueError: visual budget exceeded",
+    "trace": null
+   }
+  }
+ },
+ "accepted": false
+}

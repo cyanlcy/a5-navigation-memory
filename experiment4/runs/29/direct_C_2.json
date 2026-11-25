@@ -1,0 +1,283 @@
+{
+ "prompt": "Photograph direction at capture and target direction after walking can differ. Consider how recorded position changes the bearing. Write a complete executable Python robot controller to return to an object seen earlier.\nInputs for decide(observation, tools): observation['target'] is a category, ['views'] is two old camera poses in time order. Each has heading (degrees relative to final facing, +90 right, -90 left), pitch, right_of_end_m and forward_of_end_m (old camera relative to final position, metres), step. observation['movement'] is recorded actions. Target is hidden at endpoint; one left/right turn reveals it. Each problem is independent. Coordinate convention: if the old camera was x metres to the right of the endpoint, an object d metres ahead along a +90 old heading has final lateral coordinate x+d, or x-d for a -90 heading. Positive means turn right. The actual d is unknown. The starting method ignores x; consider a plausible estimate or visual evidence. You choose how and when to use it.\nThere are just TWO calls across all tools combined, including repeats. Choose only one or two readings to use. A returned None action gets zero. tools.match() gives two CLIP similarities (larger better). tools.identify() gives two old-frame visual identification logits; tools.direct() gives two RGB+motion turn logits ordered left,right. tools.locate() gives two estimated camera-to-target forward ranges in metres from RGB; 0 means not detected. tools.point() returns two entries (one per old image); each is [horizontal_fraction,vertical_fraction] at the estimated bottom of the object, or None when absent. Image top-left is (0,0). Only use tools explicitly listed below. The raw RGB values are available in observation['rgb'] as three 24x24 RGB arrays when the observation includes them. If supplied, observation['calibration'] gives the robot camera height over the floor in metres and vertical field of view in degrees. A positive pitch looks down. In the calibrated four-question layout, queried objects rest on the floor. All evidence comes from frozen readings on public RGB.\nReturn (frame_index:int 0 or 1, action:'left' or 'right', trace:small dict). Write plain Python functions only, no imports, type annotations, docstrings, printing, exception handling, variable attributes or dictionary methods. Standard sin,cos,tan,atan,atan2,radians,sqrt,abs,all,any,bool,dict,enumerate,float,int,len,list,max,min,range,round,sorted,sum,tuple,zip,str and arithmetic are available. Use square brackets to access fields. Score first on whole paired tasks (valid evidence and action on BOTH), then on action accuracy and fewer calls. Return one fenced Python program.\nDebugging guide: Reproduce a failure. Compare its execution with a successful case. Identify the first divergence. Change one cause and check the regression on an earlier success.\nParent source:\ndef decide(observation, tools):\n    scores = tools.direct()\n    return 0, 'right' if scores[1] > scores[0] else 'left', {}\n\nDevelopment feedback: {\"still_wrong\": {\"count\": 9, \"example\": {\"family\": \"reliability\", \"valid_frame\": false, \"action_ok\": false, \"calls\": [], \"error\": \"ValueError: invalid function name\", \"trace\": null}}, \"regressed\": {\"count\": 3, \"example\": {\"family\": \"target\", \"valid_frame\": false, \"action_ok\": false, \"calls\": [], \"error\": \"ValueError: invalid function name\", \"trace\": null}}}",
+ "raw": "```python\ndef decide(observation, tools):\n    # Extract relevant data\n    views = observation['views']\n    movement = observation['movement']\n    rgb = observation['rgb'] if 'rgb' in observation else None\n    calibration = observation['calibration'] if 'calibration' in observation else None\n\n    # Get the two old camera poses (in time order)\n    view0 = views[0]\n    view1 = views[1]\n\n    # Extract heading, pitch, and relative positions\n    h0 = view0['heading']\n    h1 = view1['heading']\n    pitch0 = view0['pitch']\n    pitch1 = view1['pitch']\n    right0 = view0['right_of_end_m']\n    forward0 = view0['forward_of_end_m']\n    right1 = view1['right_of_end_m']\n    forward1 = view1['forward_of_end_m']\n\n    # Determine if we have a valid frame to use (need at least one valid RGB)\n    has_rgb = rgb is not None and len(rgb) == 2\n\n    # Use tools.direct() to get turn logits (left/right)\n    direct_scores = tools.direct()\n    if direct_scores is None:\n        return 0, 'right', {}\n\n    # If direct scores are available, prefer them\n    left_score = direct_scores[0]\n    right_score = direct_scores[1]\n\n    # If one is clearly better, take that turn\n    if right_score > left_score:\n        return 1, 'right', {}\n    elif left_score > right_score:\n        return 1, 'left', {}\n    else:\n        # If scores are equal, use the first frame (index 0) for consistency\n        return 0, 'right', {}\n```",
+ "input_tokens": 759,
+ "output_tokens": 368,
+ "seconds": 6.97594003402628,
+ "seed": 2932,
+ "source": "def decide(observation, tools):\n    # Extract relevant data\n    views = observation['views']\n    movement = observation['movement']\n    rgb = observation['rgb'] if 'rgb' in observation else None\n    calibration = observation['calibration'] if 'calibration' in observation else None\n\n    # Get the two old camera poses (in time order)\n    view0 = views[0]\n    view1 = views[1]\n\n    # Extract heading, pitch, and relative positions\n    h0 = view0['heading']\n    h1 = view1['heading']\n    pitch0 = view0['pitch']\n    pitch1 = view1['pitch']\n    right0 = view0['right_of_end_m']\n    forward0 = view0['forward_of_end_m']\n    right1 = view1['right_of_end_m']\n    forward1 = view1['forward_of_end_m']\n\n    # Determine if we have a valid frame to use (need at least one valid RGB)\n    has_rgb = rgb is not None and len(rgb) == 2\n\n    # Use tools.direct() to get turn logits (left/right)\n    direct_scores = tools.direct()\n    if direct_scores is None:\n        return 0, 'right', {}\n\n    # If direct scores are available, prefer them\n    left_score = direct_scores[0]\n    right_score = direct_scores[1]\n\n    # If one is clearly better, take that turn\n    if right_score > left_score:\n        return 1, 'right', {}\n    elif left_score > right_score:\n        return 1, 'left', {}\n    else:\n        # If scores are equal, use the first frame (index 0) for consistency\n        return 0, 'right', {}\n",
+ "parent": "def decide(observation, tools):\n    scores = tools.direct()\n    return 0, 'right' if scores[1] > scores[0] else 'left', {}\n",
+ "parent_hash": "24337bdbb93039a22c45cc3838650e87031fa562b09bdf8d298bd6bcd7be948c",
+ "diff": "--- \n+++ \n@@ -1,3 +1,41 @@\n def decide(observation, tools):\n-    scores = tools.direct()\n-    return 0, 'right' if scores[1] > scores[0] else 'left', {}\n+    # Extract relevant data\n+    views = observation['views']\n+    movement = observation['movement']\n+    rgb = observation['rgb'] if 'rgb' in observation else None\n+    calibration = observation['calibration'] if 'calibration' in observation else None\n+\n+    # Get the two old camera poses (in time order)\n+    view0 = views[0]\n+    view1 = views[1]\n+\n+    # Extract heading, pitch, and relative positions\n+    h0 = view0['heading']\n+    h1 = view1['heading']\n+    pitch0 = view0['pitch']\n+    pitch1 = view1['pitch']\n+    right0 = view0['right_of_end_m']\n+    forward0 = view0['forward_of_end_m']\n+    right1 = view1['right_of_end_m']\n+    forward1 = view1['forward_of_end_m']\n+\n+    # Determine if we have a valid frame to use (need at least one valid RGB)\n+    has_rgb = rgb is not None and len(rgb) == 2\n+\n+    # Use tools.direct() to get turn logits (left/right)\n+    direct_scores = tools.direct()\n+    if direct_scores is None:\n+        return 0, 'right', {}\n+\n+    # If direct scores are available, prefer them\n+    left_score = direct_scores[0]\n+    right_score = direct_scores[1]\n+\n+    # If one is clearly better, take that turn\n+    if right_score > left_score:\n+        return 1, 'right', {}\n+    elif left_score > right_score:\n+        return 1, 'left', {}\n+    else:\n+        # If scores are equal, use the first frame (index 0) for consistency\n+        return 0, 'right', {}\n",
+ "rank": [
+  0.16666666666666666,
+  6,
+  -12
+ ],
+ "parent_rank": [
+  0.0,
+  6,
+  -12
+ ],
+ "rows": [
+  {
+   "key": "0a1700675dc5ce7588",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "direct"
+   ],
+   "attempts": [
+    "direct"
+   ],
+   "seconds": 0.0007321099983528256,
+   "isolated": true,
+   "ok": false,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "157659114479d3d71d",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "direct"
+   ],
+   "attempts": [
+    "direct"
+   ],
+   "seconds": 0.0007088719867169857,
+   "isolated": true,
+   "ok": false,
+   "good_frame": true,
+   "joint": false
+  },
+  {
+   "key": "16cba0a0ea4bef05c1",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "direct"
+   ],
+   "attempts": [
+    "direct"
+   ],
+   "seconds": 0.000703478988725692,
+   "isolated": true,
+   "ok": true,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "24afc7b9d04774ced6",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "direct"
+   ],
+   "attempts": [
+    "direct"
+   ],
+   "seconds": 0.0006978149758651853,
+   "isolated": true,
+   "ok": true,
+   "good_frame": true,
+   "joint": true
+  },
+  {
+   "key": "2e4dcdbc9a3771dac0",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "direct"
+   ],
+   "attempts": [
+    "direct"
+   ],
+   "seconds": 0.0006734619964845479,
+   "isolated": true,
+   "ok": false,
+   "good_frame": true,
+   "joint": false
+  },
+  {
+   "key": "4639ef7a6d372feec9",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "direct"
+   ],
+   "attempts": [
+    "direct"
+   ],
+   "seconds": 0.0007033050060272217,
+   "isolated": true,
+   "ok": true,
+   "good_frame": true,
+   "joint": true
+  },
+  {
+   "key": "53fddba93a945c51d4",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "direct"
+   ],
+   "attempts": [
+    "direct"
+   ],
+   "seconds": 0.0006892640376463532,
+   "isolated": true,
+   "ok": false,
+   "good_frame": true,
+   "joint": false
+  },
+  {
+   "key": "8f06c8d86ad6b9579c",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "direct"
+   ],
+   "attempts": [
+    "direct"
+   ],
+   "seconds": 0.0006480400334112346,
+   "isolated": true,
+   "ok": true,
+   "good_frame": true,
+   "joint": true
+  },
+  {
+   "key": "a96d4d762e0b0d6352",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "direct"
+   ],
+   "attempts": [
+    "direct"
+   ],
+   "seconds": 0.0006741309771314263,
+   "isolated": true,
+   "ok": true,
+   "good_frame": false,
+   "joint": false
+  },
+  {
+   "key": "ccb1c4d82743f51cf8",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "direct"
+   ],
+   "attempts": [
+    "direct"
+   ],
+   "seconds": 0.0006628489936701953,
+   "isolated": true,
+   "ok": false,
+   "good_frame": true,
+   "joint": false
+  },
+  {
+   "key": "f0f262ea14ddb33e6f",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "direct"
+   ],
+   "attempts": [
+    "direct"
+   ],
+   "seconds": 0.0006705629639327526,
+   "isolated": true,
+   "ok": true,
+   "good_frame": true,
+   "joint": true
+  },
+  {
+   "key": "fb1a7ce310ad972104",
+   "frame": 1,
+   "action": "left",
+   "trace": {},
+   "calls": [
+    "direct"
+   ],
+   "attempts": [
+    "direct"
+   ],
+   "seconds": 0.0006723199621774256,
+   "isolated": true,
+   "ok": false,
+   "good_frame": true,
+   "joint": false
+  }
+ ],
+ "feedback": {
+  "still_wrong": {
+   "count": 6,
+   "example": {
+    "family": "reliability",
+    "valid_frame": false,
+    "action_ok": false,
+    "calls": [
+     "direct"
+    ],
+    "error": null,
+    "trace": {}
+   }
+  },
+  "regressed": {
+   "count": 2,
+   "example": {
+    "family": "target",
+    "valid_frame": false,
+    "action_ok": true,
+    "calls": [
+     "direct"
+    ],
+    "error": null,
+    "trace": {}
+   }
+  },
+  "stable": {
+   "count": 1,
+   "example": {
+    "family": "reliability",
+    "valid_frame": true,
+    "action_ok": true,
+    "calls": [
+     "direct"
+    ],
+    "error": null,
+    "trace": {}
+   }
+  },
+  "fixed": {
+   "count": 3,
+   "example": {
+    "family": "reliability",
+    "valid_frame": true,
+    "action_ok": true,
+    "calls": [
+     "direct"
+    ],
+    "error": null,
+    "trace": {}
+   }
+  }
+ },
+ "accepted": true
+}

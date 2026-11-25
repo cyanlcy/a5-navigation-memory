@@ -1,0 +1,101 @@
+{
+ "rooms": 14,
+ "seeds": [
+  11,
+  29,
+  47,
+  71,
+  101
+ ],
+ "baseline_dev": 55,
+ "baseline_hidden": 61,
+ "arms": [
+  {
+   "arm": "A",
+   "budget": 12,
+   "dev_correct": 61.4,
+   "dev_both_targets": 4.6,
+   "dev_both_endpoints": 0.2,
+   "dev_cross": 20,
+   "dev_same": 41.4,
+   "hidden_correct": 59.6,
+   "hidden_both_targets": 4,
+   "hidden_both_endpoints": 0.2,
+   "hidden_cross": 19,
+   "hidden_same": 40.6,
+   "dev_gain_pp": 5.333333333333332,
+   "hidden_gain_pp": -1.1666666666666654,
+   "overfit_gap_pp": 6.499999999999997
+  },
+  {
+   "arm": "B",
+   "budget": 12,
+   "dev_correct": 60.4,
+   "dev_both_targets": 3,
+   "dev_both_endpoints": 0,
+   "dev_cross": 8.2,
+   "dev_same": 52.2,
+   "hidden_correct": 59.4,
+   "hidden_both_targets": 3.2,
+   "hidden_both_endpoints": 0,
+   "hidden_cross": 9,
+   "hidden_same": 50.4,
+   "dev_gain_pp": 4.499999999999999,
+   "hidden_gain_pp": -1.3333333333333346,
+   "overfit_gap_pp": 5.833333333333334
+  },
+  {
+   "arm": "C",
+   "budget": 12,
+   "dev_correct": 57,
+   "dev_both_targets": 4.8,
+   "dev_both_endpoints": 0.2,
+   "dev_cross": 16.6,
+   "dev_same": 40.4,
+   "hidden_correct": 58.8,
+   "hidden_both_targets": 5.6,
+   "hidden_both_endpoints": 0,
+   "hidden_cross": 17.8,
+   "hidden_same": 41,
+   "dev_gain_pp": 1.6666666666666667,
+   "hidden_gain_pp": -1.8333333333333357,
+   "overfit_gap_pp": 3.5000000000000027
+  }
+ ],
+ "intervals": [
+  {
+   "comparison": "C-B",
+   "difference_pp": -0.5,
+   "low": -2.727272727272727,
+   "high": 1.7307692307692308,
+   "rooms": 14
+  },
+  {
+   "comparison": "B-A",
+   "difference_pp": -0.16666666666666666,
+   "low": -2.2,
+   "high": 1.71875,
+   "rooms": 14
+  },
+  {
+   "comparison": "C-A",
+   "difference_pp": -0.6666666666666666,
+   "low": -3.1666666666666665,
+   "high": 2.037037037037037,
+   "rooms": 14
+  }
+ ],
+ "stacked": [
+  {
+   "run": "B47",
+   "early": 3,
+   "late": 7,
+   "full": 59,
+   "without_early": 61,
+   "without_late": 59,
+   "without_both": 61
+  }
+ ],
+ "study_cost": 180,
+ "distinct_hidden": 27
+}

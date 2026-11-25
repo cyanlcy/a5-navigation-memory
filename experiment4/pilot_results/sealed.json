@@ -1,0 +1,1067 @@
+{
+ "4511614c157db099c5b42c6a003bb4c1fd733a242a85385cf2a985f3d4956669": {
+  "rows": [
+   {
+    "key": "0c7244eb8c7ee27765",
+    "frame": 1,
+    "action": "right",
+    "trace": {},
+    "calls": [
+     "identify"
+    ],
+    "attempts": [
+     "identify"
+    ],
+    "seconds": 0.00034104095539078116,
+    "isolated": true,
+    "ok": true,
+    "good_frame": true,
+    "joint": true
+   },
+   {
+    "key": "1179cb6457ffc5955d",
+    "frame": 1,
+    "action": "right",
+    "trace": {},
+    "calls": [
+     "identify"
+    ],
+    "attempts": [
+     "identify"
+    ],
+    "seconds": 0.0003043930046260357,
+    "isolated": true,
+    "ok": false,
+    "good_frame": false,
+    "joint": false
+   },
+   {
+    "key": "17120444e4cca9d9b2",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "identify"
+    ],
+    "attempts": [
+     "identify"
+    ],
+    "seconds": 0.0003422339796088636,
+    "isolated": true,
+    "ok": false,
+    "good_frame": true,
+    "joint": false
+   },
+   {
+    "key": "447c32d911eccdebeb",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "identify"
+    ],
+    "attempts": [
+     "identify"
+    ],
+    "seconds": 0.0003364389995113015,
+    "isolated": true,
+    "ok": false,
+    "good_frame": false,
+    "joint": false
+   },
+   {
+    "key": "888df12b05ff79d24f",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "identify"
+    ],
+    "attempts": [
+     "identify"
+    ],
+    "seconds": 0.0003179709892719984,
+    "isolated": true,
+    "ok": true,
+    "good_frame": true,
+    "joint": true
+   },
+   {
+    "key": "bd1c69f4028a6680ea",
+    "frame": 1,
+    "action": "right",
+    "trace": {},
+    "calls": [
+     "identify"
+    ],
+    "attempts": [
+     "identify"
+    ],
+    "seconds": 0.0003226189874112606,
+    "isolated": true,
+    "ok": true,
+    "good_frame": false,
+    "joint": false
+   },
+   {
+    "key": "ce2ccd4bb5cfd57a64",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "identify"
+    ],
+    "attempts": [
+     "identify"
+    ],
+    "seconds": 0.00043540698243305087,
+    "isolated": true,
+    "ok": true,
+    "good_frame": true,
+    "joint": true
+   },
+   {
+    "key": "e560474147a7b35a93",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "identify"
+    ],
+    "attempts": [
+     "identify"
+    ],
+    "seconds": 0.00029811100102961063,
+    "isolated": true,
+    "ok": true,
+    "good_frame": true,
+    "joint": true
+   },
+   {
+    "key": "ec1189ead95db505ce",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "identify"
+    ],
+    "attempts": [
+     "identify"
+    ],
+    "seconds": 0.000300679006613791,
+    "isolated": true,
+    "ok": true,
+    "good_frame": true,
+    "joint": true
+   },
+   {
+    "key": "f0e836e3aa9a21ef06",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "identify"
+    ],
+    "attempts": [
+     "identify"
+    ],
+    "seconds": 0.00033187499502673745,
+    "isolated": true,
+    "ok": true,
+    "good_frame": true,
+    "joint": true
+   },
+   {
+    "key": "f4a6d5378035775235",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "identify"
+    ],
+    "attempts": [
+     "identify"
+    ],
+    "seconds": 0.0003238139906898141,
+    "isolated": true,
+    "ok": true,
+    "good_frame": true,
+    "joint": true
+   },
+   {
+    "key": "fa4746f7c265fc997e",
+    "frame": 0,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "identify"
+    ],
+    "attempts": [
+     "identify"
+    ],
+    "seconds": 0.0003121200134046376,
+    "isolated": true,
+    "ok": true,
+    "good_frame": true,
+    "joint": true
+   }
+  ],
+  "rank": [
+   0.5,
+   9,
+   -12
+  ]
+ },
+ "24337bdbb93039a22c45cc3838650e87031fa562b09bdf8d298bd6bcd7be948c": {
+  "rows": [
+   {
+    "key": "0c7244eb8c7ee27765",
+    "frame": 0,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0002657720469869673,
+    "isolated": true,
+    "ok": false,
+    "good_frame": false,
+    "joint": false
+   },
+   {
+    "key": "1179cb6457ffc5955d",
+    "frame": 0,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.00024765601847320795,
+    "isolated": true,
+    "ok": true,
+    "good_frame": true,
+    "joint": true
+   },
+   {
+    "key": "17120444e4cca9d9b2",
+    "frame": 0,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0013954530004411936,
+    "isolated": true,
+    "ok": false,
+    "good_frame": false,
+    "joint": false
+   },
+   {
+    "key": "447c32d911eccdebeb",
+    "frame": 0,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.00028904801001772285,
+    "isolated": true,
+    "ok": false,
+    "good_frame": true,
+    "joint": false
+   },
+   {
+    "key": "888df12b05ff79d24f",
+    "frame": 0,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.00029976002406328917,
+    "isolated": true,
+    "ok": true,
+    "good_frame": false,
+    "joint": false
+   },
+   {
+    "key": "bd1c69f4028a6680ea",
+    "frame": 0,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0002705059596337378,
+    "isolated": true,
+    "ok": false,
+    "good_frame": true,
+    "joint": false
+   },
+   {
+    "key": "ce2ccd4bb5cfd57a64",
+    "frame": 0,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0002973609953187406,
+    "isolated": true,
+    "ok": true,
+    "good_frame": true,
+    "joint": true
+   },
+   {
+    "key": "e560474147a7b35a93",
+    "frame": 0,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0004469459527172148,
+    "isolated": true,
+    "ok": true,
+    "good_frame": false,
+    "joint": false
+   },
+   {
+    "key": "ec1189ead95db505ce",
+    "frame": 0,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0002598640276119113,
+    "isolated": true,
+    "ok": true,
+    "good_frame": false,
+    "joint": false
+   },
+   {
+    "key": "f0e836e3aa9a21ef06",
+    "frame": 0,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0005041389958932996,
+    "isolated": true,
+    "ok": true,
+    "good_frame": true,
+    "joint": true
+   },
+   {
+    "key": "f4a6d5378035775235",
+    "frame": 0,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0002908259630203247,
+    "isolated": true,
+    "ok": true,
+    "good_frame": false,
+    "joint": false
+   },
+   {
+    "key": "fa4746f7c265fc997e",
+    "frame": 0,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0002743560471571982,
+    "isolated": true,
+    "ok": true,
+    "good_frame": true,
+    "joint": true
+   }
+  ],
+  "rank": [
+   0.0,
+   8,
+   -12
+  ]
+ },
+ "c1d13a91b27b9444acb9768daf068809fd5dd9fd9e24ea94c4479021b5cc890b": {
+  "rows": [
+   {
+    "key": "0c7244eb8c7ee27765",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.000768269004765898,
+    "isolated": true,
+    "ok": false,
+    "good_frame": true,
+    "joint": false
+   },
+   {
+    "key": "1179cb6457ffc5955d",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0008216389687731862,
+    "isolated": true,
+    "ok": true,
+    "good_frame": false,
+    "joint": false
+   },
+   {
+    "key": "17120444e4cca9d9b2",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0008015899802558124,
+    "isolated": true,
+    "ok": false,
+    "good_frame": true,
+    "joint": false
+   },
+   {
+    "key": "447c32d911eccdebeb",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0008371630101464689,
+    "isolated": true,
+    "ok": false,
+    "good_frame": false,
+    "joint": false
+   },
+   {
+    "key": "888df12b05ff79d24f",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0008147609769366682,
+    "isolated": true,
+    "ok": true,
+    "good_frame": true,
+    "joint": true
+   },
+   {
+    "key": "bd1c69f4028a6680ea",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.000869309005793184,
+    "isolated": true,
+    "ok": false,
+    "good_frame": false,
+    "joint": false
+   },
+   {
+    "key": "ce2ccd4bb5cfd57a64",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0008257519803009927,
+    "isolated": true,
+    "ok": true,
+    "good_frame": true,
+    "joint": true
+   },
+   {
+    "key": "e560474147a7b35a93",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0008686970104463398,
+    "isolated": true,
+    "ok": true,
+    "good_frame": true,
+    "joint": true
+   },
+   {
+    "key": "ec1189ead95db505ce",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0008085670415312052,
+    "isolated": true,
+    "ok": true,
+    "good_frame": true,
+    "joint": true
+   },
+   {
+    "key": "f0e836e3aa9a21ef06",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0008303929935209453,
+    "isolated": true,
+    "ok": true,
+    "good_frame": true,
+    "joint": true
+   },
+   {
+    "key": "f4a6d5378035775235",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0008026579744182527,
+    "isolated": true,
+    "ok": true,
+    "good_frame": true,
+    "joint": true
+   },
+   {
+    "key": "fa4746f7c265fc997e",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0008414229960180819,
+    "isolated": true,
+    "ok": true,
+    "good_frame": false,
+    "joint": false
+   }
+  ],
+  "rank": [
+   0.3333333333333333,
+   8,
+   -12
+  ]
+ },
+ "2f951985c90db8f11df20f3724636dcc6e2a20cc2f9ca944df548e6543b3f5bf": {
+  "rows": [
+   {
+    "key": "0c7244eb8c7ee27765",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0006785289733670652,
+    "isolated": true,
+    "ok": false,
+    "good_frame": true,
+    "joint": false
+   },
+   {
+    "key": "1179cb6457ffc5955d",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0006829979829490185,
+    "isolated": true,
+    "ok": true,
+    "good_frame": false,
+    "joint": false
+   },
+   {
+    "key": "17120444e4cca9d9b2",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.000668950960971415,
+    "isolated": true,
+    "ok": false,
+    "good_frame": true,
+    "joint": false
+   },
+   {
+    "key": "447c32d911eccdebeb",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.001072606013622135,
+    "isolated": true,
+    "ok": false,
+    "good_frame": false,
+    "joint": false
+   },
+   {
+    "key": "888df12b05ff79d24f",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0006882650195620954,
+    "isolated": true,
+    "ok": true,
+    "good_frame": true,
+    "joint": true
+   },
+   {
+    "key": "bd1c69f4028a6680ea",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.000681209028698504,
+    "isolated": true,
+    "ok": false,
+    "good_frame": false,
+    "joint": false
+   },
+   {
+    "key": "ce2ccd4bb5cfd57a64",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0006895149708725512,
+    "isolated": true,
+    "ok": true,
+    "good_frame": true,
+    "joint": true
+   },
+   {
+    "key": "e560474147a7b35a93",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.000686845974996686,
+    "isolated": true,
+    "ok": true,
+    "good_frame": true,
+    "joint": true
+   },
+   {
+    "key": "ec1189ead95db505ce",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0009445020114071667,
+    "isolated": true,
+    "ok": true,
+    "good_frame": true,
+    "joint": true
+   },
+   {
+    "key": "f0e836e3aa9a21ef06",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0006913609686307609,
+    "isolated": true,
+    "ok": true,
+    "good_frame": true,
+    "joint": true
+   },
+   {
+    "key": "f4a6d5378035775235",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0006688199937343597,
+    "isolated": true,
+    "ok": true,
+    "good_frame": true,
+    "joint": true
+   },
+   {
+    "key": "fa4746f7c265fc997e",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0006733969785273075,
+    "isolated": true,
+    "ok": true,
+    "good_frame": false,
+    "joint": false
+   }
+  ],
+  "rank": [
+   0.3333333333333333,
+   8,
+   -12
+  ]
+ },
+ "5da27fd7f092c5331237093c61efb079523f33d6b0064e2c95df6c6b491ffc82": {
+  "rows": [
+   {
+    "key": "0c7244eb8c7ee27765",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0010704279993660748,
+    "isolated": true,
+    "ok": false,
+    "good_frame": true,
+    "joint": false
+   },
+   {
+    "key": "1179cb6457ffc5955d",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0010345569462515414,
+    "isolated": true,
+    "ok": true,
+    "good_frame": false,
+    "joint": false
+   },
+   {
+    "key": "17120444e4cca9d9b2",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0016295310342684388,
+    "isolated": true,
+    "ok": false,
+    "good_frame": true,
+    "joint": false
+   },
+   {
+    "key": "447c32d911eccdebeb",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0010475910385139287,
+    "isolated": true,
+    "ok": false,
+    "good_frame": false,
+    "joint": false
+   },
+   {
+    "key": "888df12b05ff79d24f",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0011048950254917145,
+    "isolated": true,
+    "ok": true,
+    "good_frame": true,
+    "joint": true
+   },
+   {
+    "key": "bd1c69f4028a6680ea",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.001098762033507228,
+    "isolated": true,
+    "ok": false,
+    "good_frame": false,
+    "joint": false
+   },
+   {
+    "key": "ce2ccd4bb5cfd57a64",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0011105660232715309,
+    "isolated": true,
+    "ok": true,
+    "good_frame": true,
+    "joint": true
+   },
+   {
+    "key": "e560474147a7b35a93",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.001025673991534859,
+    "isolated": true,
+    "ok": true,
+    "good_frame": true,
+    "joint": true
+   },
+   {
+    "key": "ec1189ead95db505ce",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0010775160044431686,
+    "isolated": true,
+    "ok": true,
+    "good_frame": true,
+    "joint": true
+   },
+   {
+    "key": "f0e836e3aa9a21ef06",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0010309889912605286,
+    "isolated": true,
+    "ok": true,
+    "good_frame": true,
+    "joint": true
+   },
+   {
+    "key": "f4a6d5378035775235",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0010344029869884253,
+    "isolated": true,
+    "ok": true,
+    "good_frame": true,
+    "joint": true
+   },
+   {
+    "key": "fa4746f7c265fc997e",
+    "frame": 1,
+    "action": "left",
+    "trace": {},
+    "calls": [
+     "direct"
+    ],
+    "attempts": [
+     "direct"
+    ],
+    "seconds": 0.0010956680052913725,
+    "isolated": true,
+    "ok": true,
+    "good_frame": false,
+    "joint": false
+   }
+  ],
+  "rank": [
+   0.3333333333333333,
+   8,
+   -12
+  ]
+ }
+}
